@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi vida - Modelo de exposición</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --bg-primary: #050505;
+            --bg-secondary: #0a0a0a;
+            --bg-card: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --text-muted: #444444;
+
+            --accent-1: #00d4aa;
+            --accent-2: #00d4ff;
+            --accent-3: #f5a623;
+            --accent-4: #ff6b6b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Navegación lateral minimalista */
+        .nav {
+            position: fixed;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            transition: all 0.3s;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .nav-item.active .nav-dot {
+            background: var(--accent-1);
+            box-shadow: 0 0 10px var(--accent-1);
+        }
+
+        .nav-item.active .nav-label {
+            opacity: 1;
+        }
+
+        .nav-item[data-section="intro"].active .nav-dot { background: var(--accent-1); box-shadow: 0 0 10px var(--accent-1); }
+        .nav-item[data-section="rutina"].active .nav-dot { background: var(--accent-2); box-shadow: 0 0 10px var(--accent-2); }
+        .nav-item[data-section="vacaciones"].active .nav-dot { background: var(--accent-3); box-shadow: 0 0 10px var(--accent-3); }
+        .nav-item[data-section="conclusiones"].active .nav-dot { background: var(--accent-4); box-shadow: 0 0 10px var(--accent-4); }
+        .nav-item[data-section="recap"].active .nav-dot { background: #b0b0b0; box-shadow: 0 0 10px #b0b0b0; }
+
+        /* Contador */
+        .counter {
+            position: fixed;
+            top: 30px;
+            right: 40px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            z-index: 100;
+        }
+
+        .counter .current {
+            color: var(--accent-1);
+            font-weight: 600;
+        }
+
+        /* Controles de teclado */
+        .keyboard-hint {
+            position: fixed;
+            bottom: 30px;
+            right: 40px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .key {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .key:hover {
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        /* Toggle tema */
+        .theme-toggle {
+            position: fixed;
+            top: 30px;
+            left: 40px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--text-secondary);
+            transform: scale(1.1);
+        }
+
+        .theme-toggle { color: var(--text-primary); }
+        .theme-toggle .icon-sun { display: block; }
+        .theme-toggle .icon-moon { display: none; }
+        body.light-mode .theme-toggle .icon-sun { display: none; }
+        body.light-mode .theme-toggle .icon-moon { display: block; }
+
+        /* Modo claro */
+        body.light-mode {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #e8e8e8;
+            --bg-card: #ffffff;
+            --text-primary: #111111;
+            --text-secondary: #666666;
+            --text-muted: #999999;
+        }
+
+        body.light-mode .emoji-box {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        body.light-mode .slide[data-section="intro"] .emoji-box { background: rgba(0, 212, 170, 0.1); }
+        body.light-mode .slide[data-section="rutina"] .emoji-box { background: rgba(0, 212, 255, 0.1); }
+        body.light-mode .slide[data-section="vacaciones"] .emoji-box { background: rgba(245, 166, 35, 0.1); }
+        body.light-mode .slide[data-section="conclusiones"] .emoji-box { background: rgba(255, 107, 107, 0.1); }
+
+        body.light-mode .comparison-icon.dimmed {
+            background: rgba(0,0,0,0.05);
+            border-color: rgba(0,0,0,0.15);
+        }
+
+        body.light-mode .comparison-icon.highlighted {
+            background: rgba(0, 212, 255, 0.15);
+        }
+
+        /* Slides */
+        .slides-container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 120px 60px 160px;
+        }
+
+        .slide {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            max-width: 1000px;
+            width: 100%;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Eyebrow */
+        .eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .slide[data-section="intro"] .eyebrow { color: var(--accent-1); }
+        .slide[data-section="rutina"] .eyebrow { color: var(--accent-2); }
+        .slide[data-section="vacaciones"] .eyebrow { color: var(--accent-3); }
+        .slide[data-section="conclusiones"] .eyebrow { color: var(--accent-4); }
+        .slide[data-section="recap"] .eyebrow { color: var(--text-secondary); }
+
+        /* Título */
+        .title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .slide[data-section="intro"] .accent { color: var(--accent-1); }
+        .slide[data-section="rutina"] .accent { color: var(--accent-2); }
+        .slide[data-section="vacaciones"] .accent { color: var(--accent-3); }
+        .slide[data-section="conclusiones"] .accent { color: var(--accent-4); }
+        .slide[data-section="recap"] .accent { color: var(--text-primary); }
+
+        /* Subtítulo */
+        .subtitle {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        /* Número grande */
+        .big-number {
+            font-size: 140px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .slide[data-section="intro"] .big-number { color: var(--accent-1); text-shadow: 0 0 80px rgba(0, 212, 170, 0.4); }
+        .slide[data-section="rutina"] .big-number { color: var(--accent-2); text-shadow: 0 0 80px rgba(0, 212, 255, 0.4); }
+        .slide[data-section="vacaciones"] .big-number { color: var(--accent-3); text-shadow: 0 0 80px rgba(245, 166, 35, 0.4); }
+        .slide[data-section="conclusiones"] .big-number { color: var(--accent-4); text-shadow: 0 0 80px rgba(255, 107, 107, 0.4); }
+
+        .big-label {
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-top: 16px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        /* Emoji box */
+        .emoji-box {
+            width: 160px;
+            height: 160px;
+            border-radius: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            margin-bottom: 32px;
+        }
+
+        .slide[data-section="intro"] .emoji-box {
+            background: rgba(0, 212, 170, 0.1);
+            border: 2px solid var(--accent-1);
+        }
+        .slide[data-section="rutina"] .emoji-box {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid var(--accent-2);
+        }
+        .slide[data-section="vacaciones"] .emoji-box {
+            background: rgba(245, 166, 35, 0.1);
+            border: 2px solid var(--accent-3);
+        }
+        .slide[data-section="conclusiones"] .emoji-box {
+            background: rgba(255, 107, 107, 0.1);
+            border: 2px solid var(--accent-4);
+        }
+
+        /* Cards container */
+        .cards {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: left;
+            width: 280px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .slide[data-section="conclusiones"] .card:first-child .card-title { color: var(--accent-1); }
+        .slide[data-section="conclusiones"] .card:last-child .card-title { color: var(--accent-4); }
+
+        .card-list {
+            list-style: none;
+        }
+
+        .card-list li {
+            font-size: 18px;
+            color: var(--text-secondary);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .card-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Comparison layout */
+        .comparison {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .comparison-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .comparison-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .comparison-icon.dimmed {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.7;
+        }
+
+        .comparison-icon.highlighted {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid var(--accent-2);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .comparison-label {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .comparison-label.dimmed {
+            color: var(--text-secondary);
+        }
+
+        .comparison-label.highlighted {
+            color: var(--accent-2);
+        }
+
+        .comparison-arrow {
+            font-size: 32px;
+            color: var(--text-muted);
+        }
+
+        /* Recap grid */
+        .recap-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .recap-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        .recap-num {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .recap-item:nth-child(1) .recap-num { color: var(--accent-1); }
+        .recap-item:nth-child(2) .recap-num { color: var(--accent-2); }
+        .recap-item:nth-child(3) .recap-num { color: var(--accent-3); }
+        .recap-item:nth-child(4) .recap-num { color: var(--accent-4); }
+
+        .recap-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Row layout */
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .row-content {
+            text-align: left;
+        }
+
+        .row-content .title {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        @media print {
+            .nav, .counter, .keyboard-hint { display: none; }
+            .slide { display: flex !important; page-break-after: always; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación minimalista -->
+    <nav class="nav">
+        <div class="nav-item active" data-section="intro" onclick="jumpTo('intro')">
+            <div class="nav-dot"></div>
+            <span class="nav-label">Introducción</span>
+        </div>
+        <div class="nav-item" data-section="rutina" onclick="jumpTo('rutina')">
+            <div class="nav-dot"></div>
+            <span class="nav-label">Mi rutina</span>
+        </div>
+        <div class="nav-item" data-section="vacaciones" onclick="jumpTo('vacaciones')">
+            <div class="nav-dot"></div>
+            <span class="nav-label">Vacaciones</span>
+        </div>
+        <div class="nav-item" data-section="conclusiones" onclick="jumpTo('conclusiones')">
+            <div class="nav-dot"></div>
+            <span class="nav-label">Conclusiones</span>
+        </div>
+        <div class="nav-item" data-section="recap" onclick="jumpTo('recap')">
+            <div class="nav-dot"></div>
+            <span class="nav-label">Recap</span>
+        </div>
+    </nav>
+
+    <!-- Toggle tema -->
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <!-- Luna (visible en modo oscuro) -->
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <!-- Sol (visible en modo claro) -->
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+    </button>
+
+    <!-- Contador -->
+    <div class="counter">
+        <span class="current" id="current">1</span>/<span id="total">14</span>
+    </div>
+
+    <!-- Controles de navegación -->
+    <div class="keyboard-hint">
+        <div class="key" onclick="move(-1)">←</div>
+        <div class="key" onclick="move(1)">→</div>
+    </div>
+
+    <!-- Slides -->
+    <div class="slides-container">
+
+        <!-- INTRO: Título -->
+        <div class="slide active" data-section="intro">
+            <div class="eyebrow">Exposición oral · 2º ESO</div>
+            <div class="title">Cómo es <span class="accent">mi vida</span></div>
+            <div class="subtitle">Adri, profesor de Lengua</div>
+        </div>
+
+        <!-- INTRO: Edad -->
+        <div class="slide" data-section="intro">
+            <div class="eyebrow">01 Datos básicos</div>
+            <div class="big-number">42</div>
+            <div class="big-label">años</div>
+        </div>
+
+        <!-- INTRO: Familia con emoji -->
+        <div class="slide" data-section="intro">
+            <div class="eyebrow">01 Datos básicos</div>
+            <div class="row">
+                <div class="emoji-box">👨‍👩‍👧</div>
+                <div class="row-content">
+                    <div class="title">Mi <span class="accent">familia</span></div>
+                    <div class="subtitle">Pareja + hija de 7 años</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INTRO: Casa con emoji -->
+        <div class="slide" data-section="intro">
+            <div class="eyebrow">01 Datos básicos</div>
+            <div class="row">
+                <div class="emoji-box">🏠</div>
+                <div class="row-content">
+                    <div class="title"><span class="accent">Guntín</span></div>
+                    <div class="subtitle">Casa de pueblo</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INTRO: Distancia -->
+        <div class="slide" data-section="intro">
+            <div class="eyebrow">01 Datos básicos</div>
+            <div class="row">
+                <div class="emoji-box">🚗</div>
+                <div class="row-content">
+                    <div class="title"><span class="accent">35</span> minutos</div>
+                    <div class="subtitle">Al instituto cada día</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RUTINA: Título -->
+        <div class="slide" data-section="rutina">
+            <div class="eyebrow">02 Mi rutina</div>
+            <div class="title">Un día <span class="accent">normal</span></div>
+        </div>
+
+        <!-- RUTINA: Mañana -->
+        <div class="slide" data-section="rutina">
+            <div class="eyebrow">02 Mi rutina</div>
+            <div class="row">
+                <div class="emoji-box">⏰</div>
+                <div class="row-content">
+                    <div class="title"><span class="accent">Madrugar</span></div>
+                    <div class="subtitle">Para llegar a tiempo al instituto</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RUTINA: Mediodía - Comparación -->
+        <div class="slide" data-section="rutina">
+            <div class="eyebrow">02 Mi rutina</div>
+            <div class="title">El <span class="accent">mediodía</span></div>
+            <div class="comparison">
+                <div class="comparison-item">
+                    <div class="comparison-icon dimmed">🍽️</div>
+                    <div class="comparison-label dimmed">Comer</div>
+                </div>
+                <div class="comparison-arrow">→</div>
+                <div class="comparison-item">
+                    <div class="comparison-icon highlighted">🏃</div>
+                    <div class="comparison-label highlighted">Deporte</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RUTINA: Tardes -->
+        <div class="slide" data-section="rutina">
+            <div class="eyebrow">02 Mi rutina</div>
+            <div class="row">
+                <div class="emoji-box">🌅</div>
+                <div class="row-content">
+                    <div class="title">Las <span class="accent">tardes</span></div>
+                    <div class="subtitle">Hija · Clases · Descanso</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VACACIONES: Título -->
+        <div class="slide" data-section="vacaciones">
+            <div class="eyebrow">03 Vacaciones</div>
+            <div class="title">Tiempo de <span class="accent">descanso</span></div>
+        </div>
+
+        <!-- VACACIONES: Invierno -->
+        <div class="slide" data-section="vacaciones">
+            <div class="eyebrow">03 Vacaciones · Invierno</div>
+            <div class="row">
+                <div class="emoji-box">🏝️</div>
+                <div class="row-content">
+                    <div class="title"><span class="accent">Canarias</span></div>
+                    <div class="subtitle">Con mis padres · Energía para el 2º trimestre</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VACACIONES: Verano -->
+        <div class="slide" data-section="vacaciones">
+            <div class="eyebrow">03 Vacaciones · Verano</div>
+            <div class="row">
+                <div class="emoji-box">🏖️</div>
+                <div class="row-content">
+                    <div class="title">Playa <span class="accent">gallega</span></div>
+                    <div class="subtitle">Fiestas familiares + viajes</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONCLUSIONES: Cards -->
+        <div class="slide" data-section="conclusiones">
+            <div class="eyebrow">04 Conclusiones</div>
+            <div class="title">Lo que <span class="accent">pienso</span></div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">✓ Me gusta</div>
+                    <ul class="card-list">
+                        <li>Mi familia</li>
+                        <li>Galicia</li>
+                        <li>Hacer deporte</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-title">✗ Cambiaría</div>
+                    <ul class="card-list">
+                        <li>La distancia</li>
+                        <li>Casa propia</li>
+                        <li>El tiempo gallego</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- RECAP: Resumen esquemático (final) -->
+        <div class="slide" data-section="recap">
+            <div class="eyebrow">Recap</div>
+            <div class="title">Mi <span class="accent">vida</span> en 4 puntos</div>
+            <div class="recap-grid">
+                <div class="recap-item">
+                    <div class="recap-num" style="color: var(--accent-1);">👨‍👩‍👧</div>
+                    <div class="recap-label">42 años · Guntín<br>Pareja + hija</div>
+                </div>
+                <div class="recap-item">
+                    <div class="recap-num" style="color: var(--accent-2);">⏰</div>
+                    <div class="recap-label">Madrugar · Deporte<br>Tardes en familia</div>
+                </div>
+                <div class="recap-item">
+                    <div class="recap-num" style="color: var(--accent-3);">🏖️</div>
+                    <div class="recap-label">Canarias · Playa<br>Fiestas familiares</div>
+                </div>
+                <div class="recap-item">
+                    <div class="recap-num" style="color: var(--accent-4);">💭</div>
+                    <div class="recap-label">Me gusta: familia<br>Cambiaría: distancia</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let curr = 0;
+        const slides = document.querySelectorAll('.slide');
+        const navItems = document.querySelectorAll('.nav-item');
+        const total = slides.length;
+
+        document.getElementById('total').textContent = total;
+
+        function update() {
+            slides.forEach((s, i) => s.classList.toggle('active', i === curr));
+            document.getElementById('current').textContent = curr + 1;
+
+            const section = slides[curr].dataset.section;
+            navItems.forEach(item => {
+                item.classList.toggle('active', item.dataset.section === section);
+            });
+
+            // Actualizar color del contador
+            const colors = { intro: '#00d4aa', rutina: '#00d4ff', vacaciones: '#f5a623', conclusiones: '#ff6b6b', recap: '#b0b0b0' };
+            document.querySelector('.counter .current').style.color = colors[section] || '#00d4aa';
+        }
+
+        function move(dir) {
+            const next = curr + dir;
+            if (next >= 0 && next < total) {
+                curr = next;
+                update();
+            }
+        }
+
+        function jumpTo(section) {
+            const idx = [...slides].findIndex(s => s.dataset.section === section);
+            if (idx !== -1) {
+                curr = idx;
+                update();
+            }
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); move(1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); move(-1); }
+        });
+
+        update();
+    </script>
+</body>
+</html>

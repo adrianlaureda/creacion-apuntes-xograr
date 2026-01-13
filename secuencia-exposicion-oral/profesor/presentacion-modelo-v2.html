@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi vida - Modelo de exposición</title>
+    <style>
+        :root {
+            --bg-body: #0d0d0d;
+            --bg-sidebar: #111111;
+            --text-main: #f5f5f5;
+            --text-muted: #888888;
+            --border-color: rgba(255, 255, 255, 0.1);
+
+            --accent-1: #00d4aa;
+            --accent-2: #00d4ff;
+            --accent-3: #ffd700;
+            --accent-4: #ff6b6b;
+
+            --sidebar-w: 240px;
+        }
+
+        body.light-mode {
+            --bg-body: #fafafa;
+            --bg-sidebar: #f0f0f0;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --accent-1: #00a080;
+            --accent-2: #0099cc;
+            --accent-3: #cc9900;
+            --accent-4: #cc4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: var(--bg-body);
+            color: var(--text-main);
+            height: 100vh;
+            display: grid;
+            grid-template-columns: var(--sidebar-w) 1fr;
+            overflow: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .sidebar {
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle:hover {
+            color: var(--text-main);
+            border-color: var(--text-muted);
+        }
+
+        .chapters {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .chapter {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            padding: 10px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .chapter:hover {
+            background: rgba(128, 128, 128, 0.1);
+            color: var(--text-main);
+        }
+
+        .chapter.active {
+            color: var(--text-main);
+            background: rgba(128, 128, 128, 0.05);
+            font-weight: 500;
+        }
+
+        .chapter[data-section="intro"].active { border-left-color: var(--accent-1); color: var(--accent-1); }
+        .chapter[data-section="rutina"].active { border-left-color: var(--accent-2); color: var(--accent-2); }
+        .chapter[data-section="vacaciones"].active { border-left-color: var(--accent-3); color: var(--accent-3); }
+        .chapter[data-section="conclusiones"].active { border-left-color: var(--accent-4); color: var(--accent-4); }
+
+        .stage {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+        }
+
+        .counter {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-size: 0.9rem;
+            font-family: monospace;
+            color: var(--text-muted);
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 2rem;
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-nav {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+
+        .btn-nav:hover {
+            border-color: var(--text-muted);
+            color: var(--text-main);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .slide {
+            display: none;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .big-number {
+            font-size: 6rem;
+            font-weight: 200;
+            line-height: 1;
+        }
+
+        .label {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .accent-list {
+            list-style: none;
+            font-size: 1.4rem;
+            font-weight: 300;
+            line-height: 2;
+        }
+
+        .slide[data-section="intro"] .accent { color: var(--accent-1); }
+        .slide[data-section="rutina"] .accent { color: var(--accent-2); }
+        .slide[data-section="vacaciones"] .accent { color: var(--accent-3); }
+        .slide[data-section="conclusiones"] .accent { color: var(--accent-4); }
+
+        .slide[data-section="intro"] h2 { color: var(--accent-1); }
+        .slide[data-section="rutina"] h2 { color: var(--accent-2); }
+        .slide[data-section="vacaciones"] h2 { color: var(--accent-3); }
+        .slide[data-section="conclusiones"] h2 { color: var(--accent-4); }
+
+        @media print {
+            .sidebar, .controls, .counter, .theme-toggle { display: none; }
+            body { display: block; }
+            .stage { padding: 2rem; }
+            .slide { display: flex !important; page-break-after: always; min-height: 100vh; }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <span id="theme-icon">◐</span> Tema
+        </button>
+
+        <nav class="chapters">
+            <div class="chapter active" data-section="intro" onclick="jumpToSection('intro')">Introducción</div>
+            <div class="chapter" data-section="rutina" onclick="jumpToSection('rutina')">Mi rutina</div>
+            <div class="chapter" data-section="vacaciones" onclick="jumpToSection('vacaciones')">Vacaciones</div>
+            <div class="chapter" data-section="conclusiones" onclick="jumpToSection('conclusiones')">Conclusiones</div>
+        </nav>
+    </aside>
+
+    <main class="stage">
+        <div class="counter"><span id="current">1</span> / <span id="total">16</span></div>
+
+        <!-- INTRO (accent-1: verde-turquesa) -->
+        <div class="slide active" data-section="intro" data-chapter="intro">
+            <h1>Mi <span class="accent">vida</span></h1>
+            <p>Adri, profesor</p>
+        </div>
+
+        <div class="slide" data-section="intro" data-chapter="intro">
+            <p class="big-number"><span class="accent">42</span></p>
+            <p class="label">años</p>
+        </div>
+
+        <div class="slide" data-section="intro" data-chapter="intro">
+            <p>Vivo con mi <span class="accent">pareja</span></p>
+            <p>y mi <span class="accent">hija</span> de 7 años</p>
+        </div>
+
+        <div class="slide" data-section="intro" data-chapter="intro">
+            <p>Casa de pueblo</p>
+            <p class="accent" style="font-size: 2rem; font-weight: 400;">Guntín</p>
+        </div>
+
+        <div class="slide" data-section="intro" data-chapter="intro">
+            <p class="big-number"><span class="accent">35</span> min</p>
+            <p class="label">al instituto</p>
+        </div>
+
+        <!-- RUTINA (accent-2: cyan) -->
+        <div class="slide" data-section="rutina" data-chapter="rutina">
+            <h2>Mi rutina</h2>
+        </div>
+
+        <div class="slide" data-section="rutina" data-chapter="rutina">
+            <p class="accent" style="font-size: 2.2rem;">Madrugar</p>
+            <p>para llegar a tiempo</p>
+        </div>
+
+        <div class="slide" data-section="rutina" data-chapter="rutina">
+            <p>Mediodía →</p>
+            <p class="accent" style="font-size: 2.2rem;">deporte</p>
+        </div>
+
+        <div class="slide" data-section="rutina" data-chapter="rutina">
+            <p>Tardes:</p>
+            <p><span class="accent">hija</span> · clases · descanso</p>
+        </div>
+
+        <!-- VACACIONES (accent-3: amarillo) -->
+        <div class="slide" data-section="vacaciones" data-chapter="vacaciones">
+            <h2>Vacaciones</h2>
+        </div>
+
+        <div class="slide" data-section="vacaciones" data-chapter="vacaciones">
+            <p>Navidad →</p>
+            <p class="accent" style="font-size: 2.2rem;">Canarias</p>
+            <p>con mis padres</p>
+        </div>
+
+        <div class="slide" data-section="vacaciones" data-chapter="vacaciones">
+            <p>Verano →</p>
+            <p class="accent" style="font-size: 2.2rem;">playa gallega</p>
+            <p>+ viajes</p>
+        </div>
+
+        <!-- CONCLUSIONES (accent-4: coral) -->
+        <div class="slide" data-section="conclusiones" data-chapter="conclusiones">
+            <h2>Conclusiones</h2>
+        </div>
+
+        <div class="slide" data-section="conclusiones" data-chapter="conclusiones">
+            <p>Me gusta</p>
+            <ul class="accent-list">
+                <li><span class="accent">familia</span></li>
+                <li><span class="accent">Galicia</span></li>
+                <li><span class="accent">deporte</span></li>
+            </ul>
+        </div>
+
+        <div class="slide" data-section="conclusiones" data-chapter="conclusiones">
+            <p>Cambiaría</p>
+            <ul class="accent-list">
+                <li>la <span class="accent">distancia</span></li>
+                <li>no tener <span class="accent">casa propia</span></li>
+                <li>el <span class="accent">tiempo</span> gallego</li>
+            </ul>
+        </div>
+
+        <!-- CIERRE -->
+        <div class="slide" data-section="intro" data-chapter="intro">
+            <h1 style="color: var(--accent-1);">Gracias</h1>
+        </div>
+
+        <div class="controls">
+            <button class="btn-nav" onclick="move(-1)">‹</button>
+            <button class="btn-nav" onclick="move(1)">›</button>
+        </div>
+    </main>
+
+    <script>
+        let curr = 0;
+        const slides = document.querySelectorAll('.slide');
+        const chapters = document.querySelectorAll('.chapter');
+        const total = slides.length;
+
+        document.getElementById('total').textContent = total;
+
+        function update() {
+            slides.forEach((s, i) => s.classList.toggle('active', i === curr));
+            document.getElementById('current').textContent = curr + 1;
+
+            const currentSection = slides[curr].dataset.section;
+            chapters.forEach(c => {
+                c.classList.toggle('active', c.dataset.section === currentSection);
+            });
+
+            document.querySelectorAll('.btn-nav')[0].disabled = curr === 0;
+            document.querySelectorAll('.btn-nav')[1].disabled = curr === total - 1;
+        }
+
+        function move(dir) {
+            const next = curr + dir;
+            if (next >= 0 && next < total) {
+                curr = next;
+                update();
+            }
+        }
+
+        function jumpToSection(section) {
+            const idx = [...slides].findIndex(s => s.dataset.section === section);
+            if (idx !== -1) {
+                curr = idx;
+                update();
+            }
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            document.getElementById('theme-icon').textContent =
+                document.body.classList.contains('light-mode') ? '◑' : '◐';
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); move(1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); move(-1); }
+        });
+
+        update();
+    </script>
+</body>
+</html>
