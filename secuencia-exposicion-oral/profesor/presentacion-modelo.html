@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi vida - Modelo de exposición</title>
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --text: #f5f5f5;
+            --accent: #00d4aa;
+            --muted: #666;
+        }
+
+        .light {
+            --bg: #fafafa;
+            --text: #1a1a1a;
+            --accent: #008866;
+            --muted: #999;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .toggle {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--muted);
+            border: none;
+            color: var(--bg);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+
+        .toggle:hover {
+            opacity: 0.8;
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .nav button {
+            background: var(--muted);
+            border: none;
+            color: var(--bg);
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+        }
+
+        .nav button:hover {
+            background: var(--accent);
+        }
+
+        .nav button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .counter {
+            position: fixed;
+            bottom: 2.5rem;
+            right: 2rem;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .slide {
+            display: none;
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        .slide h1 {
+            font-size: clamp(2rem, 8vw, 5rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .slide h2 {
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            font-weight: 300;
+            color: var(--muted);
+            margin-bottom: 3rem;
+        }
+
+        .slide p {
+            font-size: clamp(1.2rem, 4vw, 2.5rem);
+            font-weight: 200;
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        .accent {
+            color: var(--accent);
+            font-weight: 400;
+        }
+
+        .big {
+            font-size: clamp(3rem, 12vw, 8rem);
+            font-weight: 200;
+        }
+
+        .list {
+            list-style: none;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 200;
+            line-height: 2.2;
+        }
+
+        .list .accent {
+            font-weight: 300;
+        }
+
+        @media print {
+            .toggle, .nav, .counter { display: none; }
+            .slide {
+                display: flex !important;
+                page-break-after: always;
+                min-height: auto;
+                padding: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle" onclick="toggleTheme()">Modo claro</button>
+
+    <div class="nav">
+        <button onclick="prevSlide()">←</button>
+        <button onclick="nextSlide()">→</button>
+    </div>
+
+    <div class="counter">
+        <span id="current">1</span> / <span id="total">12</span>
+    </div>
+
+    <!-- Diapositiva 1: Título -->
+    <div class="slide active">
+        <h1>Mi vida</h1>
+        <p class="accent">Adri, profesor</p>
+    </div>
+
+    <!-- Diapositiva 2: Edad -->
+    <div class="slide">
+        <p class="big"><span class="accent">42</span> años</p>
+    </div>
+
+    <!-- Diapositiva 3: Familia -->
+    <div class="slide">
+        <p>Vivo con mi <span class="accent">pareja</span></p>
+        <p>y mi <span class="accent">hija</span> de 7 años</p>
+    </div>
+
+    <!-- Diapositiva 4: Casa -->
+    <div class="slide">
+        <p>Casa de pueblo</p>
+        <p class="accent">Guntín</p>
+    </div>
+
+    <!-- Diapositiva 5: Distancia -->
+    <div class="slide">
+        <p class="big"><span class="accent">35</span> min</p>
+        <p>al instituto</p>
+    </div>
+
+    <!-- Diapositiva 6: Rutina título -->
+    <div class="slide">
+        <h2>Mi rutina</h2>
+    </div>
+
+    <!-- Diapositiva 7: Mañana -->
+    <div class="slide">
+        <p><span class="accent">Madrugar</span></p>
+        <p>para llegar a tiempo</p>
+    </div>
+
+    <!-- Diapositiva 8: Mediodía -->
+    <div class="slide">
+        <p>Mediodía =</p>
+        <p class="accent">deporte</p>
+    </div>
+
+    <!-- Diapositiva 9: Tardes -->
+    <div class="slide">
+        <p>Tardes:</p>
+        <p><span class="accent">hija</span> · clases · deporte</p>
+    </div>
+
+    <!-- Diapositiva 10: Vacaciones título -->
+    <div class="slide">
+        <h2>Vacaciones</h2>
+    </div>
+
+    <!-- Diapositiva 11: Invierno -->
+    <div class="slide">
+        <p>Navidad →</p>
+        <p class="accent">Canarias</p>
+        <p>con mis padres</p>
+    </div>
+
+    <!-- Diapositiva 12: Verano -->
+    <div class="slide">
+        <p>Verano →</p>
+        <p><span class="accent">playa gallega</span></p>
+        <p>+ viajes</p>
+    </div>
+
+    <!-- Diapositiva 13: Conclusiones título -->
+    <div class="slide">
+        <h2>Conclusiones</h2>
+    </div>
+
+    <!-- Diapositiva 14: Me gusta -->
+    <div class="slide">
+        <p>Me gusta</p>
+        <ul class="list">
+            <li><span class="accent">familia</span></li>
+            <li><span class="accent">Galicia</span></li>
+            <li><span class="accent">deporte</span></li>
+        </ul>
+    </div>
+
+    <!-- Diapositiva 15: Cambiaría -->
+    <div class="slide">
+        <p>Cambiaría</p>
+        <ul class="list">
+            <li>la <span class="accent">distancia</span></li>
+            <li>no tener <span class="accent">casa propia</span></li>
+            <li>el <span class="accent">tiempo</span> gallego</li>
+        </ul>
+    </div>
+
+    <!-- Diapositiva 16: Final -->
+    <div class="slide">
+        <h1>Gracias</h1>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const total = slides.length;
+
+        document.getElementById('total').textContent = total;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + total) % total;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current').textContent = currentSlide + 1;
+            updateNav();
+        }
+
+        function nextSlide() {
+            if (currentSlide < total - 1) showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) showSlide(currentSlide - 1);
+        }
+
+        function updateNav() {
+            const buttons = document.querySelectorAll('.nav button');
+            buttons[0].disabled = currentSlide === 0;
+            buttons[1].disabled = currentSlide === total - 1;
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('light');
+            const btn = document.querySelector('.toggle');
+            btn.textContent = document.body.classList.contains('light')
+                ? 'Modo oscuro'
+                : 'Modo claro';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        updateNav();
+    </script>
+</body>
+</html>
