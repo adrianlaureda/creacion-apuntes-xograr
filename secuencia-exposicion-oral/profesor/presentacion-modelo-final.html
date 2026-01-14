@@ -174,14 +174,14 @@
             --text-muted: #999999;
         }
 
-        body.light-mode .emoji-box {
+        body.light-mode .icon-box {
             background: rgba(0, 0, 0, 0.03);
         }
 
-        body.light-mode .slide[data-section="intro"] .emoji-box { background: rgba(0, 212, 170, 0.1); }
-        body.light-mode .slide[data-section="rutina"] .emoji-box { background: rgba(0, 212, 255, 0.1); }
-        body.light-mode .slide[data-section="vacaciones"] .emoji-box { background: rgba(245, 166, 35, 0.1); }
-        body.light-mode .slide[data-section="conclusiones"] .emoji-box { background: rgba(255, 107, 107, 0.1); }
+        body.light-mode .slide[data-section="intro"] .icon-box { background: rgba(0, 212, 170, 0.1); }
+        body.light-mode .slide[data-section="rutina"] .icon-box { background: rgba(0, 212, 255, 0.1); }
+        body.light-mode .slide[data-section="vacaciones"] .icon-box { background: rgba(245, 166, 35, 0.1); }
+        body.light-mode .slide[data-section="conclusiones"] .icon-box { background: rgba(255, 107, 107, 0.1); }
 
         body.light-mode .comparison-icon.dimmed {
             background: rgba(0,0,0,0.05);
@@ -279,31 +279,42 @@
             letter-spacing: 4px;
         }
 
-        /* Emoji box */
-        .emoji-box {
+        /* Icon box (antes emoji-box) */
+        .icon-box {
             width: 160px;
             height: 160px;
             border-radius: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 72px;
             margin-bottom: 32px;
         }
 
-        .slide[data-section="intro"] .emoji-box {
+        .icon-box svg {
+            width: 72px;
+            height: 72px;
+            stroke-width: 1.5;
+        }
+
+        .slide[data-section="intro"] .icon-box svg { stroke: var(--accent-1); }
+        .slide[data-section="rutina"] .icon-box svg { stroke: var(--accent-2); }
+        .slide[data-section="vacaciones"] .icon-box svg { stroke: var(--accent-3); }
+        .slide[data-section="conclusiones"] .icon-box svg { stroke: var(--accent-4); }
+        .slide[data-section="recap"] .icon-box svg { stroke: var(--text-secondary); }
+
+        .slide[data-section="intro"] .icon-box {
             background: rgba(0, 212, 170, 0.1);
             border: 2px solid var(--accent-1);
         }
-        .slide[data-section="rutina"] .emoji-box {
+        .slide[data-section="rutina"] .icon-box {
             background: rgba(0, 212, 255, 0.1);
             border: 2px solid var(--accent-2);
         }
-        .slide[data-section="vacaciones"] .emoji-box {
+        .slide[data-section="vacaciones"] .icon-box {
             background: rgba(245, 166, 35, 0.1);
             border: 2px solid var(--accent-3);
         }
-        .slide[data-section="conclusiones"] .emoji-box {
+        .slide[data-section="conclusiones"] .icon-box {
             background: rgba(255, 107, 107, 0.1);
             border: 2px solid var(--accent-4);
         }
@@ -427,6 +438,12 @@
             margin-bottom: 8px;
         }
 
+        .recap-num svg {
+            width: 36px;
+            height: 36px;
+            stroke-width: 1.5;
+        }
+
         .recap-item:nth-child(1) .recap-num { color: var(--accent-1); }
         .recap-item:nth-child(2) .recap-num { color: var(--accent-2); }
         .recap-item:nth-child(3) .recap-num { color: var(--accent-3); }
@@ -528,7 +545,7 @@
         <div class="slide" data-section="intro">
             <div class="eyebrow">01 Datos básicos</div>
             <div class="row">
-                <div class="emoji-box">👨‍👩‍👧</div>
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
                 <div class="row-content">
                     <div class="title">Mi <span class="accent">familia</span></div>
                     <div class="subtitle">Pareja + hija de 7 años</div>
@@ -540,7 +557,7 @@
         <div class="slide" data-section="intro">
             <div class="eyebrow">01 Datos básicos</div>
             <div class="row">
-                <div class="emoji-box">🏠</div>
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
                 <div class="row-content">
                     <div class="title"><span class="accent">Guntín</span></div>
                     <div class="subtitle">Casa de pueblo</div>
@@ -552,7 +569,7 @@
         <div class="slide" data-section="intro">
             <div class="eyebrow">01 Datos básicos</div>
             <div class="row">
-                <div class="emoji-box">🚗</div>
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C1.4 11.3 1 12.1 1 13v3c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div>
                 <div class="row-content">
                     <div class="title"><span class="accent">35</span> minutos</div>
                     <div class="subtitle">Al instituto cada día</div>
@@ -570,7 +587,7 @@
         <div class="slide" data-section="rutina">
             <div class="eyebrow">02 Mi rutina</div>
             <div class="row">
-                <div class="emoji-box">⏰</div>
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/><path d="M6.38 18.7 4 21"/><path d="M17.64 18.67 20 21"/></svg></div>
                 <div class="row-content">
                     <div class="title"><span class="accent">Madrugar</span></div>
                     <div class="subtitle">Para llegar a tiempo al instituto</div>
@@ -584,12 +601,12 @@
             <div class="title">El <span class="accent">mediodía</span></div>
             <div class="comparison">
                 <div class="comparison-item">
-                    <div class="comparison-icon dimmed">🍽️</div>
+                    <div class="comparison-icon dimmed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="48" height="48"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
                     <div class="comparison-label dimmed">Comer</div>
                 </div>
                 <div class="comparison-arrow">→</div>
                 <div class="comparison-item">
-                    <div class="comparison-icon highlighted">🏃</div>
+                    <div class="comparison-icon highlighted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="48" height="48"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/><path d="m18 15-2-2"/><path d="m15 18-2-2"/></svg></div>
                     <div class="comparison-label highlighted">Deporte</div>
                 </div>
             </div>
@@ -599,7 +616,7 @@
         <div class="slide" data-section="rutina">
             <div class="eyebrow">02 Mi rutina</div>
             <div class="row">
-                <div class="emoji-box">🌅</div>
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10V2"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m8 6 4-4 4 4"/><path d="M16 18a4 4 0 0 0-8 0"/></svg></div>
                 <div class="row-content">
                     <div class="title">Las <span class="accent">tardes</span></div>
                     <div class="subtitle">Hija · Clases · Descanso</div>
@@ -617,7 +634,7 @@
         <div class="slide" data-section="vacaciones">
             <div class="eyebrow">03 Vacaciones · Invierno</div>
             <div class="row">
-                <div class="emoji-box">🏝️</div>
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"/><path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"/><path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35"/><path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"/></svg></div>
                 <div class="row-content">
                     <div class="title"><span class="accent">Canarias</span></div>
                     <div class="subtitle">Con mis padres · Energía para el 2º trimestre</div>
@@ -629,7 +646,7 @@
         <div class="slide" data-section="vacaciones">
             <div class="eyebrow">03 Vacaciones · Verano</div>
             <div class="row">
-                <div class="emoji-box">🏖️</div>
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 21H2"/><path d="M11 21V9a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v12"/><path d="M17 21V7a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v14"/><path d="M22 17c-4-4-8-4-11 0"/></svg></div>
                 <div class="row-content">
                     <div class="title">Playa <span class="accent">gallega</span></div>
                     <div class="subtitle">Fiestas familiares + viajes</div>
@@ -667,19 +684,19 @@
             <div class="title">Mi <span class="accent">vida</span> en 4 puntos</div>
             <div class="recap-grid">
                 <div class="recap-item">
-                    <div class="recap-num" style="color: var(--accent-1);">👨‍👩‍👧</div>
+                    <div class="recap-num"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-1)" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
                     <div class="recap-label">42 años · Guntín<br>Pareja + hija</div>
                 </div>
                 <div class="recap-item">
-                    <div class="recap-num" style="color: var(--accent-2);">⏰</div>
+                    <div class="recap-num"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-2)" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/><path d="M6.38 18.7 4 21"/><path d="M17.64 18.67 20 21"/></svg></div>
                     <div class="recap-label">Madrugar · Deporte<br>Tardes en familia</div>
                 </div>
                 <div class="recap-item">
-                    <div class="recap-num" style="color: var(--accent-3);">🏖️</div>
+                    <div class="recap-num"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-3)" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="M16 18a4 4 0 0 0-8 0"/></svg></div>
                     <div class="recap-label">Canarias · Playa<br>Fiestas familiares</div>
                 </div>
                 <div class="recap-item">
-                    <div class="recap-num" style="color: var(--accent-4);">💭</div>
+                    <div class="recap-num"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-4)" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
                     <div class="recap-label">Me gusta: familia<br>Cambiaría: distancia</div>
                 </div>
             </div>
