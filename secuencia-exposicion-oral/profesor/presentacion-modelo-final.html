@@ -729,10 +729,45 @@
             document.body.classList.toggle('light-mode');
         }
 
+        // Navegación por teclado (flechas, espacio, pasadores de diapositivas)
         document.addEventListener('keydown', e => {
-            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); move(1); }
-            if (e.key === 'ArrowLeft') { e.preventDefault(); move(-1); }
+            // Avanzar: flecha derecha, espacio, Page Down, Enter
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key === 'Enter') {
+                e.preventDefault();
+                move(1);
+            }
+            // Retroceder: flecha izquierda, Page Up
+            if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                e.preventDefault();
+                move(-1);
+            }
         });
+
+        // Navegación táctil
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diffX = touchStartX - touchEndX;
+            const diffY = Math.abs(touchStartY - e.changedTouches[0].screenY);
+
+            // Solo si el movimiento es más horizontal que vertical
+            if (Math.abs(diffX) > 50 && diffY < 100) {
+                // Swipe izquierda = avanzar, swipe derecha = retroceder
+                if (diffX > 0) move(1);
+                else move(-1);
+            } else if (Math.abs(diffX) < 20 && diffY < 20) {
+                // Tap simple = avanzar
+                move(1);
+            }
+        }, { passive: true });
 
         update();
     </script>
