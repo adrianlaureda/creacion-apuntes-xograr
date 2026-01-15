@@ -17,17 +17,23 @@ Proyecto para generar **materiales didácticos creativos** para:
 | Grupos | Pequeños (6-8 alumnos) |
 | Sesiones | ~45 minutos efectivos |
 | Recursos | Todos tienen ordenador |
+| Motivación | **Necesitan elementos lúdicos o competitivos**. Les cuesta trabajar con otras fórmulas |
 
 ---
 
 ## Principios pedagógicos
 
-1. **Inductivo**: Ejemplos reales → extracción de regla → aplicación
-2. **Gamificado**: Narrativas (detectives, misiones, retos)
-3. **Contextualizado**: Redes sociales, cultura juvenil, situaciones cotidianas
-4. **Visual**: Materiales atractivos, poco texto, estructura clara
-5. **Progresivo**: De lo simple a lo complejo, con refuerzo
-6. **Mínima preparación**: Actividades que requieran poco tiempo de preparación previa
+1. **Lúdico/competitivo** (esencial): Juegos, retos, puntuaciones, narrativas tipo "misión". Sin esto, no enganchan
+2. **Inductivo**: Ejemplos reales → extracción de regla → aplicación
+3. **Gamificado**: Narrativas (detectives, misiones, retos)
+4. **Contextualizado**: Redes sociales, cultura juvenil, situaciones cotidianas
+5. **Visual**: Materiales atractivos, poco texto, estructura clara
+6. **Progresivo**: De lo simple a lo complejo, con refuerzo
+7. **Mínima preparación**: Actividades que requieran poco tiempo de preparación previa
+
+### Qué ha funcionado
+
+- **Detectives Ortográficos**: Formato de "investigación" con tweets. Enganchó bien
 
 ---
 
