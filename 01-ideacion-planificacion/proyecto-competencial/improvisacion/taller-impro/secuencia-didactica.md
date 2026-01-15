@@ -5,7 +5,7 @@
 | Aspecto | Detalle |
 |---------|---------|
 | Duración | 45 minutos |
-| Alumnado | 4-7 alumnos, 2º ESO |
+| Alumnado | 6-8 alumnos, 2º ESO |
 | Materiales | Espacio diáfano, proyector (opcional) |
 | Herramienta | [Generador de situaciones](generador-situaciones.html) |
 | Enfoque | Expresión corporal, creatividad, desinhibición |
@@ -81,7 +81,7 @@ Explica brevemente antes de empezar:
 - Primera ronda: 5 impros individuales
 - Segunda ronda: 2-3 impros en pareja (uno hace de "público/comodín")
 
-### Con 7 alumnos
+### Con 8 alumnos
 - Alternar individuales y parejas
 - El que no actúa puede ser "director" que para la escena cuando quiera
 

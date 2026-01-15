@@ -3,8 +3,8 @@
 ## Descripción
 
 Proyecto para generar **materiales didácticos creativos** para:
-- **Refuerzo de Lenguas (RE)**: Actividades para grupos pequeños con dificultades
-- **Proyecto Competencial (PC)**: Enfoque teatral, improvisación y expresión oral
+- **Refuerzo de Lenguas (RE)**: Actividades con **enfoque lingüístico** para grupos pequeños con dificultades
+- **Proyecto Competencial (PC)**: Trabajo en torno a **situaciones teatrales**, improvisación y expresión oral
 
 ---
 
@@ -13,8 +13,8 @@ Proyecto para generar **materiales didácticos creativos** para:
 | Aspecto | Detalle |
 |---------|---------|
 | Curso | 2º ESO (13-15 años) |
-| Nivel | Bajo-medio, alumnado con dificultades |
-| Grupos | Pequeños (4-7 alumnos) |
+| Nivel | Muy bajo, alumnado con dificultades significativas |
+| Grupos | Pequeños (6-8 alumnos) |
 | Sesiones | ~45 minutos efectivos |
 | Recursos | Todos tienen ordenador |
 
@@ -82,7 +82,7 @@ Proyecto para generar **materiales didácticos creativos** para:
 Crea un nuevo proyecto de [tema] con enfoque gamificado para 2º ESO.
 Incluye: README, secuencia didáctica para 1-2 sesiones.
 Sigue el estilo de los proyectos existentes (Detectives, Microrrelatos).
-Grupos pequeños (4-7 alumnos), sesiones de 45 min.
+Grupos pequeños (6-8 alumnos), sesiones de 45 min.
 ```
 
 ### Ampliar proyecto existente
@@ -106,7 +106,7 @@ Cada secuencia debe incluir:
 
 1. **Tabla de fases** con tiempos concretos (45 min total)
 2. **Materiales necesarios** (proyector, ordenadores, papel...)
-3. **Ajustes** según tamaño del grupo (4 vs 7 alumnos)
+3. **Ajustes** según tamaño del grupo (6 vs 8 alumnos)
 4. **Variantes** opcionales para repetir la actividad
 
 Ejemplo de estructura:

@@ -5,7 +5,7 @@
 | Aspecto | Detalle |
 |---------|---------|
 | Duración | 45 minutos |
-| Alumnado | 4-7 alumnos, 2º ESO |
+| Alumnado | 6-8 alumnos, 2º ESO |
 | Materiales | Proyector, presentación con tweets |
 | Enfoque | Inductivo, gamificado |
 
@@ -25,12 +25,12 @@
 
 ## Ajustes según grupo
 
-### Con 4 alumnos
+### Con 6 alumnos
 - Parejas de 2
 - Más tiempo por ejemplo (pueden hacer 10)
 - Lectura más pausada en puesta en común
 
-### Con 7 alumnos
+### Con 8 alumnos
 - Una pareja de 3
 - Ritmo más rápido (6-8 ejemplos)
 - Sé estricto con tiempos de puesta en común

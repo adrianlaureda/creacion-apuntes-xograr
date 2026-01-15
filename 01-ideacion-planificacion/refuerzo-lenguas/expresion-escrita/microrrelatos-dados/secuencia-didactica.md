@@ -5,7 +5,7 @@
 | Aspecto | Detalle |
 |---------|---------|
 | Duración | 45 minutos |
-| Alumnado | 4-7 alumnos, 2º ESO |
+| Alumnado | 6-8 alumnos, 2º ESO |
 | Materiales | Ordenadores, proyector |
 | Herramienta | [Story Dice Online](https://www.storydice.app/) |
 | Enfoque | Creatividad, expresión escrita |
@@ -38,12 +38,12 @@ Texto narrativo muy breve (50-150 palabras) que:
 
 ## Ajustes según grupo
 
-### Con 4 alumnos
+### Con 6 alumnos
 - Lectura más pausada
 - Puedes dar 25' de escritura
 - Feedback más detallado por cada texto
 
-### Con 7 alumnos
+### Con 8 alumnos
 - Ajusta a 15' de escritura
 - Sé estricto con tiempos de lectura (1,5 min por alumno)
 - Feedback breve: solo 1-2 comentarios por texto

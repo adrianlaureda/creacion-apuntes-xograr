@@ -44,8 +44,8 @@ Ver [banco-ideas.md](banco-ideas.md) para el listado completo de ideas a desarro
 ## Perfil del alumnado
 
 - **Curso**: 2º ESO (13-15 años)
-- **Nivel**: Bajo-medio, con dificultades
-- **Grupos**: 4-7 alumnos
+- **Nivel**: Muy bajo, con dificultades significativas
+- **Grupos**: 6-8 alumnos
 - **Sesiones**: ~45 minutos
 
 ---
