@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Situaciones - Improvisación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 3rem;
+            letter-spacing: 0.05em;
+        }
+
+        .card {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .situation {
+            font-size: 1.75rem;
+            line-height: 1.4;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .badge.individual {
+            background: #e8f4fd;
+            color: #1e6bb8;
+        }
+
+        .badge.pareja {
+            background: #fef3e8;
+            color: #b86b1e;
+        }
+
+        .placeholder {
+            color: #999;
+            font-size: 1.25rem;
+        }
+
+        button {
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .hint {
+            margin-top: 1.5rem;
+            color: #999;
+            font-size: 0.875rem;
+        }
+
+        kbd {
+            background: #f0f0f0;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-family: inherit;
+            border: 1px solid #ddd;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GENERADOR DE SITUACIONES</h1>
+
+        <div class="card" id="card">
+            <p class="placeholder" id="placeholder">Pulsa el botón para obtener una situación</p>
+            <p class="situation" id="situation" style="display: none;"></p>
+            <span class="badge" id="badge" style="display: none;"></span>
+        </div>
+
+        <button id="generate">Nueva situación</button>
+
+        <p class="hint">También puedes pulsar <kbd>ESPACIO</kbd></p>
+    </div>
+
+    <script>
+        const situaciones = [
+            // Individuales
+            { texto: "Tu móvil se ha quedado sin batería y estás perdido/a en un sitio desconocido", tipo: "individual" },
+            { texto: "Narras tu propia vida como si fueras comentarista deportivo", tipo: "individual" },
+            { texto: "Eres el/la profe por un día y tus alumnos son terribles", tipo: "individual" },
+            { texto: "Intentas grabar un TikTok viral pero todo sale mal", tipo: "individual" },
+            { texto: "Estás en una videollamada importante pero la conexión va fatal", tipo: "individual" },
+            { texto: "Estás en un examen y no has estudiado absolutamente nada", tipo: "individual" },
+            { texto: "Intentas explicar a tus padres por qué has llegado tarde", tipo: "individual" },
+            { texto: "Te has quedado encerrado/a en el baño del instituto", tipo: "individual" },
+
+            // En pareja
+            { texto: "Uno quiere copiar los deberes, el otro no quiere dejarle", tipo: "pareja" },
+            { texto: "Negociáis la hora de llegada a casa con vuestro padre/madre", tipo: "pareja" },
+            { texto: "Dos amigos discuten sobre qué videojuego es el mejor", tipo: "pareja" },
+            { texto: "Uno intenta convencer al otro de saltarse una clase", tipo: "pareja" },
+            { texto: "Pides perdón después de una pelea, pero el otro no quiere escuchar", tipo: "pareja" },
+            { texto: "Queréis quedar el finde pero no os ponéis de acuerdo en nada", tipo: "pareja" },
+            { texto: "Uno ha perdido algo del otro y tiene que confesar", tipo: "pareja" },
+            { texto: "Compartís habitación y discutís por el espacio", tipo: "pareja" },
+            { texto: "Uno intenta que el otro le preste dinero", tipo: "pareja" },
+            { texto: "Estáis haciendo un trabajo en grupo pero uno no hace nada", tipo: "pareja" }
+        ];
+
+        let usadas = [];
+
+        function generarSituacion() {
+            // Si hemos usado todas, reiniciamos
+            if (usadas.length >= situaciones.length) {
+                usadas = [];
+            }
+
+            // Buscar una situación no usada
+            let disponibles = situaciones.filter((_, i) => !usadas.includes(i));
+            let index = Math.floor(Math.random() * disponibles.length);
+            let realIndex = situaciones.indexOf(disponibles[index]);
+            usadas.push(realIndex);
+
+            let sit = situaciones[realIndex];
+
+            // Actualizar UI
+            document.getElementById('placeholder').style.display = 'none';
+
+            let situationEl = document.getElementById('situation');
+            situationEl.textContent = sit.texto;
+            situationEl.style.display = 'block';
+            situationEl.classList.remove('fade-in');
+            void situationEl.offsetWidth; // Trigger reflow
+            situationEl.classList.add('fade-in');
+
+            let badgeEl = document.getElementById('badge');
+            badgeEl.textContent = sit.tipo === 'individual' ? 'Individual' : 'En pareja';
+            badgeEl.className = 'badge ' + sit.tipo;
+            badgeEl.style.display = 'inline-block';
+        }
+
+        // Event listeners
+        document.getElementById('generate').addEventListener('click', generarSituacion);
+
+        document.addEventListener('keydown', function(e) {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                generarSituacion();
+            }
+        });
+    </script>
+</body>
+</html>
