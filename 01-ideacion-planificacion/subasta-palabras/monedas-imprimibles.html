@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monedas - Subasta de Palabras</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #fff;
+            padding: 10mm;
+        }
+
+        .instrucciones {
+            text-align: center;
+            margin-bottom: 10mm;
+            color: #666;
+            font-size: 12px;
+        }
+
+        @media print {
+            .instrucciones {
+                display: none;
+            }
+            body {
+                padding: 5mm;
+            }
+        }
+
+        .grid-monedas {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8mm;
+            max-width: 190mm;
+            margin: 0 auto;
+        }
+
+        .moneda {
+            width: 35mm;
+            height: 35mm;
+            border-radius: 50%;
+            border: 3px solid #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #f5f0e1, #e8e0c8);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .moneda::before {
+            content: '';
+            position: absolute;
+            width: 31mm;
+            height: 31mm;
+            border-radius: 50%;
+            border: 1px dashed #999;
+        }
+
+        .moneda .valor {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a1a1a;
+            line-height: 1;
+        }
+
+        .moneda .texto {
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #555;
+            margin-top: 2mm;
+        }
+
+        .moneda .icono {
+            font-size: 10px;
+            margin-bottom: 1mm;
+        }
+
+        /* Pagina 2: Monedas de bonificacion */
+        .separador {
+            page-break-before: always;
+            text-align: center;
+            padding: 5mm 0;
+            color: #333;
+            font-size: 14px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10mm;
+        }
+
+        .moneda.bonus {
+            background: linear-gradient(145deg, #ffd700, #daa520);
+            border-color: #8b6914;
+        }
+
+        .moneda.bonus .valor {
+            color: #5c4a0a;
+        }
+
+        .moneda.bonus .texto {
+            color: #5c4a0a;
+        }
+    </style>
+</head>
+<body>
+    <div class="instrucciones">
+        Imprimir en papel normal o cartulina. Recortar por el borde de cada moneda.
+        <br>Pagina 1: 30 monedas normales (valor 1) | Pagina 2: 10 monedas bonus (valor 2)
+    </div>
+
+    <!-- Pagina 1: Monedas normales -->
+    <div class="grid-monedas">
+        <!-- 30 monedas de valor 1 -->
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+        <div class="moneda"><span class="icono">V</span><span class="valor">1</span><span class="texto">Vocabulario</span></div>
+    </div>
+
+    <!-- Pagina 2: Monedas bonus -->
+    <div class="separador">MONEDAS BONUS (para premios especiales)</div>
+    <div class="grid-monedas">
+        <div class="moneda bonus"><span class="icono">★</span><span class="valor">2</span><span class="texto">Bonus</span></div>
+        <div class="moneda bonus"><span class="icono">★</span><span class="valor">2</span><span class="texto">Bonus</span></div>
+        <div class="moneda bonus"><span class="icono">★</span><span class="valor">2</span><span class="texto">Bonus</span></div>
+        <div class="moneda bonus"><span class="icono">★</span><span class="valor">2</span><span class="texto">Bonus</span></div>
+        <div class="moneda bonus"><span class="icono">★</span><span class="valor">2</span><span class="texto">Bonus</span></div>
+        <div class="moneda bonus"><span class="icono">★</span><span class="valor">2</span><span class="texto">Bonus</span></div>
+        <div class="moneda bonus"><span class="icono">★</span><span class="valor">2</span><span class="texto">Bonus</span></div>
+        <div class="moneda bonus"><span class="icono">★</span><span class="valor">2</span><span class="texto">Bonus</span></div>
+        <div class="moneda bonus"><span class="icono">★</span><span class="valor">2</span><span class="texto">Bonus</span></div>
+        <div class="moneda bonus"><span class="icono">★</span><span class="valor">2</span><span class="texto">Bonus</span></div>
+    </div>
+</body>
+</html>

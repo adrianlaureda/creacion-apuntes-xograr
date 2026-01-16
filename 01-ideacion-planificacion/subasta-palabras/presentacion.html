@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subasta de Palabras</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0f0f0f;
+            --text: #f5f5f5;
+            --accent: #ffd700;
+            --muted: #666;
+            --success: #22c55e;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        /* Slide de titulo */
+        .slide-titulo h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .slide-titulo h1 span {
+            color: var(--accent);
+        }
+
+        .slide-titulo p {
+            font-size: 1.5rem;
+            color: var(--muted);
+        }
+
+        /* Slide de reglas */
+        .slide-reglas h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--accent);
+        }
+
+        .reglas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 900px;
+        }
+
+        .regla {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .regla-num {
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .regla p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        /* Slide de desafio */
+        .slide-desafio .etiqueta {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .slide-desafio .palabra {
+            font-size: 8rem;
+            font-weight: bold;
+            letter-spacing: -4px;
+            margin-bottom: 30px;
+        }
+
+        .slide-desafio .instruccion {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .slide-desafio .timer {
+            font-size: 3rem;
+            color: var(--muted);
+            margin-top: 40px;
+        }
+
+        /* Slide de subasta */
+        .slide-subasta .etiqueta {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .slide-subasta .palabra {
+            font-size: 6rem;
+            font-weight: bold;
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+        }
+
+        .slide-subasta .definicion {
+            font-size: 1.5rem;
+            color: var(--muted);
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .slide-subasta .puntos {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Slide de respuestas */
+        .slide-respuestas h3 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+        }
+
+        .slide-respuestas .lista {
+            font-size: 1.8rem;
+            line-height: 2;
+        }
+
+        .slide-respuestas .lista span {
+            display: inline-block;
+            background: #1a1a1a;
+            padding: 5px 20px;
+            border-radius: 8px;
+            margin: 5px;
+        }
+
+        /* Navegacion */
+        .nav-hint {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress" id="progress"></div>
+    <div class="slide-counter" id="counter"></div>
+
+    <!-- Slide 1: Titulo -->
+    <div class="slide slide-titulo active">
+        <h1>Subasta de <span>Palabras</span></h1>
+        <p>El equipo con mas palabras valiosas gana</p>
+    </div>
+
+    <!-- Slide 2: Reglas -->
+    <div class="slide slide-reglas">
+        <h2>Como funciona</h2>
+        <div class="reglas-grid">
+            <div class="regla">
+                <div class="regla-num">1</div>
+                <p>Escribid sinonimos o antonimos para <strong>ganar monedas</strong></p>
+            </div>
+            <div class="regla">
+                <div class="regla-num">2</div>
+                <p>Usad las monedas para <strong>pujar</strong> en la subasta</p>
+            </div>
+            <div class="regla">
+                <div class="regla-num">3</div>
+                <p>Las palabras valen <strong>1, 3 o 5 puntos</strong> segun su rareza</p>
+            </div>
+            <div class="regla">
+                <div class="regla-num">4</div>
+                <p>El equipo con <strong>mas puntos</strong> al final gana</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ronda 1 -->
+    <div class="slide slide-desafio">
+        <div class="etiqueta">Ronda 1 - Sinonimos</div>
+        <div class="palabra">GRANDE</div>
+        <div class="instruccion">Escribid todos los sinonimos que sepais</div>
+        <div class="timer">30 segundos</div>
+    </div>
+
+    <div class="slide slide-respuestas">
+        <h3>Respuestas validas</h3>
+        <div class="lista">
+            <span>enorme</span>
+            <span>gigante</span>
+            <span>inmenso</span>
+            <span>amplio</span>
+            <span>vasto</span>
+            <span>descomunal</span>
+        </div>
+    </div>
+
+    <div class="slide slide-subasta">
+        <div class="etiqueta">Subasta</div>
+        <div class="palabra">COLOSAL</div>
+        <div class="definicion">"Extraordinariamente grande"</div>
+        <div class="puntos">3 puntos</div>
+    </div>
+
+    <!-- Ronda 2 -->
+    <div class="slide slide-desafio">
+        <div class="etiqueta">Ronda 2 - Sinonimos</div>
+        <div class="palabra">RAPIDO</div>
+        <div class="instruccion">Escribid todos los sinonimos que sepais</div>
+        <div class="timer">30 segundos</div>
+    </div>
+
+    <div class="slide slide-respuestas">
+        <h3>Respuestas validas</h3>
+        <div class="lista">
+            <span>veloz</span>
+            <span>ligero</span>
+            <span>agil</span>
+            <span>raudo</span>
+            <span>presuroso</span>
+        </div>
+    </div>
+
+    <div class="slide slide-subasta">
+        <div class="etiqueta">Subasta</div>
+        <div class="palabra">EFIMERO</div>
+        <div class="definicion">"Que dura poco tiempo"</div>
+        <div class="puntos">3 puntos</div>
+    </div>
+
+    <!-- Ronda 3 -->
+    <div class="slide slide-desafio">
+        <div class="etiqueta">Ronda 3 - Antonimos</div>
+        <div class="palabra">TRISTE</div>
+        <div class="instruccion">Escribid todos los antonimos que sepais</div>
+        <div class="timer">30 segundos</div>
+    </div>
+
+    <div class="slide slide-respuestas">
+        <h3>Respuestas validas</h3>
+        <div class="lista">
+            <span>alegre</span>
+            <span>feliz</span>
+            <span>contento</span>
+            <span>animado</span>
+            <span>jovial</span>
+        </div>
+    </div>
+
+    <div class="slide slide-subasta">
+        <div class="etiqueta">Subasta</div>
+        <div class="palabra">ENORME</div>
+        <div class="definicion">"Muy grande"</div>
+        <div class="puntos">1 punto</div>
+    </div>
+
+    <!-- Ronda 4 -->
+    <div class="slide slide-desafio">
+        <div class="etiqueta">Ronda 4 - Sinonimos</div>
+        <div class="palabra">BONITO</div>
+        <div class="instruccion">Escribid todos los sinonimos que sepais</div>
+        <div class="timer">30 segundos</div>
+    </div>
+
+    <div class="slide slide-respuestas">
+        <h3>Respuestas validas</h3>
+        <div class="lista">
+            <span>hermoso</span>
+            <span>bello</span>
+            <span>precioso</span>
+            <span>lindo</span>
+            <span>atractivo</span>
+        </div>
+    </div>
+
+    <div class="slide slide-subasta">
+        <div class="etiqueta">Subasta</div>
+        <div class="palabra">PERSPICAZ</div>
+        <div class="definicion">"Que comprende las cosas con rapidez"</div>
+        <div class="puntos">3 puntos</div>
+    </div>
+
+    <!-- Ronda 5 -->
+    <div class="slide slide-desafio">
+        <div class="etiqueta">Ronda 5 - Antonimos</div>
+        <div class="palabra">FACIL</div>
+        <div class="instruccion">Escribid todos los antonimos que sepais</div>
+        <div class="timer">30 segundos</div>
+    </div>
+
+    <div class="slide slide-respuestas">
+        <h3>Respuestas validas</h3>
+        <div class="lista">
+            <span>dificil</span>
+            <span>complicado</span>
+            <span>complejo</span>
+            <span>arduo</span>
+        </div>
+    </div>
+
+    <div class="slide slide-subasta">
+        <div class="etiqueta">Subasta FINAL</div>
+        <div class="palabra">SEMPITERNO</div>
+        <div class="definicion">"Que durara siempre, eterno"</div>
+        <div class="puntos">5 puntos</div>
+    </div>
+
+    <!-- Slide final -->
+    <div class="slide slide-titulo">
+        <h1>Recuento <span>final</span></h1>
+        <p>Sumad los puntos de vuestras palabras</p>
+    </div>
+
+    <div class="nav-hint">Flechas o clic para navegar</div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const progress = document.getElementById('progress');
+        const counter = document.getElementById('counter');
+        let current = 0;
+
+        function updateSlide() {
+            slides.forEach((s, i) => s.classList.toggle('active', i === current));
+            progress.style.width = ((current + 1) / slides.length * 100) + '%';
+            counter.textContent = (current + 1) + ' / ' + slides.length;
+        }
+
+        function next() {
+            if (current < slides.length - 1) {
+                current++;
+                updateSlide();
+            }
+        }
+
+        function prev() {
+            if (current > 0) {
+                current--;
+                updateSlide();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') next();
+            if (e.key === 'ArrowLeft') prev();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (e.clientX > window.innerWidth / 2) next();
+            else prev();
+        });
+
+        updateSlide();
+    </script>
+</body>
+</html>
