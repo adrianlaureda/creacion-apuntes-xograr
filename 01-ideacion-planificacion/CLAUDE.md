@@ -44,13 +44,18 @@ Proyecto para generar **materiales didácticos creativos** para:
 ├── CLAUDE.md                 # Este archivo
 ├── README.md                 # Índice general
 ├── banco-ideas.md            # Ideas pendientes de desarrollar
+├── formatos-juego.md         # Catálogo de formatos (Ruleta, Cazador, etc.)
 │
 ├── refuerzo-lenguas/
 │   ├── ortografia/
 │   │   └── detectives-ortograficos/
 │   ├── expresion-escrita/
 │   │   └── microrrelatos-dados/
-│   └── vocabulario/
+│   ├── vocabulario/
+│   │   ├── pasapalabra-tematico/
+│   │   └── tabu-game/
+│   └── comprension-lectora/
+│       └── escape-room-instituto/
 │
 ├── proyecto-competencial/
 │   ├── improvisacion/
@@ -67,10 +72,13 @@ Proyecto para generar **materiales didácticos creativos** para:
 
 ### Refuerzo de Lenguas
 
-| Proyecto | Descripción | Estado |
-|----------|-------------|--------|
-| Detectives Ortográficos | Detectar errores en "tweets" simulados | Completado |
-| Microrrelatos con dados | Escritura creativa con Story Dice Online | Completado |
+| Proyecto | Área | Descripción | Estado |
+|----------|------|-------------|--------|
+| Detectives Ortográficos | Ortografía | Detectar errores en "tweets" simulados | Completado |
+| Microrrelatos con dados | Expresión escrita | Escritura creativa con Story Dice Online | Completado |
+| Pasapalabra Temático | Vocabulario | Rosco por campos semánticos | Completado |
+| Tabú Game | Vocabulario | Adivinar palabras sin decir las prohibidas | Completado |
+| Escape Room Instituto | Comprensión | 10 pruebas de comprensión lectora | Completado |
 
 ### Proyecto Competencial
 
@@ -78,6 +86,41 @@ Proyecto para generar **materiales didácticos creativos** para:
 |----------|-------------|--------|
 | Taller de Improvisación | Situaciones cotidianas para improvisar | Completado |
 | 1-2-3 Estatuas | Calentamiento con emociones | Completado |
+
+---
+
+## Flujo de trabajo: Crear nueva actividad
+
+**IMPORTANTE:** Seguir siempre este orden al crear actividades gamificadas.
+
+### Paso 1: ¿Qué contenido quieres trabajar?
+
+| Contenido | Ejemplos |
+|-----------|----------|
+| **Ortografía** | b/v, g/j, h, tildes, sino/si no, a ver/haber |
+| **Vocabulario** | Campos semánticos, sinónimos, expresiones, refranes |
+| **Comprensión lectora** | Textos cortos + preguntas, inferencias |
+| **Gramática básica** | Categorías gramaticales, funciones sintácticas |
+| **Expresión oral/escrita** | Estructuras, conectores, fluidez |
+
+### Paso 2: ¿Qué formato te apetece?
+
+| Formato | Mejor para | Mecánica |
+|---------|------------|----------|
+| **Ruleta** | Vocabulario, expresiones | Adivinar palabra/frase con pistas |
+| **Cazador** | Ortografía, gramática | Preguntas rápidas tipo test |
+| **Millonario** | Cualquier contenido | 4 opciones + comodines (por equipos) |
+| **Password** | Vocabulario, expresión | Dar pistas sin decir la palabra |
+
+Ver [formatos-juego.md](formatos-juego.md) para la matriz completa de compatibilidad.
+
+### Paso 3: Desarrollar
+
+Una vez elegido contenido + formato, crear:
+1. README con descripción y características
+2. Secuencia didáctica (45 min)
+3. Banco de preguntas/contenidos
+4. HTML interactivo (si aplica)
 
 ---
 

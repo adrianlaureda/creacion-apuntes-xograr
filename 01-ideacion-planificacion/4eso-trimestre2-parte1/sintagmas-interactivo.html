@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sintagmas: Practica y Aprende</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #050505;
+            --bg-secondary: #0a0a0a;
+            --bg-card: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --text-muted: #444444;
+            --border: rgba(255,255,255,0.1);
+            --success: #22c55e;
+            --error: #ef4444;
+            /* Colores de sintagmas */
+            --sn-color: #3b82f6;
+            --sadj-color: #22c55e;
+            --sadv-color: #f59e0b;
+            --sprep-color: #a78bfa;
+        }
+
+        body.light-mode {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #e8e8e8;
+            --bg-card: #ffffff;
+            --text-primary: #111111;
+            --text-secondary: #666666;
+            --text-muted: #999999;
+            --border: rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 24px 0 16px 0;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 16px 0 12px 0;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        /* Theme toggle */
+        .theme-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            padding: 10px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            color: var(--text-primary);
+            border-color: var(--sn-color);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .theme-toggle .icon-sun { display: block; }
+        .theme-toggle .icon-moon { display: none; }
+        body.light-mode .theme-toggle .icon-sun { display: none; }
+        body.light-mode .theme-toggle .icon-moon { display: block; }
+
+        /* Progreso */
+        .progreso {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progreso-texto {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .puntos {
+            background: var(--sn-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* Pestanas */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            padding-bottom: 4px;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab:hover {
+            color: var(--text-primary);
+        }
+
+        .tab.active {
+            color: var(--sn-color);
+            border-bottom-color: var(--sn-color);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Botones */
+        .btn {
+            padding: 12px 24px;
+            background: var(--sn-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        /* Tarjetas */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+
+        /* Formas geometricas para tipos */
+        .forma {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .forma-sn {
+            width: 18px;
+            height: 18px;
+            background: var(--sn-color);
+            border-radius: 50%;
+        }
+
+        .forma-sadj {
+            width: 16px;
+            height: 16px;
+            background: var(--sadj-color);
+            border-radius: 3px;
+        }
+
+        .forma-sadv {
+            width: 0;
+            height: 0;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-bottom: 16px solid var(--sadv-color);
+        }
+
+        .forma-sprep {
+            width: 14px;
+            height: 14px;
+            background: var(--sprep-color);
+            transform: rotate(45deg);
+        }
+
+        /* Tabla de teoria */
+        .tabla-teoria {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .tabla-teoria th,
+        .tabla-teoria td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tabla-teoria th {
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+        }
+
+        .tabla-teoria td {
+            font-size: 14px;
+        }
+
+        .tipo-sn { color: var(--sn-color); font-weight: 600; }
+        .tipo-sadj { color: var(--sadj-color); font-weight: 600; }
+        .tipo-sadv { color: var(--sadv-color); font-weight: 600; }
+        .tipo-sprep { color: var(--sprep-color); font-weight: 600; }
+
+        /* Actividad nucleos - Drag and drop */
+        .nucleos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .caja-tipo {
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            min-height: 160px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .caja-tipo.over {
+            border-style: solid;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .caja-tipo h4 {
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .caja-sn { border-color: var(--sn-color); }
+        .caja-sadj { border-color: var(--sadj-color); }
+        .caja-sadv { border-color: var(--sadv-color); }
+        .caja-sprep { border-color: var(--sprep-color); }
+
+        .palabras-banco {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            min-height: 60px;
+        }
+
+        .palabra-item {
+            padding: 10px 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: grab;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .palabra-item:hover {
+            border-color: var(--sn-color);
+            transform: translateY(-2px);
+        }
+
+        .palabra-item.dragging {
+            opacity: 0.5;
+        }
+
+        .palabra-item.colocada {
+            opacity: 0.4;
+            cursor: default;
+        }
+
+        .palabra-item.correcta {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+
+        .palabra-item.incorrecta {
+            background: var(--error);
+            color: white;
+            border-color: var(--error);
+        }
+
+        /* Actividad localizar */
+        .oracion-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 16px 0;
+            font-size: 18px;
+            line-height: 2.2;
+        }
+
+        .oracion-container .palabra {
+            display: inline-block;
+            padding: 4px 10px;
+            margin: 2px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .oracion-container .palabra:hover {
+            background: var(--bg-card);
+        }
+
+        .oracion-container .palabra.seleccionada {
+            background: var(--sn-color);
+            color: white;
+        }
+
+        .selector-tipo {
+            display: flex;
+            gap: 10px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-tipo {
+            padding: 10px 20px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            color: var(--text-primary);
+        }
+
+        .btn-tipo:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-tipo.btn-sn { border-color: var(--sn-color); color: var(--sn-color); }
+        .btn-tipo.btn-sadj { border-color: var(--sadj-color); color: var(--sadj-color); }
+        .btn-tipo.btn-sadv { border-color: var(--sadv-color); color: var(--sadv-color); }
+        .btn-tipo.btn-sprep { border-color: var(--sprep-color); color: var(--sprep-color); }
+
+        .btn-tipo.btn-sn.active, .btn-tipo.btn-sn.selected { background: var(--sn-color); color: white; }
+        .btn-tipo.btn-sadj.active, .btn-tipo.btn-sadj.selected { background: var(--sadj-color); color: white; }
+        .btn-tipo.btn-sadv.active, .btn-tipo.btn-sadv.selected { background: var(--sadv-color); color: white; }
+        .btn-tipo.btn-sprep.active, .btn-tipo.btn-sprep.selected { background: var(--sprep-color); color: white; }
+
+        /* Actividad analizar */
+        .analisis-zona {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 24px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin: 16px 0;
+            min-height: 100px;
+        }
+
+        .elemento-analisis {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .elemento-analisis .palabra-texto {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .elemento-analisis .etiqueta-slot {
+            min-width: 60px;
+            min-height: 30px;
+            border: 2px dashed var(--border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .elemento-analisis .etiqueta-slot.over {
+            border-color: var(--sn-color);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .elemento-analisis .etiqueta-slot.filled {
+            border-style: solid;
+            background: var(--sn-color);
+            color: white;
+        }
+
+        .etiquetas-banco {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 16px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .etiqueta-item {
+            padding: 8px 14px;
+            background: var(--bg-card);
+            border: 2px solid var(--sn-color);
+            border-radius: 6px;
+            cursor: grab;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--sn-color);
+            user-select: none;
+        }
+
+        .etiqueta-item.usada {
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        /* Feedback */
+        .feedback {
+            padding: 16px 20px;
+            margin: 16px 0;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.success {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .feedback.error {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--error);
+            border: 1px solid var(--error);
+        }
+
+        /* Resultados */
+        .resultado-final {
+            text-align: center;
+            padding: 48px 24px;
+        }
+
+        .puntuacion-grande {
+            font-size: 64px;
+            font-weight: 800;
+            color: var(--sn-color);
+            margin: 24px 0;
+        }
+
+        .estrellas {
+            font-size: 48px;
+            margin: 24px 0;
+            color: #fbbf24;
+        }
+
+        .desglose {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px auto;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .actividad-resultado {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        .actividad-resultado:last-child {
+            border-bottom: none;
+        }
+
+        .actividad-resultado span:first-child {
+            color: var(--text-secondary);
+        }
+
+        .actividad-resultado span:last-child {
+            font-weight: 700;
+            color: var(--sn-color);
+        }
+
+        /* Pregunta localizar */
+        .pregunta-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--sn-color);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 13px;
+            margin-right: 12px;
+        }
+
+        /* Selector de funcion */
+        .selector-funcion {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .selector-funcion label {
+            font-weight: 600;
+            font-size: 13px;
+            margin-right: 12px;
+            align-self: center;
+            color: var(--text-secondary);
+        }
+
+        .btn-funcion {
+            padding: 8px 14px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-primary);
+        }
+
+        .btn-funcion:hover {
+            border-color: var(--sn-color);
+        }
+
+        .btn-funcion.selected {
+            background: var(--sn-color);
+            color: white;
+            border-color: var(--sn-color);
+        }
+
+        /* Texto parrafo */
+        .texto-parrafo {
+            line-height: 2.2;
+            font-size: 16px;
+        }
+
+        .texto-parrafo .palabra-texto {
+            cursor: pointer;
+            padding: 3px 6px;
+            border-radius: 4px;
+            transition: all 0.15s ease;
+        }
+
+        .texto-parrafo .palabra-texto:hover {
+            background: var(--bg-secondary);
+        }
+
+        .texto-parrafo .palabra-texto.selected {
+            background: var(--sn-color);
+            color: white;
+        }
+
+        .texto-parrafo .palabra-texto.correcta {
+            background: var(--success);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nucleos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tabs {
+                justify-content: center;
+            }
+
+            .tab {
+                padding: 10px 14px;
+                font-size: 13px;
+            }
+
+            .puntuacion-grande {
+                font-size: 48px;
+            }
+
+            .selector-funcion {
+                justify-content: center;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Sintagmas: Practica y Aprende</h1>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <div class="progreso">
+        <span class="progreso-texto">Puntuacion Total</span>
+        <span class="puntos" id="puntos-globales">0 / 35</span>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="mostrarPestana('teoria')">Teoria</button>
+        <button class="tab" onclick="mostrarPestana('nucleos')">Nucleos</button>
+        <button class="tab" onclick="mostrarPestana('localizar')">Localizar</button>
+        <button class="tab" onclick="mostrarPestana('texto')">Texto</button>
+        <button class="tab" onclick="mostrarPestana('analizar')">Analizar</button>
+        <button class="tab" onclick="mostrarPestana('resultados')">Resultados</button>
+    </div>
+
+    <!-- TEORIA -->
+    <div id="teoria" class="tab-content active">
+        <h2>Los 4 tipos de sintagmas</h2>
+        <p>Un sintagma es un grupo de palabras organizadas alrededor de un <b>nucleo</b>. El tipo de sintagma depende de la categoria del nucleo.</p>
+
+        <table class="tabla-teoria">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Nucleo</th>
+                    <th>Ejemplo</th>
+                    <th>Estructura</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="forma"><span class="forma-sn"></span></span> <span class="tipo-sn">SN</span></td>
+                    <td>Sustantivo</td>
+                    <td><i>el perro negro</i></td>
+                    <td>Det + N + MOD</td>
+                </tr>
+                <tr>
+                    <td><span class="forma"><span class="forma-sadj"></span></span> <span class="tipo-sadj">SAdj</span></td>
+                    <td>Adjetivo</td>
+                    <td><i>muy contento</i></td>
+                    <td>MOD + N</td>
+                </tr>
+                <tr>
+                    <td><span class="forma"><span class="forma-sadv"></span></span> <span class="tipo-sadv">SAdv</span></td>
+                    <td>Adverbio</td>
+                    <td><i>bastante lejos</i></td>
+                    <td>MOD + N</td>
+                </tr>
+                <tr>
+                    <td><span class="forma"><span class="forma-sprep"></span></span> <span class="tipo-sprep">SPrep</span></td>
+                    <td>Preposicion + SN</td>
+                    <td><i>en la mesa</i></td>
+                    <td>E + T</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="card">
+            <h3>Truco para identificarlos</h3>
+            <p style="margin-bottom: 10px;"><b>1. Busca el nucleo:</b> Es la palabra mas importante del grupo.</p>
+            <p style="margin-bottom: 10px;"><b>2. Identifica su categoria:</b> Es sustantivo, adjetivo, adverbio o preposicion?</p>
+            <p><b>3. Nombra el sintagma:</b> Segun la categoria del nucleo.</p>
+        </div>
+
+        <div class="card">
+            <h3>Abreviaturas importantes</h3>
+            <table class="tabla-teoria">
+                <tr><td><b>Det</b></td><td>Determinante (el, la, un, mi, este...)</td></tr>
+                <tr><td><b>N</b></td><td>Nucleo (palabra principal)</td></tr>
+                <tr><td><b>MOD</b></td><td>Modificador (cualquier elemento que acompana al nucleo)</td></tr>
+                <tr><td><b>E</b></td><td>Enlace (preposicion)</td></tr>
+                <tr><td><b>T</b></td><td>Termino (SN que sigue a la preposicion)</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- NUCLEOS -->
+    <div id="nucleos" class="tab-content">
+        <h2>Actividad 1: Clasifica los nucleos</h2>
+        <p>Arrastra cada palabra a la caja del tipo de sintagma donde seria nucleo.</p>
+
+        <div class="palabras-banco" id="banco-nucleos">
+            <div class="palabra-item" draggable="true" data-tipo="sn">perro</div>
+            <div class="palabra-item" draggable="true" data-tipo="sadj">feliz</div>
+            <div class="palabra-item" draggable="true" data-tipo="sadv">lejos</div>
+            <div class="palabra-item" draggable="true" data-tipo="sprep">en</div>
+            <div class="palabra-item" draggable="true" data-tipo="sn">libertad</div>
+            <div class="palabra-item" draggable="true" data-tipo="sadj">interesante</div>
+            <div class="palabra-item" draggable="true" data-tipo="sadv">ayer</div>
+            <div class="palabra-item" draggable="true" data-tipo="sprep">de</div>
+            <div class="palabra-item" draggable="true" data-tipo="sn">ciudad</div>
+            <div class="palabra-item" draggable="true" data-tipo="sadj">alto</div>
+            <div class="palabra-item" draggable="true" data-tipo="sadv">bien</div>
+            <div class="palabra-item" draggable="true" data-tipo="sprep">con</div>
+        </div>
+
+        <div class="nucleos-grid">
+            <div class="caja-tipo caja-sn" data-acepta="sn">
+                <h4><span class="forma"><span class="forma-sn"></span></span> SN</h4>
+                <p style="font-size: 11px; color: var(--text-muted);">Sustantivos</p>
+            </div>
+            <div class="caja-tipo caja-sadj" data-acepta="sadj">
+                <h4><span class="forma"><span class="forma-sadj"></span></span> SAdj</h4>
+                <p style="font-size: 11px; color: var(--text-muted);">Adjetivos</p>
+            </div>
+            <div class="caja-tipo caja-sadv" data-acepta="sadv">
+                <h4><span class="forma"><span class="forma-sadv"></span></span> SAdv</h4>
+                <p style="font-size: 11px; color: var(--text-muted);">Adverbios</p>
+            </div>
+            <div class="caja-tipo caja-sprep" data-acepta="sprep">
+                <h4><span class="forma"><span class="forma-sprep"></span></span> SPrep</h4>
+                <p style="font-size: 11px; color: var(--text-muted);">Preposiciones</p>
+            </div>
+        </div>
+
+        <button class="btn" id="btn-comprobar-nucleos" onclick="comprobarNucleos()">Comprobar</button>
+        <div class="feedback" id="feedback-nucleos"></div>
+    </div>
+
+    <!-- LOCALIZAR -->
+    <div id="localizar" class="tab-content">
+        <h2>Actividad 2: Localiza sintagmas</h2>
+        <p>Selecciona las palabras que forman el sintagma indicado y su funcion.</p>
+
+        <div id="ejercicios-localizar">
+            <!-- Se generan dinamicamente -->
+        </div>
+
+        <button class="btn" id="btn-siguiente-localizar" style="display:none;" onclick="siguienteLocalizar()">Siguiente</button>
+        <div class="feedback" id="feedback-localizar"></div>
+    </div>
+
+    <!-- TEXTO (tipo examen) -->
+    <div id="texto" class="tab-content">
+        <h2>Actividad: Localiza en el texto</h2>
+        <p>Lee el texto y localiza los sintagmas que se piden. Haz clic en las palabras para seleccionarlas.</p>
+
+        <div class="card" id="texto-completo">
+            <div class="texto-parrafo" id="texto-parrafo">
+                <!-- Se genera dinamicamente -->
+            </div>
+        </div>
+
+        <div id="instruccion-texto" class="card" style="margin-top: 16px;">
+            <p><span class="pregunta-num" id="num-texto">1</span> <span id="instruccion-texto-span">Cargando...</span></p>
+        </div>
+
+        <button class="btn" id="btn-comprobar-texto" onclick="comprobarTexto()">Comprobar</button>
+        <button class="btn btn-secondary" id="btn-siguiente-texto" style="display:none;" onclick="siguienteTexto()">Siguiente</button>
+        <div class="feedback" id="feedback-texto"></div>
+    </div>
+
+    <!-- ANALIZAR -->
+    <div id="analizar" class="tab-content">
+        <h2>Actividad 3: Analiza la estructura</h2>
+        <p>Arrastra las etiquetas correctas (Det, N, MOD, E, T) a cada palabra del sintagma.</p>
+
+        <div id="ejercicios-analizar">
+            <!-- Se generan dinamicamente -->
+        </div>
+
+        <button class="btn" id="btn-comprobar-analizar" onclick="comprobarAnalizar()">Comprobar</button>
+        <button class="btn btn-secondary" id="btn-siguiente-analizar" style="display:none;" onclick="siguienteAnalizar()">Siguiente</button>
+        <div class="feedback" id="feedback-analizar"></div>
+    </div>
+
+    <!-- RESULTADOS -->
+    <div id="resultados" class="tab-content">
+        <div class="resultado-final">
+            <h2>Resultados Finales</h2>
+
+            <div class="estrellas" id="estrellas-resultado">
+                <span style="color: var(--text-muted);">&#9734;&#9734;&#9734;</span>
+            </div>
+
+            <div class="puntuacion-grande" id="puntuacion-final">0 / 35</div>
+            <p style="font-size: 18px; font-weight: 600;" id="porcentaje-final">0%</p>
+
+            <div class="desglose">
+                <h3 style="text-align: center; margin-top: 0;">Desglose</h3>
+                <div class="actividad-resultado">
+                    <span>Clasificar nucleos</span>
+                    <span id="resultado-nucleos">0 / 12</span>
+                </div>
+                <div class="actividad-resultado">
+                    <span>Localizar sintagmas</span>
+                    <span id="resultado-localizar">0 / 10</span>
+                </div>
+                <div class="actividad-resultado">
+                    <span>Localizar en texto</span>
+                    <span id="resultado-texto">0 / 5</span>
+                </div>
+                <div class="actividad-resultado">
+                    <span>Analizar estructura</span>
+                    <span id="resultado-analizar">0 / 8</span>
+                </div>
+            </div>
+
+            <button class="btn" onclick="reiniciar()">Reiniciar todo</button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // --- TEMA ---
+    window.toggleTheme = function() {
+        document.body.classList.toggle('light-mode');
+    };
+
+    // --- ESTADO GLOBAL ---
+    var puntuacion = {
+        nucleos: 0,
+        localizar: 0,
+        texto: 0,
+        analizar: 0
+    };
+    var MAX_PUNTOS = 35;
+
+    // --- NAVEGACION ---
+    window.mostrarPestana = function(id) {
+        var contents = document.querySelectorAll('.tab-content');
+        var tabs = document.querySelectorAll('.tab');
+        for (var i = 0; i < contents.length; i++) {
+            contents[i].classList.remove('active');
+        }
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].classList.remove('active');
+        }
+        document.getElementById(id).classList.add('active');
+        var tabBtn = document.querySelector('.tab[onclick*="' + id + '"]');
+        if (tabBtn) tabBtn.classList.add('active');
+
+        if (id === 'resultados') mostrarResultados();
+        if (id === 'localizar' && !localizarIniciado) iniciarLocalizar();
+        if (id === 'texto' && !textoIniciado) iniciarTexto();
+        if (id === 'analizar' && !analizarIniciado) iniciarAnalizar();
+    };
+
+    function actualizarProgreso() {
+        var total = puntuacion.nucleos + puntuacion.localizar + puntuacion.texto + puntuacion.analizar;
+        document.getElementById('puntos-globales').textContent = total + ' / ' + MAX_PUNTOS;
+    }
+
+    // --- ACTIVIDAD NUCLEOS (DRAG & DROP) ---
+    var nucleosComprobados = false;
+    var bancoNucleos = document.getElementById('banco-nucleos');
+    var cajasNucleos = document.querySelectorAll('.caja-tipo');
+    var palabrasNucleos = document.querySelectorAll('#banco-nucleos .palabra-item');
+
+    palabrasNucleos.forEach(function(palabra, idx) {
+        palabra.setAttribute('data-idx', idx);
+        palabra.addEventListener('dragstart', function(e) {
+            if (nucleosComprobados) { e.preventDefault(); return; }
+            e.dataTransfer.setData('text/plain', palabra.dataset.tipo);
+            e.dataTransfer.setData('idx', idx);
+            palabra.classList.add('dragging');
+        });
+        palabra.addEventListener('dragend', function() {
+            palabra.classList.remove('dragging');
+        });
+    });
+
+    cajasNucleos.forEach(function(caja) {
+        caja.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            caja.classList.add('over');
+        });
+        caja.addEventListener('dragleave', function() {
+            caja.classList.remove('over');
+        });
+        caja.addEventListener('drop', function(e) {
+            e.preventDefault();
+            caja.classList.remove('over');
+            if (nucleosComprobados) return;
+
+            var idx = e.dataTransfer.getData('idx');
+            var palabra = document.querySelector('#banco-nucleos .palabra-item[data-idx="' + idx + '"]') ||
+                          document.querySelector('.caja-tipo .palabra-item[data-idx="' + idx + '"]');
+            if (palabra && !palabra.classList.contains('colocada')) {
+                caja.appendChild(palabra);
+                palabra.classList.add('colocada');
+            }
+        });
+    });
+
+    // Devolver al banco
+    bancoNucleos.addEventListener('dragover', function(e) { e.preventDefault(); });
+    bancoNucleos.addEventListener('drop', function(e) {
+        e.preventDefault();
+        if (nucleosComprobados) return;
+        var idx = e.dataTransfer.getData('idx');
+        var palabra = document.querySelector('.palabra-item[data-idx="' + idx + '"]');
+        if (palabra) {
+            palabra.classList.remove('colocada');
+            bancoNucleos.appendChild(palabra);
+        }
+    });
+
+    window.comprobarNucleos = function() {
+        if (nucleosComprobados) return;
+        nucleosComprobados = true;
+
+        var aciertos = 0;
+        cajasNucleos.forEach(function(caja) {
+            var tipoAceptado = caja.dataset.acepta;
+            var palabras = caja.querySelectorAll('.palabra-item');
+            palabras.forEach(function(palabra) {
+                if (palabra.dataset.tipo === tipoAceptado) {
+                    palabra.classList.add('correcta');
+                    aciertos++;
+                } else {
+                    palabra.classList.add('incorrecta');
+                }
+            });
+        });
+
+        puntuacion.nucleos = aciertos;
+        document.getElementById('btn-comprobar-nucleos').disabled = true;
+
+        var feedback = document.getElementById('feedback-nucleos');
+        feedback.textContent = 'Has acertado ' + aciertos + ' de 12 palabras.';
+        feedback.className = aciertos >= 9 ? 'feedback show success' : 'feedback show error';
+        actualizarProgreso();
+    };
+
+    // --- ACTIVIDAD LOCALIZAR ---
+    var localizarIniciado = false;
+    var ejercicioActualLocalizar = 0;
+    var ejerciciosLocalizar = [
+        {
+            oracion: ['El', 'gato', 'negro', 'duerme', 'en', 'el', 'sofa'],
+            tipoBuscado: 'sn',
+            instruccion: 'Localiza un SN e indica su funcion',
+            respuestasValidas: [
+                { sintagma: [0, 1, 2], funcion: 'sujeto' },
+                { sintagma: [5, 6], funcion: 'termino' }
+            ]
+        },
+        {
+            oracion: ['Maria', 'esta', 'muy', 'contenta', 'hoy'],
+            tipoBuscado: 'sadj',
+            instruccion: 'Localiza un SAdj e indica su funcion',
+            respuestasValidas: [
+                { sintagma: [2, 3], funcion: 'atributo' }
+            ]
+        },
+        {
+            oracion: ['El', 'libro', 'de', 'matematicas', 'esta', 'en', 'la', 'mesa'],
+            tipoBuscado: 'sprep',
+            instruccion: 'Localiza un SPrep e indica su funcion',
+            respuestasValidas: [
+                { sintagma: [2, 3], funcion: 'mod' },
+                { sintagma: [5, 6, 7], funcion: 'ccl' }
+            ]
+        },
+        {
+            oracion: ['La', 'profesora', 'nueva', 'explica', 'muy', 'bien'],
+            tipoBuscado: 'sn',
+            instruccion: 'Localiza un SN e indica su funcion',
+            respuestasValidas: [
+                { sintagma: [0, 1, 2], funcion: 'sujeto' }
+            ]
+        },
+        {
+            oracion: ['Juan', 'compro', 'un', 'coche', 'nuevo'],
+            tipoBuscado: 'sn',
+            instruccion: 'Localiza un SN e indica su funcion',
+            respuestasValidas: [
+                { sintagma: [0], funcion: 'sujeto' },
+                { sintagma: [2, 3, 4], funcion: 'cd' }
+            ]
+        },
+        {
+            oracion: ['Llego', 'ayer', 'por', 'la', 'noche'],
+            tipoBuscado: 'sprep',
+            instruccion: 'Localiza un SPrep e indica su funcion',
+            respuestasValidas: [
+                { sintagma: [2, 3, 4], funcion: 'cct' }
+            ]
+        },
+        {
+            oracion: ['Mi', 'hermano', 'pequeno', 'juega', 'en', 'el', 'parque'],
+            tipoBuscado: 'sprep',
+            instruccion: 'Localiza un SPrep e indica su funcion',
+            respuestasValidas: [
+                { sintagma: [4, 5, 6], funcion: 'ccl' }
+            ]
+        },
+        {
+            oracion: ['El', 'examen', 'fue', 'bastante', 'dificil'],
+            tipoBuscado: 'sadj',
+            instruccion: 'Localiza un SAdj e indica su funcion',
+            respuestasValidas: [
+                { sintagma: [3, 4], funcion: 'atributo' }
+            ]
+        },
+        {
+            oracion: ['Vive', 'bastante', 'lejos'],
+            tipoBuscado: 'sadv',
+            instruccion: 'Localiza un SAdv e indica su funcion',
+            respuestasValidas: [
+                { sintagma: [1, 2], funcion: 'ccl' }
+            ]
+        },
+        {
+            oracion: ['Esta', 'demasiado', 'cansado'],
+            tipoBuscado: 'sadj',
+            instruccion: 'Localiza un SAdj e indica su funcion',
+            respuestasValidas: [
+                { sintagma: [1, 2], funcion: 'atributo' }
+            ]
+        }
+    ];
+    var funcionesDisponibles = ['sujeto', 'cd', 'atributo', 'ccl', 'cct', 'mod', 'termino'];
+    var funcionSeleccionada = null;
+    var seleccionLocalizar = [];
+
+    function iniciarLocalizar() {
+        localizarIniciado = true;
+        mostrarEjercicioLocalizar();
+    }
+
+    var tipoSeleccionadoLocalizar = null;
+
+    function mostrarEjercicioLocalizar() {
+        if (ejercicioActualLocalizar >= ejerciciosLocalizar.length) {
+            document.getElementById('ejercicios-localizar').textContent = 'Has completado todos los ejercicios de esta seccion.';
+            document.getElementById('btn-siguiente-localizar').style.display = 'none';
+            return;
+        }
+
+        var ej = ejerciciosLocalizar[ejercicioActualLocalizar];
+        seleccionLocalizar = [];
+        tipoSeleccionadoLocalizar = null;
+        funcionSeleccionada = null;
+
+        var container = document.getElementById('ejercicios-localizar');
+
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+
+        var card = document.createElement('div');
+        card.className = 'card';
+
+        var instrP = document.createElement('p');
+        var numSpan = document.createElement('span');
+        numSpan.className = 'pregunta-num';
+        numSpan.textContent = ejercicioActualLocalizar + 1;
+        instrP.appendChild(numSpan);
+        instrP.appendChild(document.createTextNode(' '));
+        var boldInstr = document.createElement('b');
+        boldInstr.textContent = ej.instruccion;
+        instrP.appendChild(boldInstr);
+        instrP.appendChild(document.createTextNode(':'));
+        card.appendChild(instrP);
+
+        var oracionDiv = document.createElement('div');
+        oracionDiv.className = 'oracion-container';
+        oracionDiv.id = 'oracion-actual';
+
+        ej.oracion.forEach(function(p, i) {
+            var span = document.createElement('span');
+            span.className = 'palabra';
+            span.setAttribute('data-idx', i);
+            span.textContent = p;
+            span.onclick = function() { togglePalabra(i); };
+            oracionDiv.appendChild(span);
+            if (i < ej.oracion.length - 1) {
+                oracionDiv.appendChild(document.createTextNode(' '));
+            }
+        });
+
+        card.appendChild(oracionDiv);
+
+        var funcionDiv = document.createElement('div');
+        funcionDiv.className = 'selector-funcion';
+        funcionDiv.id = 'selector-funcion';
+
+        var labelFunc = document.createElement('label');
+        labelFunc.textContent = 'Funcion:';
+        funcionDiv.appendChild(labelFunc);
+
+        var funciones = [
+            { texto: 'Sujeto', valor: 'sujeto' },
+            { texto: 'CD', valor: 'cd' },
+            { texto: 'Atributo', valor: 'atributo' },
+            { texto: 'CCL', valor: 'ccl' },
+            { texto: 'CCT', valor: 'cct' },
+            { texto: 'MOD', valor: 'mod' },
+            { texto: 'Termino', valor: 'termino' }
+        ];
+
+        funciones.forEach(function(f) {
+            var btn = document.createElement('button');
+            btn.className = 'btn-funcion';
+            btn.setAttribute('data-funcion', f.valor);
+            btn.textContent = f.texto;
+            btn.onclick = function() { seleccionarFuncionLocalizar(f.valor, btn); };
+            funcionDiv.appendChild(btn);
+        });
+
+        card.appendChild(funcionDiv);
+
+        var btnComprobar = document.createElement('button');
+        btnComprobar.className = 'btn';
+        btnComprobar.id = 'btn-comprobar-localizar';
+        btnComprobar.textContent = 'Comprobar';
+        btnComprobar.style.marginTop = '16px';
+        btnComprobar.onclick = verificarLocalizar;
+        card.appendChild(btnComprobar);
+
+        container.appendChild(card);
+
+        document.getElementById('feedback-localizar').className = 'feedback';
+        document.getElementById('btn-siguiente-localizar').style.display = 'none';
+    }
+
+    window.seleccionarTipoLocalizar = function(tipo, btn) {
+        var btns = document.querySelectorAll('.selector-tipo .btn-tipo');
+        btns.forEach(function(b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        tipoSeleccionadoLocalizar = tipo;
+    };
+
+    window.seleccionarFuncionLocalizar = function(funcion, btn) {
+        var btns = document.querySelectorAll('.selector-funcion .btn-funcion');
+        btns.forEach(function(b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        funcionSeleccionada = funcion;
+    };
+
+    window.togglePalabra = function(idx) {
+        var palabras = document.querySelectorAll('#oracion-actual .palabra');
+        if (palabras[idx].classList.contains('seleccionada')) {
+            palabras[idx].classList.remove('seleccionada');
+            seleccionLocalizar = seleccionLocalizar.filter(function(i) { return i !== idx; });
+        } else {
+            palabras[idx].classList.add('seleccionada');
+            seleccionLocalizar.push(idx);
+        }
+        seleccionLocalizar.sort(function(a, b) { return a - b; });
+    };
+
+    window.verificarLocalizar = function() {
+        var ej = ejerciciosLocalizar[ejercicioActualLocalizar];
+        var feedback = document.getElementById('feedback-localizar');
+
+        if (seleccionLocalizar.length === 0) {
+            feedback.textContent = 'Selecciona las palabras del sintagma.';
+            feedback.className = 'feedback show error';
+            return;
+        }
+        if (!funcionSeleccionada) {
+            feedback.textContent = 'Selecciona la funcion del sintagma.';
+            feedback.className = 'feedback show error';
+            return;
+        }
+
+        var selStr = JSON.stringify(seleccionLocalizar);
+        var respuestaCorrecta = null;
+        for (var i = 0; i < ej.respuestasValidas.length; i++) {
+            var resp = ej.respuestasValidas[i];
+            if (selStr === JSON.stringify(resp.sintagma) && funcionSeleccionada === resp.funcion) {
+                respuestaCorrecta = resp;
+                break;
+            }
+        }
+
+        if (respuestaCorrecta) {
+            feedback.textContent = 'Correcto!';
+            feedback.className = 'feedback show success';
+            puntuacion.localizar++;
+        } else {
+            var seleccionValida = false;
+            var funcionEsperada = null;
+            for (var i = 0; i < ej.respuestasValidas.length; i++) {
+                if (selStr === JSON.stringify(ej.respuestasValidas[i].sintagma)) {
+                    seleccionValida = true;
+                    funcionEsperada = ej.respuestasValidas[i].funcion;
+                    break;
+                }
+            }
+
+            if (seleccionValida) {
+                feedback.textContent = 'Seleccion correcta, pero la funcion era: ' + funcionEsperada + '.';
+            } else {
+                var ejemplo = ej.respuestasValidas[0];
+                var palabrasEjemplo = ejemplo.sintagma.map(function(i) { return ej.oracion[i]; }).join(' ');
+                feedback.textContent = 'Incorrecto. Una respuesta valida era: "' + palabrasEjemplo + '" (' + ejemplo.funcion + ')';
+            }
+            feedback.className = 'feedback show error';
+        }
+
+        var btnComprobar = document.getElementById('btn-comprobar-localizar');
+        if (btnComprobar) btnComprobar.disabled = true;
+
+        var btns = document.querySelectorAll('.selector-tipo .btn-tipo');
+        btns.forEach(function(b) { b.disabled = true; });
+        document.getElementById('btn-siguiente-localizar').style.display = 'inline-block';
+        actualizarProgreso();
+    };
+
+    window.siguienteLocalizar = function() {
+        ejercicioActualLocalizar++;
+        mostrarEjercicioLocalizar();
+    };
+
+    // --- ACTIVIDAD TEXTO (tipo examen) ---
+    var textoIniciado = false;
+    var ejercicioActualTexto = 0;
+    var palabrasTexto = [
+        'El', 'cambio', 'climatico', 'es', 'una', 'realidad', 'innegable', '.',
+        'Los', 'cientificos', 'llevan', 'decadas', 'advirtiendo', '.',
+        'La', 'situacion', 'esta', 'cambiando', '.',
+        'Los', 'gobiernos', 'adoptan', 'medidas', 'urgentes', '.',
+        'El', 'uso', 'de', 'bolsas', 'reutilizables', 'crece', '.',
+        'Las', 'ventas', 'de', 'coches', 'electricos', 'aumentaron', 'ayer', '.'
+    ];
+
+    var ejerciciosTexto = [
+        {
+            instruccion: 'Localiza un SN en funcion de sujeto',
+            respuestasValidas: [
+                [0, 1, 2],
+                [8, 9],
+                [14, 15],
+                [19, 20],
+                [25, 26, 27, 28, 29],
+                [32, 33, 34, 35, 36]
+            ]
+        },
+        {
+            instruccion: 'Localiza un SN en funcion de CD',
+            respuestasValidas: [
+                [22, 23]
+            ]
+        },
+        {
+            instruccion: 'Localiza un SAdv en funcion de CCT',
+            respuestasValidas: [
+                [38]
+            ]
+        },
+        {
+            instruccion: 'Localiza un SN en funcion de atributo',
+            respuestasValidas: [
+                [4, 5, 6]
+            ]
+        },
+        {
+            instruccion: 'Localiza otro SN en funcion de sujeto',
+            respuestasValidas: [
+                [0, 1, 2],
+                [8, 9],
+                [14, 15],
+                [19, 20],
+                [25, 26, 27, 28, 29],
+                [32, 33, 34, 35, 36]
+            ]
+        }
+    ];
+    var seleccionTexto = [];
+
+    function iniciarTexto() {
+        textoIniciado = true;
+        renderizarTexto();
+        mostrarEjercicioTexto();
+    }
+
+    function renderizarTexto() {
+        var container = document.getElementById('texto-parrafo');
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+
+        palabrasTexto.forEach(function(palabra, i) {
+            var span = document.createElement('span');
+            span.className = 'palabra-texto';
+            span.setAttribute('data-idx', i);
+            span.textContent = palabra;
+            span.onclick = function() { togglePalabraTexto(i); };
+            container.appendChild(span);
+            if (i < palabrasTexto.length - 1) {
+                container.appendChild(document.createTextNode(' '));
+            }
+        });
+    }
+
+    function mostrarEjercicioTexto() {
+        if (ejercicioActualTexto >= ejerciciosTexto.length) {
+            document.getElementById('instruccion-texto-span').textContent = 'Has completado todos los ejercicios.';
+            document.getElementById('btn-comprobar-texto').style.display = 'none';
+            document.getElementById('btn-siguiente-texto').style.display = 'none';
+            return;
+        }
+
+        seleccionTexto = [];
+        var palabras = document.querySelectorAll('#texto-parrafo .palabra-texto');
+        palabras.forEach(function(p) { p.classList.remove('selected', 'correcta', 'incorrecta'); });
+
+        var ej = ejerciciosTexto[ejercicioActualTexto];
+        document.getElementById('num-texto').textContent = ejercicioActualTexto + 1;
+        document.getElementById('instruccion-texto-span').textContent = ej.instruccion;
+
+        document.getElementById('feedback-texto').className = 'feedback';
+        document.getElementById('btn-comprobar-texto').style.display = 'inline-block';
+        document.getElementById('btn-comprobar-texto').disabled = false;
+        document.getElementById('btn-siguiente-texto').style.display = 'none';
+    }
+
+    window.togglePalabraTexto = function(idx) {
+        var palabras = document.querySelectorAll('#texto-parrafo .palabra-texto');
+        if (palabras[idx].classList.contains('selected')) {
+            palabras[idx].classList.remove('selected');
+            seleccionTexto = seleccionTexto.filter(function(i) { return i !== idx; });
+        } else {
+            palabras[idx].classList.add('selected');
+            seleccionTexto.push(idx);
+        }
+        seleccionTexto.sort(function(a, b) { return a - b; });
+    };
+
+    window.comprobarTexto = function() {
+        var ej = ejerciciosTexto[ejercicioActualTexto];
+        var feedback = document.getElementById('feedback-texto');
+
+        if (seleccionTexto.length === 0) {
+            feedback.textContent = 'Selecciona las palabras del sintagma.';
+            feedback.className = 'feedback show error';
+            return;
+        }
+
+        var selStr = JSON.stringify(seleccionTexto);
+        var esCorrecta = false;
+
+        for (var i = 0; i < ej.respuestasValidas.length; i++) {
+            if (selStr === JSON.stringify(ej.respuestasValidas[i])) {
+                esCorrecta = true;
+                break;
+            }
+        }
+
+        if (esCorrecta) {
+            feedback.textContent = 'Correcto!';
+            feedback.className = 'feedback show success';
+            puntuacion.texto++;
+            seleccionTexto.forEach(function(idx) {
+                document.querySelectorAll('#texto-parrafo .palabra-texto')[idx].classList.add('correcta');
+            });
+        } else {
+            var ejemplo = ej.respuestasValidas[0];
+            var palabrasCorrectas = ejemplo.map(function(i) { return palabrasTexto[i]; }).join(' ');
+            feedback.textContent = 'Incorrecto. Una respuesta valida era: "' + palabrasCorrectas + '"';
+            feedback.className = 'feedback show error';
+        }
+
+        document.getElementById('btn-comprobar-texto').disabled = true;
+        document.getElementById('btn-siguiente-texto').style.display = 'inline-block';
+        actualizarProgreso();
+    };
+
+    window.siguienteTexto = function() {
+        ejercicioActualTexto++;
+        mostrarEjercicioTexto();
+    };
+
+    // --- ACTIVIDAD ANALIZAR ---
+    var analizarIniciado = false;
+    var ejercicioActualAnalizar = 0;
+    var ejerciciosAnalizar = [
+        {
+            tipo: 'SN',
+            nivel1: { palabras: ['el', 'perro', 'negro'], etiquetas: ['Det', 'N', 'MOD'] },
+            nivel2: null
+        },
+        {
+            tipo: 'SAdj',
+            nivel1: { palabras: ['muy', 'contento'], etiquetas: ['MOD', 'N'] },
+            nivel2: null
+        },
+        {
+            tipo: 'SPrep',
+            nivel1: { palabras: ['en', 'la mesa'], etiquetas: ['E', 'T'] },
+            nivel2: { elemento: 'T', tipoInterno: 'SN', palabras: ['la', 'mesa'], etiquetas: ['Det', 'N'] }
+        },
+        {
+            tipo: 'SAdv',
+            nivel1: { palabras: ['bastante', 'lejos'], etiquetas: ['MOD', 'N'] },
+            nivel2: null
+        },
+        {
+            tipo: 'SN',
+            nivel1: { palabras: ['la', 'casa', 'de madera'], etiquetas: ['Det', 'N', 'MOD'] },
+            nivel2: { elemento: 'MOD', tipoInterno: 'SPrep', palabras: ['de', 'madera'], etiquetas: ['E', 'T'] }
+        },
+        {
+            tipo: 'SN',
+            nivel1: { palabras: ['mi', 'hermana', 'pequena'], etiquetas: ['Det', 'N', 'MOD'] },
+            nivel2: null
+        },
+        {
+            tipo: 'SPrep',
+            nivel1: { palabras: ['con', 'mucho cuidado'], etiquetas: ['E', 'T'] },
+            nivel2: { elemento: 'T', tipoInterno: 'SN', palabras: ['mucho', 'cuidado'], etiquetas: ['Det', 'N'] }
+        },
+        {
+            tipo: 'SN',
+            nivel1: { palabras: ['los', 'libros', 'de historia'], etiquetas: ['Det', 'N', 'MOD'] },
+            nivel2: { elemento: 'MOD', tipoInterno: 'SPrep', palabras: ['de', 'historia'], etiquetas: ['E', 'T'] }
+        }
+    ];
+    var etiquetasColocadas = [];
+    var nivelActual = 1;
+    var nivel1Completado = false;
+
+    function iniciarAnalizar() {
+        analizarIniciado = true;
+        mostrarEjercicioAnalizar();
+    }
+
+    function mostrarEjercicioAnalizar() {
+        if (ejercicioActualAnalizar >= ejerciciosAnalizar.length) {
+            document.getElementById('ejercicios-analizar').textContent = 'Has completado todos los ejercicios de esta seccion.';
+            document.getElementById('btn-comprobar-analizar').style.display = 'none';
+            document.getElementById('btn-siguiente-analizar').style.display = 'none';
+            return;
+        }
+
+        var ej = ejerciciosAnalizar[ejercicioActualAnalizar];
+        var nivelData = nivelActual === 1 ? ej.nivel1 : ej.nivel2;
+
+        etiquetasColocadas = new Array(nivelData.palabras.length).fill(null);
+
+        var etiquetasDisponibles = nivelData.etiquetas.slice();
+        var todasEtiquetas = ['Det', 'N', 'MOD', 'E', 'T'];
+        var distractores = todasEtiquetas.filter(function(e) { return etiquetasDisponibles.indexOf(e) === -1; });
+        etiquetasDisponibles = etiquetasDisponibles.concat(distractores.slice(0, 2));
+        for (var i = etiquetasDisponibles.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = etiquetasDisponibles[i];
+            etiquetasDisponibles[i] = etiquetasDisponibles[j];
+            etiquetasDisponibles[j] = temp;
+        }
+
+        var container = document.getElementById('ejercicios-analizar');
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+
+        var card = document.createElement('div');
+        card.className = 'card';
+
+        var instrP = document.createElement('p');
+        var numSpan = document.createElement('span');
+        numSpan.className = 'pregunta-num';
+        numSpan.textContent = ejercicioActualAnalizar + 1;
+        instrP.appendChild(numSpan);
+
+        if (nivelActual === 1) {
+            instrP.appendChild(document.createTextNode(' Analiza este '));
+            var boldTipo = document.createElement('b');
+            boldTipo.textContent = ej.tipo;
+            instrP.appendChild(boldTipo);
+            instrP.appendChild(document.createTextNode(' (Nivel 1 - Estructura):'));
+        } else {
+            instrP.appendChild(document.createTextNode(' Ahora analiza el '));
+            var boldElem = document.createElement('b');
+            boldElem.textContent = ej.nivel2.elemento;
+            instrP.appendChild(boldElem);
+            instrP.appendChild(document.createTextNode(' que es un '));
+            var boldTipoInt = document.createElement('b');
+            boldTipoInt.textContent = ej.nivel2.tipoInterno;
+            instrP.appendChild(boldTipoInt);
+            instrP.appendChild(document.createTextNode(' (Nivel 2 - Detalle):'));
+        }
+        card.appendChild(instrP);
+
+        var bancoDiv = document.createElement('div');
+        bancoDiv.className = 'etiquetas-banco';
+        bancoDiv.id = 'banco-etiquetas';
+
+        etiquetasDisponibles.forEach(function(et, i) {
+            var etDiv = document.createElement('div');
+            etDiv.className = 'etiqueta-item';
+            etDiv.draggable = true;
+            etDiv.setAttribute('data-etiqueta', et);
+            etDiv.setAttribute('data-idx', i);
+            etDiv.textContent = et;
+            bancoDiv.appendChild(etDiv);
+        });
+        card.appendChild(bancoDiv);
+
+        var zonaDiv = document.createElement('div');
+        zonaDiv.className = 'analisis-zona';
+        zonaDiv.id = 'zona-analisis';
+
+        nivelData.palabras.forEach(function(p, i) {
+            var elemDiv = document.createElement('div');
+            elemDiv.className = 'elemento-analisis';
+
+            var palabraSpan = document.createElement('span');
+            palabraSpan.className = 'palabra-texto';
+            palabraSpan.textContent = p;
+            elemDiv.appendChild(palabraSpan);
+
+            var slotDiv = document.createElement('div');
+            slotDiv.className = 'etiqueta-slot';
+            slotDiv.setAttribute('data-pos', i);
+            elemDiv.appendChild(slotDiv);
+
+            zonaDiv.appendChild(elemDiv);
+        });
+
+        card.appendChild(zonaDiv);
+        container.appendChild(card);
+
+        document.getElementById('feedback-analizar').className = 'feedback';
+        document.getElementById('btn-comprobar-analizar').style.display = 'inline-block';
+        document.getElementById('btn-comprobar-analizar').disabled = false;
+        document.getElementById('btn-siguiente-analizar').style.display = 'none';
+
+        configurarDragDropAnalizar();
+    }
+
+    function configurarDragDropAnalizar() {
+        var etiquetas = document.querySelectorAll('#banco-etiquetas .etiqueta-item');
+        var slots = document.querySelectorAll('.etiqueta-slot');
+
+        etiquetas.forEach(function(et) {
+            et.addEventListener('dragstart', function(e) {
+                e.dataTransfer.setData('etiqueta', et.dataset.etiqueta);
+                e.dataTransfer.setData('idx', et.dataset.idx);
+            });
+        });
+
+        slots.forEach(function(slot) {
+            slot.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                slot.classList.add('over');
+            });
+            slot.addEventListener('dragleave', function() {
+                slot.classList.remove('over');
+            });
+            slot.addEventListener('drop', function(e) {
+                e.preventDefault();
+                slot.classList.remove('over');
+
+                var etiqueta = e.dataTransfer.getData('etiqueta');
+                var idx = e.dataTransfer.getData('idx');
+                var pos = parseInt(slot.dataset.pos);
+
+                if (etiquetasColocadas[pos] !== null) {
+                    var anterior = document.querySelector('#banco-etiquetas .etiqueta-item[data-idx="' + etiquetasColocadas[pos] + '"]');
+                    if (anterior) anterior.classList.remove('usada');
+                }
+
+                etiquetasColocadas[pos] = idx;
+                slot.textContent = etiqueta;
+                slot.classList.add('filled');
+
+                var etiquetaEl = document.querySelector('#banco-etiquetas .etiqueta-item[data-idx="' + idx + '"]');
+                if (etiquetaEl) etiquetaEl.classList.add('usada');
+            });
+        });
+    }
+
+    window.comprobarAnalizar = function() {
+        var ej = ejerciciosAnalizar[ejercicioActualAnalizar];
+        var nivelData = nivelActual === 1 ? ej.nivel1 : ej.nivel2;
+        var slots = document.querySelectorAll('.etiqueta-slot');
+        var feedback = document.getElementById('feedback-analizar');
+
+        var aciertos = 0;
+        slots.forEach(function(slot, i) {
+            if (slot.textContent === nivelData.etiquetas[i]) {
+                aciertos++;
+                slot.style.background = 'var(--success)';
+            } else {
+                slot.style.background = 'var(--error)';
+            }
+        });
+
+        var todoCorrecto = aciertos === nivelData.etiquetas.length;
+
+        if (todoCorrecto) {
+            if (nivelActual === 1 && ej.nivel2) {
+                feedback.textContent = 'Nivel 1 correcto! Ahora analiza el detalle interno.';
+                feedback.className = 'feedback show success';
+                nivel1Completado = true;
+                document.getElementById('btn-comprobar-analizar').disabled = true;
+                document.getElementById('btn-siguiente-analizar').textContent = 'Continuar al Nivel 2';
+                document.getElementById('btn-siguiente-analizar').style.display = 'inline-block';
+            } else {
+                feedback.textContent = 'Perfecto! Analisis completo.';
+                feedback.className = 'feedback show success';
+                puntuacion.analizar++;
+                document.getElementById('btn-comprobar-analizar').disabled = true;
+                document.getElementById('btn-siguiente-analizar').textContent = 'Siguiente';
+                document.getElementById('btn-siguiente-analizar').style.display = 'inline-block';
+            }
+        } else {
+            feedback.textContent = 'Has acertado ' + aciertos + ' de ' + nivelData.etiquetas.length + '. La solucion era: ' + nivelData.etiquetas.join(' - ');
+            feedback.className = 'feedback show error';
+            document.getElementById('btn-comprobar-analizar').disabled = true;
+            document.getElementById('btn-siguiente-analizar').textContent = 'Siguiente';
+            document.getElementById('btn-siguiente-analizar').style.display = 'inline-block';
+        }
+
+        actualizarProgreso();
+    };
+
+    window.siguienteAnalizar = function() {
+        var ej = ejerciciosAnalizar[ejercicioActualAnalizar];
+
+        if (nivel1Completado && ej.nivel2 && nivelActual === 1) {
+            nivelActual = 2;
+            nivel1Completado = false;
+            mostrarEjercicioAnalizar();
+        } else {
+            ejercicioActualAnalizar++;
+            nivelActual = 1;
+            nivel1Completado = false;
+            mostrarEjercicioAnalizar();
+        }
+    };
+
+    // --- RESULTADOS ---
+    function mostrarResultados() {
+        var total = puntuacion.nucleos + puntuacion.localizar + puntuacion.texto + puntuacion.analizar;
+        var porcentaje = Math.round((total / MAX_PUNTOS) * 100);
+
+        document.getElementById('resultado-nucleos').textContent = puntuacion.nucleos + ' / 12';
+        document.getElementById('resultado-localizar').textContent = puntuacion.localizar + ' / 10';
+        document.getElementById('resultado-texto').textContent = puntuacion.texto + ' / 5';
+        document.getElementById('resultado-analizar').textContent = puntuacion.analizar + ' / 8';
+        document.getElementById('puntuacion-final').textContent = total + ' / ' + MAX_PUNTOS;
+        document.getElementById('porcentaje-final').textContent = porcentaje + '%';
+
+        var estrellas = document.getElementById('estrellas-resultado');
+        if (porcentaje >= 90) {
+            estrellas.innerHTML = '<span style="color: #fbbf24;">&#9733;&#9733;&#9733;</span>';
+        } else if (porcentaje >= 70) {
+            estrellas.innerHTML = '<span style="color: #fbbf24;">&#9733;&#9733;</span><span style="color: var(--text-muted);">&#9734;</span>';
+        } else if (porcentaje >= 50) {
+            estrellas.innerHTML = '<span style="color: #fbbf24;">&#9733;</span><span style="color: var(--text-muted);">&#9734;&#9734;</span>';
+        } else {
+            estrellas.innerHTML = '<span style="color: var(--text-muted);">&#9734;&#9734;&#9734;</span>';
+        }
+    }
+
+    window.reiniciar = function() {
+        puntuacion = { nucleos: 0, localizar: 0, texto: 0, analizar: 0 };
+        nucleosComprobados = false;
+        localizarIniciado = false;
+        textoIniciado = false;
+        analizarIniciado = false;
+        ejercicioActualLocalizar = 0;
+        ejercicioActualTexto = 0;
+        ejercicioActualAnalizar = 0;
+        nivelActual = 1;
+        nivel1Completado = false;
+
+        document.getElementById('btn-comprobar-nucleos').disabled = false;
+        document.getElementById('feedback-nucleos').className = 'feedback';
+        var palabras = document.querySelectorAll('.palabra-item');
+        palabras.forEach(function(p) {
+            p.classList.remove('colocada', 'correcta', 'incorrecta');
+            bancoNucleos.appendChild(p);
+        });
+
+        var locContainer = document.getElementById('ejercicios-localizar');
+        while (locContainer.firstChild) locContainer.removeChild(locContainer.firstChild);
+        document.getElementById('feedback-localizar').className = 'feedback';
+
+        var textoParrafo = document.getElementById('texto-parrafo');
+        if (textoParrafo) {
+            while (textoParrafo.firstChild) textoParrafo.removeChild(textoParrafo.firstChild);
+        }
+        document.getElementById('feedback-texto').className = 'feedback';
+        document.getElementById('btn-comprobar-texto').style.display = 'inline-block';
+        document.getElementById('btn-siguiente-texto').style.display = 'none';
+
+        var anaContainer = document.getElementById('ejercicios-analizar');
+        while (anaContainer.firstChild) anaContainer.removeChild(anaContainer.firstChild);
+        document.getElementById('feedback-analizar').className = 'feedback';
+        document.getElementById('btn-comprobar-analizar').style.display = 'inline-block';
+        document.getElementById('btn-siguiente-analizar').style.display = 'none';
+
+        actualizarProgreso();
+        mostrarPestana('teoria');
+    };
+
+});
+</script>
+
+</body>
+</html>
