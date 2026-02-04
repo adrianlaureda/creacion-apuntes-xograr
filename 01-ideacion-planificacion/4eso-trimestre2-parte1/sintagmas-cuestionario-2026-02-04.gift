@@ -1,0 +1,81 @@
+$CATEGORY: Sintagmas
+
+// Pregunta 1: Identificar tipo de sintagma
+::Tipo sintagma muy contento::En la oración "Mi hermano pequeño juega muy contento en el jardín", el sintagma **"muy contento"** es un...{
+=SAdj (Sintagma Adjetival)#Correcto. El núcleo es "contento" (adjetivo), modificado por "muy".
+~%-25%SAdv (Sintagma Adverbial)#"muy" es modificador, pero el núcleo es el adjetivo "contento", no un adverbio.
+~%-25%SN (Sintagma Nominal)#No hay sustantivo como núcleo en este sintagma.
+~%-25%SPrep (Sintagma Preposicional)#No empieza por preposición.
+}
+
+// Pregunta 2: Identificar núcleo y tipo de palabra
+::Núcleo de mi vecino::En la oración "El coche rojo de mi vecino estaba aparcado en la esquina", dentro del sintagma **"de mi vecino"**, ¿cuál es el núcleo del término y qué tipo de palabra es?{
+="vecino", sustantivo#Correcto. El término es el SN "mi vecino", cuyo núcleo es "vecino" (sustantivo).
+~%-25%"mi", determinante#"mi" es determinante, presenta al sustantivo pero no puede ser núcleo.
+~%-25%"de", preposición#"de" es el enlace (E) del SPrep, no el núcleo del término.
+~%-25%"vecino", adjetivo#"vecino" es sustantivo, no adjetivo.
+}
+
+// Pregunta 3: Localizar SN sujeto
+::Localizar SN sujeto mis padres::Lee el texto\: "El verano pasado, mi familia y yo decidimos hacer un viaje diferente. En lugar de ir a la playa, alquilamos una casa rural en un pueblo de montaña. Los primeros días fueron aburridos, pero pronto descubrimos senderos increíbles. Mis padres estaban encantados con la tranquilidad del lugar." Localiza el **SN sujeto** en la oración "Mis padres estaban encantados con la tranquilidad del lugar".{
+="Mis padres"#Correcto. Es el SN sujeto\: Det (mis) + N (padres).
+~%-25%"la tranquilidad"#Es núcleo del término de un SPrep (con la tranquilidad), no el sujeto de la oración.
+~%-25%"el lugar"#Es término de otro SPrep (del lugar), no el sujeto.
+~%-25%"encantados"#Es adjetivo con función de atributo, no un SN.
+}
+
+// Pregunta 4: Identificar tipo de sintagma
+::Tipo sintagma bastante lejos::En la oración "Vive bastante lejos de la estación central", el sintagma **"bastante lejos"** es un...{
+=SAdv (Sintagma Adverbial)#Correcto. El núcleo es "lejos" (adverbio de lugar).
+~%-25%SAdj (Sintagma Adjetival)#"lejos" es adverbio, no adjetivo.
+~%-25%SPrep (Sintagma Preposicional)#No empieza por preposición. "de la estación" es un modificador aparte.
+~%-25%SN (Sintagma Nominal)#No hay sustantivo como núcleo.
+}
+
+// Pregunta 5: Identificar núcleo y tipo de palabra
+::Núcleo muy original::En la oración "Aquel artista famoso pintó un cuadro muy original", dentro del sintagma **"muy original"**, ¿cuál es el núcleo y qué tipo de palabra es?{
+="original", adjetivo#Correcto. Es un SAdj con núcleo "original" (adjetivo calificativo).
+~%-25%"muy", adverbio#"muy" es modificador de intensidad, no el núcleo del sintagma.
+~%-25%"original", adverbio#"original" es adjetivo, no adverbio.
+~%-25%"cuadro", sustantivo#"cuadro" está fuera del sintagma señalado.
+}
+
+// Pregunta 6: Localizar SAdv
+::Localizar SAdv muy efusivamente::Lee el texto\: "El partido fue emocionante. Nuestro equipo iba perdiendo, pero en los últimos minutos remontamos. El público animaba desde las gradas. El entrenador nos felicitó muy efusivamente en el vestuario y prometió invitarnos a cenar." Localiza un **sintagma adverbial** en el texto.{
+="muy efusivamente"#Correcto. Núcleo\: "efusivamente" (adverbio de modo), modificado por "muy".
+~%-25%"en el vestuario"#Es SPrep (E\: en + T\: el vestuario), no SAdv.
+~%-25%"desde las gradas"#Es SPrep (E\: desde + T\: las gradas), no SAdv.
+~%-25%"a cenar"#Es SPrep (E\: a + T\: cenar), no SAdv.
+}
+
+// Pregunta 7: Identificar tipo de sintagma y función
+::Tipo y función bastante cansado::En la oración "Estoy bastante cansado de tanto estudiar", el sintagma **"bastante cansado"** es un...{
+=SAdj con función de atributo#Correcto. Núcleo\: "cansado" (adjetivo), y acompaña al verbo copulativo "estoy".
+~%-25%SAdj con función de complemento predicativo#Sería predicativo si el verbo fuera predicativo (ej\: "llegó cansado"), pero "estar" es copulativo.
+~%-25%SAdv con función de CCM#"bastante" es modificador, pero el núcleo es el adjetivo "cansado", no un adverbio.
+~%-25%SN con función de sujeto#No hay sustantivo como núcleo ni es el sujeto de la oración.
+}
+
+// Pregunta 8: Localizar SN con función de CD
+::Localizar SN CD criterios::Lee el texto\: "El museo inauguró una exposición temporal. Las obras pertenecen a artistas locales con reconocimiento internacional. Los visitantes pueden contemplar pinturas y esculturas. El director del museo explicó los criterios de selección en una rueda de prensa." Localiza el **SN complemento directo** en la oración "El director del museo explicó los criterios de selección".{
+="los criterios de selección"#Correcto. Es el SN que recibe la acción del verbo "explicó" (CD).
+~%-25%"El director"#Es el sujeto de la oración, no el CD.
+~%-25%"del museo"#Es SPrep modificador de "director", no el CD.
+~%-25%"una rueda de prensa"#Es término del SPrep "en una rueda de prensa" (CCL), no CD de "explicó".
+}
+
+// Pregunta 9: Identificar núcleo y tipo de palabra
+::Núcleo muy amablemente::En la oración "El personal de la biblioteca atiende muy amablemente a los usuarios", dentro del sintagma **"muy amablemente"**, ¿cuál es el núcleo y qué tipo de palabra es?{
+="amablemente", adverbio#Correcto. Es SAdv con núcleo "amablemente" (adverbio de modo).
+~%-25%"muy", adverbio#"muy" es modificador de intensidad, no el núcleo del sintagma.
+~%-25%"amablemente", adjetivo#Termina en -mente, lo que indica que es adverbio derivado de adjetivo.
+~%-25%"muy", adjetivo#"muy" es adverbio de cantidad, no adjetivo.
+}
+
+// Pregunta 10: Localizar SPrep con función de CCL
+::Localizar SPrep CCL valle::Lee el texto\: "Todos los veranos, mis primos vienen a pasar unos días. Organizamos excursiones a la montaña o paseos en bicicleta. El año pasado descubrimos una cascada preciosa escondida en un valle cercano. Preparamos bocadillos y pasamos la tarde bañándonos en las pozas." Localiza un **SPrep que funcione como complemento circunstancial de lugar**.{
+="en un valle cercano"#Correcto. Indica dónde está escondida la cascada (CCL).
+~%-25%"Todos los veranos"#Es SN con función de CCT (tiempo), no de lugar.
+~%-25%"a pasar"#Es SPrep con función de finalidad, no de lugar.
+~%-25%"unos días"#Es SN con función de CD de "pasar", no SPrep.
+}

@@ -1,0 +1,121 @@
+$CATEGORY: Tipologías textuales 2º ESO
+
+// Pregunta 1: Identificar tipología narrativa
+::Tipología texto Lucía::Lee el texto\: "Ayer por la mañana, Lucía salió de casa temprano. Caminó hasta la parada del autobús y esperó diez minutos. Cuando llegó al instituto, se encontró con sus amigas en el patio." Este texto es...{
+=Narrativo#Correcto. Cuenta una historia con personajes y acciones en orden temporal.
+~%-25%Descriptivo#No muestra cómo es algo, sino que cuenta lo que pasó.
+~%-25%Expositivo#No explica un tema de forma objetiva.
+~%-25%Argumentativo#No defiende ninguna opinión.
+}
+
+// Pregunta 2: Intención comunicativa descriptivo
+::Intención texto descriptivo::¿Cuál es la intención de un texto <b>descriptivo</b>?{
+=Mostrar cómo es algo o alguien#Correcto. Describe características de personas, lugares u objetos.
+~%-25%Contar una historia#Eso es el texto narrativo.
+~%-25%Explicar un tema#Eso es el texto expositivo.
+~%-25%Convencer de una idea#Eso es el texto argumentativo.
+}
+
+// Pregunta 3: Identificar tipología expositiva
+::Tipología texto lince::Lee el texto\: "El lince ibérico es un felino que vive en la Península Ibérica. Mide entre 80 y 110 centímetros y pesa entre 10 y 15 kilos. Se alimenta principalmente de conejos y está en peligro de extinción." Este texto es...{
+=Expositivo#Correcto. Explica información objetiva sobre el lince.
+~%-25%Narrativo#No cuenta una historia con principio y final.
+~%-25%Argumentativo#No defiende ninguna opinión sobre el lince.
+~%-25%Descriptivo#Aunque tiene rasgos descriptivos, su intención principal es informar.
+}
+
+// Pregunta 4: Rasgos lingüísticos narrativo
+::Verbos texto narrativo::¿Qué tipo de verbos predominan en un texto <b>narrativo</b>?{
+=Verbos de acción (correr, decir, saltar)#Correcto. Expresan las acciones de los personajes.
+~%-25%Verbos de estado (ser, estar, parecer)#Esos predominan en textos descriptivos.
+~%-25%Verbos de opinión (creer, opinar)#Esos aparecen en textos argumentativos.
+~%-25%No tiene verbos#Todo texto tiene verbos.
+}
+
+// Pregunta 5: Identificar tipología argumentativa
+::Tipología texto móvil::Lee el texto\: "En mi opinión, el móvil debería estar prohibido en clase. Distrae a los alumnos y hace que no presten atención. Por eso, creo que deberíamos dejarlo en la taquilla." Este texto es...{
+=Argumentativo#Correcto. El autor defiende una opinión ("en mi opinión", "creo que").
+~%-25%Expositivo#No solo informa, también opina e intenta convencer.
+~%-25%Narrativo#No cuenta una historia.
+~%-25%Descriptivo#No describe cómo es algo.
+}
+
+// Pregunta 6: Diferencia expositivo-argumentativo
+::Diferencia expositivo argumentativo::¿Cuál es la diferencia principal entre un texto <b>expositivo</b> y uno <b>argumentativo</b>?{
+=El expositivo informa; el argumentativo intenta convencer#Correcto. Es la diferencia clave.
+~%-25%El expositivo es largo; el argumentativo es corto#La longitud no los diferencia.
+~%-25%El expositivo tiene verbos; el argumentativo no#Ambos tienen verbos.
+~%-25%No hay diferencia, son lo mismo#Son tipologías distintas con intenciones diferentes.
+}
+
+// Pregunta 7: Identificar tipología descriptiva
+::Tipología texto plaza::Lee el texto\: "La plaza del pueblo era pequeña y acogedora. En el centro había una fuente de piedra gris. Alrededor, los bancos de madera invitaban a sentarse bajo la sombra de los árboles." Este texto es...{
+=Descriptivo#Correcto. Muestra cómo es la plaza con adjetivos y verbos de estado.
+~%-25%Narrativo#No cuenta una historia ni hay acciones de personajes.
+~%-25%Expositivo#No explica un tema de forma objetiva y científica.
+~%-25%Argumentativo#No defiende ninguna opinión.
+}
+
+// Pregunta 8: Rasgos lingüísticos descriptivo
+::Elementos texto descriptivo::¿Qué elementos abundan en un texto <b>descriptivo</b>?{
+=Adjetivos (pequeña, gris, acogedora)#Correcto. Sirven para describir características.
+~%-25%Conectores temporales (después, entonces)#Esos son propios del texto narrativo.
+~%-25%Conectores argumentativos (por tanto, sin embargo)#Esos son propios del texto argumentativo.
+~%-25%Tecnicismos científicos#Esos son propios del texto expositivo.
+}
+
+// Pregunta 9: Relacionar verbo clave
+::Verbo clave defiende::¿Qué tipología tiene como verbo clave <b>DEFIENDE</b>?{
+=Argumentativo#Correcto. Defiende una idea o postura.
+~%-25%Narrativo#El narrativo CUENTA.
+~%-25%Descriptivo#El descriptivo MUESTRA.
+~%-25%Expositivo#El expositivo EXPLICA.
+}
+
+// Pregunta 10: Identificar tipología expositiva agua
+::Tipología texto agua::Lee el texto\: "El agua es una sustancia formada por dos átomos de hidrógeno y uno de oxígeno. Es esencial para la vida y cubre el 71% de la superficie terrestre. Se puede encontrar en tres estados\: sólido, líquido y gaseoso." Este texto es...{
+=Expositivo#Correcto. Explica información objetiva sobre el agua sin dar opiniones.
+~%-25%Argumentativo#No defiende ninguna opinión sobre el agua.
+~%-25%Narrativo#No cuenta una historia.
+~%-25%Descriptivo#Aunque describe el agua, la intención principal es informar objetivamente.
+}
+
+// Pregunta 11: Intención comunicativa narrativo
+::Intención texto narrativo::¿Cuál es la intención de un texto <b>narrativo</b>?{
+=Contar una historia o unos hechos#Correcto. Relata acontecimientos con personajes.
+~%-25%Mostrar cómo es algo#Eso es el texto descriptivo.
+~%-25%Explicar un tema de forma objetiva#Eso es el texto expositivo.
+~%-25%Defender una opinión#Eso es el texto argumentativo.
+}
+
+// Pregunta 12: Identificar tipología argumentativa deberes
+::Tipología texto deberes::Lee el texto\: "Creo que los deberes son necesarios para reforzar lo aprendido en clase. Aunque algunos piensen que son excesivos, la práctica diaria ayuda a memorizar mejor. Por tanto, no deberían eliminarse." Este texto es...{
+=Argumentativo#Correcto. El autor defiende su opinión sobre los deberes con razones.
+~%-25%Expositivo#No solo informa, da su opinión e intenta convencer.
+~%-25%Narrativo#No cuenta una historia.
+~%-25%Descriptivo#No describe cómo son los deberes físicamente.
+}
+
+// Pregunta 13: Ejemplos de tipologías
+::Ejemplo texto narrativo::¿Cuál de estos es un ejemplo de texto <b>narrativo</b>?{
+=Un cuento o una noticia#Correcto. Ambos cuentan hechos con personajes.
+~%-25%Un libro de texto o enciclopedia#Esos son textos expositivos.
+~%-25%Un artículo de opinión o editorial#Esos son textos argumentativos.
+~%-25%Una guía de viajes con fotos de paisajes#Eso es principalmente descriptivo.
+}
+
+// Pregunta 14: Rasgos lingüísticos argumentativo
+::Elementos texto argumentativo::¿Qué elementos son propios de un texto <b>argumentativo</b>?{
+=Opiniones del autor y conectores como "por tanto", "sin embargo"#Correcto. Expresan la postura del autor y relacionan argumentos.
+~%-25%Solo verbos de acción y conectores temporales#Esos son propios del texto narrativo.
+~%-25%Muchos adjetivos y verbos de estado#Esos son propios del texto descriptivo.
+~%-25%Tecnicismos y datos sin opinión#Esos son propios del texto expositivo.
+}
+
+// Pregunta 15: Identificar tipología descriptiva persona
+::Tipología texto abuelo::Lee el texto\: "Mi abuelo es un hombre alto y delgado, con el pelo completamente blanco. Tiene los ojos azules y una sonrisa amable. Siempre viste camisas de cuadros y pantalones de pana." Este texto es...{
+=Descriptivo#Correcto. Muestra cómo es el abuelo físicamente con muchos adjetivos.
+~%-25%Narrativo#No cuenta una historia ni suceden hechos.
+~%-25%Expositivo#No explica un tema de forma objetiva y científica.
+~%-25%Argumentativo#No defiende ninguna opinión sobre el abuelo.
+}
