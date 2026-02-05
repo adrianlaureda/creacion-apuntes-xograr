@@ -56,6 +56,31 @@
             margin: 0 auto;
         }
 
+        /* Logo Adri - esquina superior izquierda */
+        .adri-logo {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            width: 24px;
+            height: 24px;
+            color: var(--text-primary);
+            opacity: 0.6;
+            transition: opacity var(--transition);
+            z-index: 50;
+        }
+
+        .adri-logo:hover {
+            opacity: 1;
+        }
+
+        /* Toggle tema - esquina superior derecha */
+        .theme-toggle {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 50;
+        }
+
         /* Header */
         header {
             display: flex;
@@ -171,6 +196,10 @@
             transition: border-color var(--transition);
         }
 
+        .form-group input[type="number"] {
+            width: 100px;
+        }
+
         .form-group input:focus {
             outline: none;
             border-color: var(--accent);
@@ -224,9 +253,17 @@
             color: #fff;
         }
 
+        .btn-success:hover {
+            filter: brightness(1.1);
+        }
+
         .btn-danger {
             background: var(--danger);
             color: #fff;
+        }
+
+        .btn-danger:hover {
+            filter: brightness(1.1);
         }
 
         .btn:disabled {
@@ -293,6 +330,18 @@
             font-size: 0.875rem;
             color: var(--text-muted);
             font-weight: 500;
+        }
+
+        /* Info de ronda */
+        .round-info {
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .round-info strong {
+            color: var(--text-primary);
         }
 
         /* Tablero */
@@ -499,7 +548,7 @@
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             padding: 32px;
-            max-width: 400px;
+            max-width: 480px;
             width: 100%;
             text-align: center;
         }
@@ -524,6 +573,11 @@
             color: var(--danger);
         }
 
+        .modal-icon.info {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent);
+        }
+
         .modal-icon svg {
             width: 32px;
             height: 32px;
@@ -538,6 +592,50 @@
         .modal p {
             color: var(--text-secondary);
             margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        /* Resumen de ventajas en modal */
+        .advantages-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .advantage-card {
+            padding: 16px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            text-align: center;
+        }
+
+        .advantage-card .team-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .advantage-card .advantage-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .advantage-card:first-child .advantage-value {
+            color: var(--accent);
+        }
+
+        .advantage-card:last-child .advantage-value {
+            color: var(--danger);
+        }
+
+        .advantage-card .advantage-detail {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
         }
 
         /* Warmup Screen */
@@ -554,6 +652,25 @@
 
         .warmup-header p {
             color: var(--text-secondary);
+        }
+
+        .warmup-team-indicator {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .warmup-team-indicator.team-1 {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent);
+        }
+
+        .warmup-team-indicator.team-2 {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--danger);
         }
 
         .warmup-stats {
@@ -715,6 +832,20 @@
             color: var(--accent);
         }
 
+        /* Touch screen y accesibilidad táctil */
+        .btn, .option-btn, .icon-btn {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .option-btn {
+            min-height: 48px;
+        }
+
+        .controls .btn {
+            min-height: 48px;
+        }
+
         /* Responsive */
         @media (max-width: 640px) {
             body {
@@ -743,10 +874,31 @@
             .controls .btn {
                 width: 100%;
             }
+
+            .adri-logo {
+                width: 20px;
+                height: 20px;
+                top: 12px;
+                left: 12px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Logo Adri - esquina superior izquierda -->
+    <svg class="adri-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,5 95,82 5,82" fill="currentColor"/>
+        <line x1="50" y1="56" x2="50" y2="5" stroke="var(--bg-primary)" stroke-width="4"/>
+        <line x1="50" y1="56" x2="95" y2="82" stroke="var(--bg-primary)" stroke-width="4"/>
+        <line x1="50" y1="56" x2="5" y2="82" stroke="var(--bg-primary)" stroke-width="4"/>
+    </svg>
+
+    <!-- Toggle tema - esquina superior derecha -->
+    <button class="icon-btn theme-toggle" id="btnTheme" title="Cambiar tema">
+        <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg id="iconSun" style="display:none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+    </button>
+
     <div class="container">
         <header>
             <div class="logo">
@@ -757,10 +909,6 @@
             <div class="header-actions">
                 <button class="icon-btn" id="btnConfig" title="Configuración">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
-                </button>
-                <button class="icon-btn" id="btnTheme" title="Cambiar tema">
-                    <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-                    <svg id="iconSun" style="display:none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
                 </button>
             </div>
         </header>
@@ -780,9 +928,13 @@
                     <label for="team2Name">Nombre del Equipo 2</label>
                     <input type="text" id="team2Name" placeholder="Ej: Los Cazadores" maxlength="20">
                 </div>
+                <div class="form-group">
+                    <label for="totalRounds">Número de rondas</label>
+                    <input type="number" id="totalRounds" min="1" max="10" value="4">
+                </div>
                 <button class="btn btn-primary btn-full" id="btnStartWarmup">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
-                    Empezar ronda inicial
+                    Empezar rondas iniciales
                 </button>
             </div>
         </div>
@@ -790,7 +942,8 @@
         <!-- Pantalla: Ronda inicial (warmup) -->
         <div class="screen" id="screenWarmup">
             <div class="warmup-header">
-                <h2>Ronda inicial: ¡A por la ventaja!</h2>
+                <span class="warmup-team-indicator" id="warmupTeamIndicator">Equipo 1</span>
+                <h2 id="warmupTitle">Ronda inicial de Equipo 1</h2>
                 <p>60 segundos. Acierto +1 / Error -1. Ventaja mínima: 1, máxima: 4.</p>
             </div>
 
@@ -836,7 +989,7 @@
             <div class="controls">
                 <button class="btn btn-success" id="btnWarmupEnd" style="display:none">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
-                    Comenzar partida
+                    <span id="btnWarmupEndText">Continuar</span>
                 </button>
             </div>
         </div>
@@ -855,8 +1008,10 @@
                 </div>
             </div>
 
+            <div class="round-info" id="roundInfo">Ronda 1 de 4</div>
+
             <div class="board-section">
-                <div class="board-label">Tablero de persecución</div>
+                <div class="board-label" id="boardLabel">Tablero de persecución</div>
                 <div class="board" id="board"></div>
             </div>
 
@@ -865,19 +1020,26 @@
                     <span class="category-tag" id="gameCategory">Categoría</span>
                     <span class="question-count" id="gameCount">Pregunta 1</span>
                 </div>
-                <p class="question-text" id="gameQuestion">Pulsa "Nueva Ronda" para empezar</p>
+                <p class="question-text" id="gameQuestion">Pulsa "Nueva ronda" para empezar</p>
                 <div class="options-grid" id="gameOptions"></div>
                 <div class="explanation" id="gameExplanation"></div>
             </div>
 
-            <div class="controls">
-                <button class="btn btn-primary" id="btnContestantCorrect" disabled>
+            <div class="controls" id="gameControls">
+                <button class="btn btn-primary" id="btnContestantCorrect" style="display:none">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
                     Concursante acierta
                 </button>
-                <button class="btn btn-danger" id="btnHunterCorrect" disabled>
+                <button class="btn btn-danger" id="btnHunterCorrect" style="display:none">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
                     Cazador acierta
+                </button>
+                <button class="btn btn-secondary" id="btnBothFail" style="display:none">
+                    Fallan ambos
+                </button>
+                <button class="btn btn-primary" id="btnNextQuestion" style="display:none">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                    Siguiente pregunta
                 </button>
                 <button class="btn btn-secondary" id="btnNewRound">
                     Nueva ronda
@@ -892,25 +1054,36 @@
             <div class="modal-icon" id="modalIcon">
                 <svg id="modalIconTrophy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6m12 5h1.5a2.5 2.5 0 0 0 0-5H18M6 9a6 6 0 0 0 12 0V4H6v5zm6 13v-4m-4 4h8m-6-4a2 2 0 0 0 4 0"/></svg>
                 <svg id="modalIconTarget" style="display:none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                <svg id="modalIconInfo" style="display:none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg>
             </div>
             <h3 id="modalTitle">¡Resultado!</h3>
             <p id="modalSubtitle">Descripción del resultado</p>
+            <div id="modalExtraContent"></div>
             <button class="btn btn-primary" id="btnModalClose">Continuar</button>
         </div>
     </div>
 
     <script>
-        // Estado global
+        // ═══════════════════════════════════════════
+        // ESTADO GLOBAL
+        // ═══════════════════════════════════════════
         let state = {
             teams: { 1: 'Equipo 1', 2: 'Equipo 2' },
             scores: { 1: 0, 2: 0 },
             currentTeam: 1,
             contestantPos: 0,
             hunterPos: -2,
-            hunterAdvantage: 2,
+            // Ventajas obtenidas en warmup por cada equipo
+            advantages: { 1: 2, 2: 2 },
+            // Equipo haciendo warmup actual (1 o 2)
+            warmupTeam: 1,
+            currentRound: 0,
+            totalRounds: 4,
+            chasesInRound: 0,
             roundActive: false,
             preguntas: [],
             preguntaActual: 0,
+            gameQuestionNum: 0,
             warmup: { correct: 0, errors: 0, score: 0, total: 0, timerInterval: null, timeLeft: 60 }
         };
 
@@ -929,7 +1102,9 @@
         // DOM
         const $ = id => document.getElementById(id);
 
-        // Inicialización
+        // ═══════════════════════════════════════════
+        // INICIALIZACIÓN
+        // ═══════════════════════════════════════════
         async function init() {
             await loadQuestions();
             setupEventListeners();
@@ -996,16 +1171,18 @@
             $('btnTheme').addEventListener('click', toggleTheme);
 
             // Config
-            $('btnStartWarmup').addEventListener('click', startWarmup);
+            $('btnStartWarmup').addEventListener('click', startWarmupPhase);
             $('btnConfig').addEventListener('click', () => showScreen('screenConfig'));
 
             // Warmup
-            $('btnWarmupEnd').addEventListener('click', endWarmup);
+            $('btnWarmupEnd').addEventListener('click', handleWarmupEndButton);
 
             // Game
-            $('btnContestantCorrect').addEventListener('click', () => moveToken('contestant'));
-            $('btnHunterCorrect').addEventListener('click', () => moveToken('hunter'));
-            $('btnNewRound').addEventListener('click', startNewRound);
+            $('btnContestantCorrect').addEventListener('click', () => handleAction('contestant'));
+            $('btnHunterCorrect').addEventListener('click', () => handleAction('hunter'));
+            $('btnBothFail').addEventListener('click', () => handleAction('both_fail'));
+            $('btnNextQuestion').addEventListener('click', onNextQuestion);
+            $('btnNewRound').addEventListener('click', handleNewRoundClick);
 
             // Modal
             $('btnModalClose').addEventListener('click', closeModal);
@@ -1029,15 +1206,48 @@
             $(screenId).classList.add('active');
         }
 
-        // WARMUP
-        const WARMUP_DURATION = 60; // segundos
-        const CIRCLE_CIRCUMFERENCE = 326.73; // 2 * PI * 52
+        // ═══════════════════════════════════════════
+        // WARMUP - Rondas iniciales para ambos equipos
+        // ═══════════════════════════════════════════
+        const WARMUP_DURATION = 60;
+        const CIRCLE_CIRCUMFERENCE = 326.73;
 
-        function startWarmup() {
+        function startWarmupPhase() {
+            // Leer configuración (solo desde pantalla de config)
             state.teams[1] = $('team1Name').value.trim() || 'Equipo 1';
             state.teams[2] = $('team2Name').value.trim() || 'Equipo 2';
-            state.warmup = { correct: 0, errors: 0, score: 0, total: 0, timerInterval: null, timeLeft: WARMUP_DURATION };
+            state.totalRounds = Math.max(1, Math.min(10, parseInt($('totalRounds').value) || 4));
+            state.scores = { 1: 0, 2: 0 };
+            state.currentRound = 0;
+            state.gameQuestionNum = 0;
+
+            startNextRoundWarmups();
+        }
+
+        // Iniciar warmups para una nueva ronda (reutilizable entre rondas)
+        function startNextRoundWarmups() {
+            state.currentRound++;
+            state.chasesInRound = 0;
+            state.advantages = { 1: 2, 2: 2 };
+            state.warmupTeam = 1;
+            // Barajar preguntas para variedad en cada ronda
+            state.preguntas = shuffleArray(state.preguntas);
             state.preguntaActual = 0;
+
+            startWarmupForTeam(1);
+        }
+
+        function startWarmupForTeam(teamNum) {
+            state.warmupTeam = teamNum;
+            state.warmup = { correct: 0, errors: 0, score: 0, total: 0, timerInterval: null, timeLeft: WARMUP_DURATION };
+
+            // Actualizar indicador de equipo
+            const indicator = $('warmupTeamIndicator');
+            indicator.textContent = state.teams[teamNum];
+            indicator.className = 'warmup-team-indicator team-' + teamNum;
+            $('warmupTitle').textContent = 'Ronda inicial de ' + state.teams[teamNum];
+
+            $('btnWarmupEnd').style.display = 'none';
 
             showScreen('screenWarmup');
             updateWarmupDisplay();
@@ -1063,12 +1273,10 @@
             const time = state.warmup.timeLeft;
             $('timerText').textContent = time;
 
-            // Actualizar el círculo de progreso
             const progress = $('timerProgress');
             const offset = CIRCLE_CIRCUMFERENCE * (1 - time / WARMUP_DURATION);
             progress.style.strokeDashoffset = offset;
 
-            // Cambiar color según tiempo restante
             progress.classList.remove('warning', 'danger');
             if (time <= 10) {
                 progress.classList.add('danger');
@@ -1081,13 +1289,26 @@
             $('warmupCorrect').textContent = state.warmup.correct;
             $('warmupErrors').textContent = state.warmup.errors;
 
-            // Calcular ventaja: base 2 + score, limitado entre 1 y 4
             const advantage = Math.max(1, Math.min(4, 2 + state.warmup.score));
             $('warmupAdvantage').textContent = advantage;
         }
 
+        // Barajar opciones para que la correcta no esté siempre en la misma posición
+        function shuffleOptions(opciones, correcta) {
+            const indices = opciones.map((_, i) => i);
+            for (let i = indices.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [indices[i], indices[j]] = [indices[j], indices[i]];
+            }
+            return {
+                opciones: indices.map(i => opciones[i]),
+                correcta: indices.indexOf(correcta)
+            };
+        }
+
         function showWarmupQuestion() {
             const p = state.preguntas[state.preguntaActual];
+            const shuffled = shuffleOptions(p.opciones, p.correcta);
             $('warmupCategory').textContent = categoryNames[p.categoria] || p.categoria;
             $('warmupCount').textContent = 'Pregunta ' + (state.warmup.total + 1);
             $('warmupQuestion').textContent = p.pregunta;
@@ -1097,11 +1318,11 @@
             const container = $('warmupOptions');
             while (container.firstChild) container.removeChild(container.firstChild);
 
-            p.opciones.forEach((opt, i) => {
+            shuffled.opciones.forEach((opt, i) => {
                 const btn = document.createElement('button');
                 btn.className = 'option-btn';
                 btn.textContent = opt;
-                btn.addEventListener('click', () => handleWarmupAnswer(i, p.correcta));
+                btn.addEventListener('click', () => handleWarmupAnswer(i, shuffled.correcta));
                 container.appendChild(btn);
             });
         }
@@ -1114,7 +1335,6 @@
                 else if (i === selected) btn.classList.add('incorrect');
             });
 
-            // Actualizar puntuación: acierto +1, error -1
             if (selected === correct) {
                 state.warmup.correct++;
                 state.warmup.score++;
@@ -1127,9 +1347,8 @@
             updateWarmupDisplay();
             $('warmupExplanation').classList.add('visible');
 
-            // Auto-avanzar a la siguiente pregunta tras 1.5 segundos
             setTimeout(() => {
-                if (state.warmup.timerInterval) { // Solo si el timer sigue activo
+                if (state.warmup.timerInterval) {
                     nextWarmupQuestion();
                 }
             }, 1500);
@@ -1145,60 +1364,120 @@
         }
 
         function finishWarmup() {
-            // Detener el timer
             if (state.warmup.timerInterval) {
                 clearInterval(state.warmup.timerInterval);
                 state.warmup.timerInterval = null;
             }
 
-            // Deshabilitar opciones
             const buttons = $('warmupOptions').querySelectorAll('.option-btn');
             buttons.forEach(btn => btn.style.pointerEvents = 'none');
 
-            // Mostrar botón para continuar
+            // Guardar ventaja del equipo actual
+            state.advantages[state.warmupTeam] = Math.max(1, Math.min(4, 2 + state.warmup.score));
+
             $('btnWarmupEnd').style.display = 'inline-flex';
+
+            if (state.warmupTeam === 1) {
+                $('btnWarmupEndText').textContent = 'Warmup de ' + state.teams[2];
+            } else {
+                $('btnWarmupEndText').textContent = 'Ver resumen y empezar';
+            }
         }
 
-        function endWarmup() {
-            // Asegurar que el timer está detenido
-            if (state.warmup.timerInterval) {
-                clearInterval(state.warmup.timerInterval);
-                state.warmup.timerInterval = null;
+        function handleWarmupEndButton() {
+            if (state.warmupTeam === 1) {
+                startWarmupForTeam(2);
+            } else {
+                showWarmupSummaryAndStartGame();
             }
+        }
 
-            // Calcular ventaja: base 2 + score, limitado entre 1 y 4
-            state.hunterAdvantage = Math.max(1, Math.min(4, 2 + state.warmup.score));
-            state.hunterPos = -state.hunterAdvantage;
-
+        function showWarmupSummaryAndStartGame() {
             // Preparar pantalla de juego
             $('team1Label').textContent = state.teams[1];
             $('team2Label').textContent = state.teams[2];
-            $('score1').textContent = '0';
-            $('score2').textContent = '0';
-            state.scores = { 1: 0, 2: 0 };
+            $('score1').textContent = state.scores[1];
+            $('score2').textContent = state.scores[2];
             state.currentTeam = 1;
 
             renderBoard();
             showScreen('screenGame');
+            updateRoundInfo();
+            setGameButtonsState('between_rounds');
+            $('btnNewRound').textContent = 'Empezar persecución';
 
-            // Ocultar botón para la próxima vez
-            $('btnWarmupEnd').style.display = 'none';
+            // Construir resumen de ventajas con DOM seguro
+            const extra = $('modalExtraContent');
+            while (extra.firstChild) extra.removeChild(extra.firstChild);
 
-            // Mostrar modal con resultado de warmup
-            const netScore = state.warmup.correct - state.warmup.errors;
+            const summary = document.createElement('div');
+            summary.className = 'advantages-summary';
+
+            [1, 2].forEach(t => {
+                const card = document.createElement('div');
+                card.className = 'advantage-card';
+
+                const label = document.createElement('div');
+                label.className = 'team-label';
+                label.textContent = state.teams[t];
+
+                const val = document.createElement('div');
+                val.className = 'advantage-value';
+                val.textContent = state.advantages[t] + ' casillas';
+
+                const detail = document.createElement('div');
+                detail.className = 'advantage-detail';
+                detail.textContent = '(cuando escapa)';
+
+                card.appendChild(label);
+                card.appendChild(val);
+                card.appendChild(detail);
+                summary.appendChild(card);
+            });
+
+            extra.appendChild(summary);
+
             showModal(
-                'success',
-                '¡Ronda inicial completada!',
-                state.warmup.correct + ' aciertos, ' + state.warmup.errors + ' errores. El cazador empieza ' + state.hunterAdvantage + ' casillas atrás.'
+                'info',
+                'Ronda ' + state.currentRound + ' — Preliminares completadas',
+                'Ventaja de cada equipo al escapar del cazador:'
             );
         }
 
-        // GAME
+        // ═══════════════════════════════════════════
+        // JUEGO PRINCIPAL - Persecuciones
+        // ═══════════════════════════════════════════
+
+        function updateRoundInfo() {
+            const el = $('roundInfo');
+            if (state.currentRound > 0) {
+                let info = 'Ronda ' + state.currentRound + ' de ' + state.totalRounds;
+                if (state.chasesInRound > 0 && state.roundActive) {
+                    info += ' — Persecución ' + state.chasesInRound + ' de 2';
+                }
+                el.textContent = info;
+            } else {
+                el.textContent = 'Pulsa el botón para empezar';
+            }
+
+            if (state.roundActive && state.chasesInRound > 0) {
+                const escaper = state.currentTeam;
+                const hunter = state.currentTeam === 1 ? 2 : 1;
+                $('boardLabel').textContent =
+                    state.teams[escaper] + ' escapa / ' + state.teams[hunter] + ' caza';
+            } else {
+                $('boardLabel').textContent = 'Tablero de persecución';
+            }
+        }
+
         function renderBoard() {
             const board = $('board');
             while (board.firstChild) board.removeChild(board.firstChild);
 
-            const minCell = -state.hunterAdvantage;
+            // La ventaja depende del equipo que escapa (currentTeam)
+            const advantage = state.advantages[state.currentTeam] || 2;
+            const minCell = -advantage;
+
             for (let i = minCell; i <= 7; i++) {
                 const cell = document.createElement('div');
                 cell.className = 'cell';
@@ -1225,7 +1504,22 @@
             if (cCell) {
                 const token = document.createElement('div');
                 token.className = 'token contestant';
-                token.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('viewBox', '0 0 24 24');
+                svg.setAttribute('fill', 'none');
+                svg.setAttribute('stroke', 'currentColor');
+                svg.setAttribute('stroke-width', '1.5');
+                svg.setAttribute('stroke-linecap', 'round');
+                svg.setAttribute('stroke-linejoin', 'round');
+                const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path1.setAttribute('d', 'M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2');
+                const circle1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle1.setAttribute('cx', '12');
+                circle1.setAttribute('cy', '7');
+                circle1.setAttribute('r', '4');
+                svg.appendChild(path1);
+                svg.appendChild(circle1);
+                token.appendChild(svg);
                 cCell.appendChild(token);
             }
 
@@ -1234,22 +1528,90 @@
             if (hCell) {
                 const token = document.createElement('div');
                 token.className = 'token hunter';
-                token.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>';
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('viewBox', '0 0 24 24');
+                svg.setAttribute('fill', 'none');
+                svg.setAttribute('stroke', 'currentColor');
+                svg.setAttribute('stroke-width', '1.5');
+                svg.setAttribute('stroke-linecap', 'round');
+                svg.setAttribute('stroke-linejoin', 'round');
+                [10, 6, 2].forEach(r => {
+                    const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    c.setAttribute('cx', '12');
+                    c.setAttribute('cy', '12');
+                    c.setAttribute('r', String(r));
+                    svg.appendChild(c);
+                });
+                token.appendChild(svg);
                 hCell.appendChild(token);
             }
         }
 
-        function startNewRound() {
+        // Control de visibilidad de botones según estado
+        function setGameButtonsState(mode) {
+            const show = id => $(id).style.display = 'inline-flex';
+            const hide = id => $(id).style.display = 'none';
+
+            if (mode === 'action_buttons') {
+                show('btnContestantCorrect');
+                show('btnHunterCorrect');
+                show('btnBothFail');
+                hide('btnNextQuestion');
+                hide('btnNewRound');
+                $('btnContestantCorrect').disabled = false;
+                $('btnHunterCorrect').disabled = false;
+                $('btnBothFail').disabled = false;
+            } else if (mode === 'next_question') {
+                // Mantener acciones activas para permitir doble acierto
+                show('btnContestantCorrect');
+                show('btnHunterCorrect');
+                show('btnBothFail');
+                $('btnContestantCorrect').disabled = false;
+                $('btnHunterCorrect').disabled = false;
+                $('btnBothFail').disabled = false;
+                show('btnNextQuestion');
+                hide('btnNewRound');
+            } else if (mode === 'between_rounds') {
+                hide('btnContestantCorrect');
+                hide('btnHunterCorrect');
+                hide('btnBothFail');
+                hide('btnNextQuestion');
+                // Mostrar botón si quedan persecuciones o rondas
+                if (state.chasesInRound < 2 || state.currentRound < state.totalRounds) {
+                    show('btnNewRound');
+                } else {
+                    hide('btnNewRound');
+                }
+            }
+        }
+
+        // Enrutador: decide si toca persecución o nueva ronda de warmups
+        function handleNewRoundClick() {
+            if (state.chasesInRound < 2) {
+                startChase();
+            } else if (state.currentRound < state.totalRounds) {
+                startNextRoundWarmups();
+            } else {
+                showGameEnd();
+            }
+        }
+
+        // Iniciar una persecución dentro de la ronda actual
+        function startChase() {
+            state.chasesInRound++;
+
+            const advantage = state.advantages[state.currentTeam];
             state.contestantPos = 0;
-            state.hunterPos = -state.hunterAdvantage;
+            state.hunterPos = -advantage;
             state.roundActive = true;
 
-            updateTokens();
+            renderBoard();
+            updateRoundInfo();
             showGameQuestion();
+            setGameButtonsState('action_buttons');
 
-            $('btnContestantCorrect').disabled = false;
-            $('btnHunterCorrect').disabled = false;
-            $('btnNewRound').textContent = 'Siguiente pregunta';
+            $('team1Card').classList.toggle('active', state.currentTeam === 1);
+            $('team2Card').classList.toggle('active', state.currentTeam === 2);
         }
 
         function showGameQuestion() {
@@ -1259,9 +1621,11 @@
                 state.preguntas = shuffleArray(state.preguntas);
             }
 
+            state.gameQuestionNum++;
             const p = state.preguntas[state.preguntaActual];
+            const shuffled = shuffleOptions(p.opciones, p.correcta);
             $('gameCategory').textContent = categoryNames[p.categoria] || p.categoria;
-            $('gameCount').textContent = 'Pregunta ' + (state.preguntaActual + 1);
+            $('gameCount').textContent = 'Pregunta ' + state.gameQuestionNum;
             $('gameQuestion').textContent = p.pregunta;
             $('gameExplanation').textContent = p.explicacion;
             $('gameExplanation').classList.remove('visible');
@@ -1269,11 +1633,11 @@
             const container = $('gameOptions');
             while (container.firstChild) container.removeChild(container.firstChild);
 
-            p.opciones.forEach((opt, i) => {
+            shuffled.opciones.forEach((opt, i) => {
                 const btn = document.createElement('button');
                 btn.className = 'option-btn';
                 btn.textContent = opt;
-                btn.addEventListener('click', () => revealGameAnswer(i, p.correcta));
+                btn.addEventListener('click', () => revealGameAnswer(i, shuffled.correcta));
                 container.appendChild(btn);
             });
         }
@@ -1288,28 +1652,36 @@
             $('gameExplanation').classList.add('visible');
         }
 
-        function moveToken(who) {
+        // Manejar acción tras revelar respuesta
+        function handleAction(action) {
             if (!state.roundActive) return;
 
-            if (who === 'contestant') {
+            if (action === 'contestant') {
                 state.contestantPos++;
-            } else {
+            } else if (action === 'hunter') {
                 state.hunterPos++;
             }
+            // 'both_fail' → nadie avanza
 
             updateTokens();
 
             if (checkRoundEnd()) return;
+
+            // Mostrar "Siguiente pregunta" para que el profesor controle el ritmo
+            setGameButtonsState('next_question');
+        }
+
+        // Solo carga nueva pregunta, NO resetea posiciones
+        function onNextQuestion() {
             showGameQuestion();
+            setGameButtonsState('action_buttons');
         }
 
         function checkRoundEnd() {
-            // Concursante llega a meta
             if (state.contestantPos >= 7) {
                 endRound('saved');
                 return true;
             }
-            // Cazador alcanza
             if (state.hunterPos >= state.contestantPos) {
                 endRound('caught');
                 return true;
@@ -1319,34 +1691,88 @@
 
         function endRound(result) {
             state.roundActive = false;
-            $('btnContestantCorrect').disabled = true;
-            $('btnHunterCorrect').disabled = true;
-            $('btnNewRound').textContent = 'Nueva ronda';
+
+            // Limpiar contenido extra del modal
+            const extra = $('modalExtraContent');
+            while (extra.firstChild) extra.removeChild(extra.firstChild);
 
             if (result === 'saved') {
                 state.scores[state.currentTeam] += 2;
-                showModal('success', '¡Salvado!', 'El concursante llegó a la meta. +2 puntos para ' + state.teams[state.currentTeam]);
+                showModal('success', '¡Salvado!',
+                    'El concursante de ' + state.teams[state.currentTeam] + ' llegó a la meta. +2 puntos.');
             } else {
                 const otherTeam = state.currentTeam === 1 ? 2 : 1;
                 state.scores[otherTeam] += 1;
-                showModal('danger', '¡Cazado!', 'El cazador atrapó al concursante. +1 punto para ' + state.teams[otherTeam]);
+                showModal('danger', '¡Cazado!',
+                    'El cazador atrapó al concursante de ' + state.teams[state.currentTeam] + '. +1 punto para ' + state.teams[otherTeam] + '.');
             }
 
             $('score1').textContent = state.scores[1];
             $('score2').textContent = state.scores[2];
 
-            // Alternar equipo
+            // Alternar equipo para la siguiente persecución
             state.currentTeam = state.currentTeam === 1 ? 2 : 1;
-            $('team1Card').classList.toggle('active', state.currentTeam === 1);
-            $('team2Card').classList.toggle('active', state.currentTeam === 2);
+
+            // Comprobar si el juego ha terminado (todas las persecuciones de todas las rondas)
+            const gameOver = state.chasesInRound >= 2 && state.currentRound >= state.totalRounds;
+
+            if (gameOver) {
+                // Tras cerrar el modal de resultado, mostrar fin de juego
+                $('btnModalClose').onclick = () => {
+                    closeModal();
+                    showGameEnd();
+                };
+            } else {
+                // Actualizar texto del botón según el siguiente paso
+                if (state.chasesInRound < 2) {
+                    $('btnNewRound').textContent = 'Siguiente persecución';
+                } else {
+                    $('btnNewRound').textContent = 'Siguiente ronda (preliminares)';
+                }
+            }
+
+            setGameButtonsState('between_rounds');
+            updateRoundInfo();
+        }
+
+        function showGameEnd() {
+            const extra = $('modalExtraContent');
+            while (extra.firstChild) extra.removeChild(extra.firstChild);
+
+            const s1 = state.scores[1];
+            const s2 = state.scores[2];
+            let title, subtitle;
+
+            if (s1 > s2) {
+                title = '¡' + state.teams[1] + ' gana!';
+                subtitle = 'Resultado final: ' + s1 + ' - ' + s2;
+            } else if (s2 > s1) {
+                title = '¡' + state.teams[2] + ' gana!';
+                subtitle = 'Resultado final: ' + s1 + ' - ' + s2;
+            } else {
+                title = '¡Empate!';
+                subtitle = 'Resultado final: ' + s1 + ' - ' + s2;
+            }
+
+            showModal('success', title, subtitle);
+
+            // Tras cerrar el modal de fin, volver a config
+            $('btnModalClose').onclick = () => {
+                closeModal();
+                showScreen('screenConfig');
+                $('btnModalClose').onclick = closeModal;
+            };
         }
 
         function showModal(type, title, subtitle) {
             $('modalIcon').className = 'modal-icon ' + type;
             $('modalIconTrophy').style.display = type === 'success' ? 'block' : 'none';
             $('modalIconTarget').style.display = type === 'danger' ? 'block' : 'none';
+            $('modalIconInfo').style.display = type === 'info' ? 'block' : 'none';
             $('modalTitle').textContent = title;
             $('modalSubtitle').textContent = subtitle;
+            // Resetear handler personalizado (el addEventListener base siempre funciona)
+            $('btnModalClose').onclick = null;
             $('modalOverlay').classList.add('visible');
         }
 
