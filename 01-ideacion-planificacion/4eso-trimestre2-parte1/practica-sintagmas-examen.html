@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sintagmas: Práctica tipo examen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #050505;
+            --bg-secondary: #0a0a0a;
+            --bg-card: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --text-muted: #444444;
+            --border: rgba(255,255,255,0.1);
+            --success: #22c55e;
+            --error: #ef4444;
+            --sn-color: #3b82f6;
+            --sadj-color: #22c55e;
+            --sadv-color: #f59e0b;
+            --sprep-color: #a78bfa;
+            --accent: #3b82f6;
+        }
+
+        body.light-mode {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #e8e8e8;
+            --bg-card: #ffffff;
+            --text-primary: #111111;
+            --text-secondary: #666666;
+            --text-muted: #999999;
+            --border: rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        /* Layout dos columnas para Ej.1 */
+        .ej1-layout { display: flex; gap: 24px; align-items: flex-start; }
+        .ej1-texto { flex: 0 0 45%; position: sticky; top: 20px; }
+        .ej1-texto .texto-examen { font-size: 13px; line-height: 1.75; padding: 20px; margin: 0; }
+        .ej1-preguntas { flex: 1; min-width: 0; }
+
+        .header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 32px;
+        }
+        h1 { font-size: 28px; font-weight: 700; }
+        h2 { font-size: 22px; font-weight: 700; margin: 24px 0 16px 0; }
+        p { margin-bottom: 16px; color: var(--text-secondary); }
+
+        .theme-toggle {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 8px; cursor: pointer; color: var(--text-secondary);
+            padding: 10px; transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .theme-toggle:hover { color: var(--text-primary); border-color: var(--accent); }
+        .theme-toggle svg { width: 20px; height: 20px; }
+        .theme-toggle .icon-sun { display: block; }
+        .theme-toggle .icon-moon { display: none; }
+        body.light-mode .theme-toggle .icon-sun { display: none; }
+        body.light-mode .theme-toggle .icon-moon { display: block; }
+
+        .tabs {
+            display: flex; gap: 4px; margin-bottom: 32px;
+            border-bottom: 1px solid var(--border); flex-wrap: wrap; padding-bottom: 4px;
+        }
+        .tab {
+            padding: 12px 20px; background: transparent; border: none;
+            border-bottom: 2px solid transparent; color: var(--text-secondary);
+            font-family: inherit; font-weight: 600; font-size: 14px;
+            cursor: pointer; transition: all 0.2s ease;
+        }
+        .tab:hover { color: var(--text-primary); }
+        .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+        .tab-content { display: none; animation: fadeIn 0.3s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .btn {
+            padding: 12px 24px; background: var(--accent); color: white; border: none;
+            border-radius: 8px; font-family: inherit; font-weight: 600; font-size: 14px;
+            cursor: pointer; transition: all 0.2s ease;
+        }
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+        .btn-secondary { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); }
+        .btn-small { padding: 8px 16px; font-size: 13px; }
+        .btn-group { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 24px; margin: 20px 0;
+        }
+
+        .texto-examen {
+            background: var(--bg-secondary); border: 1px solid var(--border);
+            border-radius: 12px; padding: 24px; margin: 16px 0;
+            font-size: 15px; line-height: 1.9; color: var(--text-secondary);
+        }
+        .texto-examen u { color: var(--text-primary); font-weight: 500; text-decoration-color: var(--accent); }
+
+        .feedback {
+            padding: 16px 20px; margin: 16px 0; border-radius: 8px;
+            font-weight: 600; font-size: 14px; display: none;
+        }
+        .feedback.show { display: block; }
+        .feedback.success { background: rgba(34,197,94,0.15); color: var(--success); border: 1px solid var(--success); }
+        .feedback.error { background: rgba(239,68,68,0.15); color: var(--error); border: 1px solid var(--error); }
+
+        .pregunta-num {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: var(--accent); color: white;
+            width: 28px; height: 28px; border-radius: 50%;
+            font-weight: 700; font-size: 13px; margin-right: 12px;
+        }
+
+        /* Ejercicio 1 */
+        .loc-pregunta { margin-bottom: 24px; }
+        .loc-label {
+            font-weight: 600; font-size: 14px; margin-bottom: 8px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .loc-funcion-tag {
+            display: inline-block; padding: 3px 10px; border-radius: 4px;
+            font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .tag-sn { background: rgba(59,130,246,0.15); color: var(--sn-color); }
+        .tag-sadj { background: rgba(34,197,94,0.15); color: var(--sadj-color); }
+        .tag-sadv { background: rgba(245,158,11,0.15); color: var(--sadv-color); }
+        .tag-sprep { background: rgba(167,139,250,0.15); color: var(--sprep-color); }
+        .tag-pron { background: rgba(236,72,153,0.15); color: #ec4899; }
+
+        .loc-input {
+            width: 100%; padding: 12px 16px;
+            background: var(--bg-secondary); border: 1px solid var(--border);
+            border-radius: 8px; color: var(--text-primary);
+            font-family: inherit; font-size: 14px; transition: border-color 0.2s ease;
+        }
+        .loc-input:focus { outline: none; border-color: var(--accent); }
+        .loc-input.correct { border-color: var(--success); background: rgba(34,197,94,0.05); }
+        .loc-input.incorrect { border-color: var(--error); background: rgba(239,68,68,0.05); }
+
+        .loc-hint {
+            font-size: 12px; color: var(--text-muted); margin-top: 6px;
+            display: none; font-style: italic;
+        }
+        .loc-hint.show { display: block; }
+        .loc-correction {
+            font-size: 13px; color: var(--success); margin-top: 6px;
+            display: none; font-weight: 500;
+        }
+        .loc-correction.show { display: block; }
+
+        /* Ejercicio 2 */
+        .nav-analisis {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 20px;
+        }
+        .nav-analisis .progreso-text { font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+        .nav-analisis .nav-btns { display: flex; gap: 8px; }
+
+        .sintagma-display { text-align: center; padding: 20px; margin-bottom: 16px; }
+        .sintagma-display .sintagma-texto { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; }
+
+        .nivel-label {
+            font-size: 12px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px;
+        }
+
+        .analisis-zona {
+            display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+            padding: 24px; background: var(--bg-secondary);
+            border: 1px solid var(--border); border-radius: 12px;
+            margin: 8px 0 16px 0; min-height: 100px;
+        }
+
+        .elem-analisis { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 80px; }
+        .elem-palabra {
+            font-weight: 600; font-size: 18px; padding: 8px 16px;
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+        }
+        .elem-slot {
+            min-width: 70px; min-height: 34px; padding: 4px 8px;
+            border: 2px dashed var(--border); border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 700; color: var(--text-muted);
+            transition: all 0.2s ease; cursor: pointer;
+        }
+        .elem-slot.over { border-color: var(--accent); background: rgba(59,130,246,0.1); }
+        .elem-slot.filled { border-style: solid; border-color: var(--accent); background: var(--accent); color: white; cursor: grab; }
+        .elem-slot.correct { background: var(--success); border-color: var(--success); color: white; }
+        .elem-slot.incorrect { background: var(--error); border-color: var(--error); color: white; }
+
+        .banco-etiquetas {
+            display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+            padding: 16px; background: var(--bg-secondary); border-radius: 8px; margin: 12px 0;
+        }
+        .etiqueta {
+            padding: 8px 16px; background: var(--bg-card);
+            border: 2px solid var(--accent); border-radius: 6px;
+            cursor: grab; font-size: 13px; font-weight: 700;
+            color: var(--accent); user-select: none; transition: all 0.2s ease;
+        }
+        .etiqueta:hover { transform: translateY(-2px); }
+        .etiqueta.dragging { opacity: 0.4; }
+        .etiqueta.usada { opacity: 0.25; cursor: default; pointer-events: none; }
+
+        .selector-row {
+            display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 12px 0;
+        }
+        .selector-row label {
+            font-weight: 600; font-size: 13px; color: var(--text-secondary); min-width: 80px;
+        }
+        .selector-btn {
+            padding: 8px 14px; background: var(--bg-secondary);
+            border: 1px solid var(--border); border-radius: 6px;
+            font-family: inherit; font-size: 12px; font-weight: 600;
+            cursor: pointer; transition: all 0.2s ease; color: var(--text-primary);
+        }
+        .selector-btn:hover { border-color: var(--accent); }
+        .selector-btn.selected { background: var(--accent); color: white; border-color: var(--accent); }
+        .selector-btn.correct-btn { background: var(--success); color: white; border-color: var(--success); }
+        .selector-btn.incorrect-btn { background: var(--error); color: white; border-color: var(--error); }
+
+        .pista-box {
+            background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3);
+            border-radius: 8px; padding: 12px 16px; margin-top: 12px;
+            font-size: 13px; color: var(--sadv-color); display: none;
+        }
+        .pista-box.show { display: block; }
+
+        .progress-bar {
+            width: 100%; height: 4px; background: var(--bg-secondary);
+            border-radius: 2px; margin-bottom: 24px; overflow: hidden;
+        }
+        .progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.3s ease; }
+
+        /* ── Ej.2 compacto: cabe en una pantalla sin scroll ── */
+        #ej2 h2 { margin: 8px 0 6px 0; font-size: 20px; }
+        #ej2 > p { margin-bottom: 8px; font-size: 13px; }
+        #ej2 .progress-bar { margin-bottom: 10px; }
+        #ej2 .nav-analisis { margin-bottom: 8px; }
+        #ej2 .sintagma-display { padding: 8px; margin-bottom: 6px; }
+        #ej2 .sintagma-display .sintagma-texto { font-size: 26px; }
+        #ej2 .banco-etiquetas { padding: 8px 12px; margin: 4px 0; gap: 8px; }
+        #ej2 .etiqueta { padding: 6px 14px; }
+        #ej2 .nivel-label { margin-bottom: 4px; margin-top: 2px; }
+        #ej2 .analisis-zona { padding: 14px; margin: 4px 0 8px 0; min-height: 60px; gap: 12px; }
+        #ej2 .elem-palabra { font-size: 16px; padding: 6px 12px; }
+        #ej2 .elem-slot { min-height: 30px; min-width: 60px; }
+        #ej2 .selector-row { margin: 6px 0; gap: 8px; }
+        #ej2 .selector-btn { padding: 6px 12px; }
+        #ej2 .btn-group { margin-top: 8px; }
+        #ej2 .feedback { margin: 8px 0; padding: 10px 16px; }
+        #ej2 .pista-box { margin-top: 8px; padding: 8px 12px; }
+        #ej2 .frase-contexto {
+            font-size: 13px; color: var(--text-secondary); text-align: center;
+            padding: 0 24px; margin: 0 0 4px 0; line-height: 1.5; font-style: italic;
+        }
+        #ej2 .frase-contexto mark {
+            background: none; color: var(--text-primary); font-weight: 600; font-style: normal;
+            text-decoration: underline; text-decoration-color: var(--accent);
+        }
+
+        @media (max-width: 1024px) {
+            .ej1-layout { flex-direction: column; }
+            .ej1-texto { flex: none; position: static; }
+        }
+
+        @media (max-width: 768px) {
+            .tabs { justify-content: center; }
+            .tab { padding: 10px 14px; font-size: 13px; }
+            .header { flex-direction: column; gap: 16px; align-items: flex-start; }
+            .sintagma-display .sintagma-texto { font-size: 24px; }
+            .analisis-zona { gap: 10px; padding: 16px; }
+            .elem-palabra { font-size: 15px; padding: 6px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Sintagmas: Práctica tipo examen</h1>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="mostrarTab('texto')">Texto</button>
+        <button class="tab" onclick="mostrarTab('ej1')">Ej. 1: Localización</button>
+        <button class="tab" onclick="mostrarTab('ej2')">Ej. 2: Análisis</button>
+    </div>
+
+    <!-- TEXTO -->
+    <div id="texto" class="tab-content active">
+        <h2>Texto: Streaming vs. lectura</h2>
+        <p>Lee el texto con atención. Los sintagmas subrayados aparecen en los ejercicios.</p>
+
+        <div class="texto-examen">
+            <p>Las plataformas de streaming han revolucionado el entretenimiento juvenil. Actualmente, millones de adolescentes dedican <u>varias horas</u> cada tarde a ver <u>series adictivas</u> en sus dispositivos. Los expertos en educación señalan que este hábito reduce considerablemente el tiempo de lectura.</p>
+            <p style="margin-top:12px">La situación resulta <u>bastante preocupante</u> en los centros educativos. Los profesores de lengua les insisten a sus alumnos en la importancia de leer, pero las notas en los exámenes de comentario de texto han bajado <u>muy rápidamente</u> <u>durante los últimos años</u>.</p>
+            <p style="margin-top:12px">No obstante, algunas voces defienden que <u>las series de calidad</u> ofrecen narrativas complejas y reflexiones interesantes sobre la sociedad actual. Hoy, ver una buena serie puede estimular la curiosidad intelectual tanto como leer una buena novela.</p>
+            <p style="margin-top:12px">Por todo ello, la clave está en encontrar un equilibrio adecuado. Los padres y los docentes deben guiar a los jóvenes hacia un consumo responsable de contenido audiovisual sin demonizar completamente las nuevas formas de entretenimiento.</p>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 1 -->
+    <div id="ej1" class="tab-content">
+        <h2>Ejercicio 1: Localización de sintagmas</h2>
+        <p>Localiza en el texto un ejemplo para cada función sintáctica.</p>
+
+        <div class="ej1-layout">
+            <div class="ej1-texto">
+                <div class="texto-examen">
+                    <p>Las plataformas de streaming han revolucionado el entretenimiento juvenil. Actualmente, millones de adolescentes dedican <u>varias horas</u> cada tarde a ver <u>series adictivas</u> en sus dispositivos. Los expertos en educación señalan que este hábito reduce considerablemente el tiempo de lectura.</p>
+                    <p style="margin-top:10px">La situación resulta <u>bastante preocupante</u> en los centros educativos. Los profesores de lengua les insisten a sus alumnos en la importancia de leer, pero las notas en los exámenes de comentario de texto han bajado <u>muy rápidamente</u> <u>durante los últimos años</u>.</p>
+                    <p style="margin-top:10px">No obstante, algunas voces defienden que <u>las series de calidad</u> ofrecen narrativas complejas y reflexiones interesantes sobre la sociedad actual. Hoy, ver una buena serie puede estimular la curiosidad intelectual tanto como leer una buena novela.</p>
+                    <p style="margin-top:10px">Por todo ello, la clave está en encontrar un equilibrio adecuado. Los padres y los docentes deben guiar a los jóvenes hacia un consumo responsable de contenido audiovisual sin demonizar completamente las nuevas formas de entretenimiento.</p>
+                </div>
+            </div>
+            <div class="ej1-preguntas">
+                <div id="loc-preguntas">
+                    <!-- Se genera con JS seguro (DOM API) -->
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn" id="btn-comprobar-loc" onclick="comprobarLocalizacion()">Comprobar</button>
+                    <button class="btn btn-secondary" id="btn-pista-loc" onclick="mostrarPistas()">Pista</button>
+                </div>
+                <div class="feedback" id="feedback-loc"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 2 -->
+    <div id="ej2" class="tab-content">
+        <h2>Ejercicio 2: Análisis de sintagmas</h2>
+        <p>Arrastra las etiquetas a cada palabra y selecciona tipo + función.</p>
+
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+
+        <div class="nav-analisis">
+            <span class="progreso-text" id="progreso-analisis">1 / 6</span>
+            <div class="nav-btns">
+                <button class="btn btn-secondary btn-small" id="btn-prev" onclick="navAnalisis(-1)" disabled>&#8592; Anterior</button>
+                <button class="btn btn-secondary btn-small" id="btn-next" onclick="navAnalisis(1)">Siguiente &#8594;</button>
+            </div>
+        </div>
+
+        <div id="analisis-container"></div>
+
+        <div class="btn-group" style="margin-top:16px">
+            <button class="btn" id="btn-comprobar-ana" onclick="comprobarAnalisis()">Comprobar</button>
+            <button class="btn btn-secondary" id="btn-pista-ana" onclick="mostrarPistaAnalisis()">Pista</button>
+        </div>
+        <div class="feedback" id="feedback-ana"></div>
+        <div class="pista-box" id="pista-ana-box"></div>
+    </div>
+</div>
+
+<script>
+(function() {
+    'use strict';
+
+    // ─── Tema ───
+    window.toggleTheme = function() { document.body.classList.toggle('light-mode'); };
+
+    // ─── Navegación pestañas ───
+    window.mostrarTab = function(id) {
+        document.querySelectorAll('.tab-content').forEach(function(el) { el.classList.remove('active'); });
+        document.querySelectorAll('.tab').forEach(function(el) { el.classList.remove('active'); });
+        document.getElementById(id).classList.add('active');
+        var tabBtn = document.querySelector('.tab[onclick*="' + id + '"]');
+        if (tabBtn) tabBtn.classList.add('active');
+    };
+
+    // ═══════════════════════════════════════════
+    //  EJERCICIO 1: LOCALIZACIÓN
+    // ═══════════════════════════════════════════
+
+    var locPreguntas = [
+        {
+            id: 'a', letra: 'a',
+            label: 'SN en función de sujeto',
+            tag: 'SN', tagClass: 'tag-sn',
+            hint: 'Busca quién realiza la acción del verbo principal de alguna oración.',
+            respuestas: [
+                'las plataformas de streaming', 'millones de adolescentes',
+                'los expertos en educacion', 'los expertos en educación',
+                'este habito', 'este hábito', 'la situacion', 'la situación',
+                'los profesores de lengua',
+                'las notas en los examenes de comentario de texto',
+                'las notas en los exámenes de comentario de texto',
+                'las notas en los examenes', 'las notas en los exámenes',
+                'algunas voces', 'las series de calidad', 'la clave',
+                'los padres y los docentes'
+            ]
+        },
+        {
+            id: 'b', letra: 'b',
+            label: 'Pronombre átono en función de CI',
+            tag: 'Pron', tagClass: 'tag-pron',
+            hint: '"Les" aparece una vez en el texto. ¿A quién insisten?',
+            respuestas: ['les']
+        },
+        {
+            id: 'c', letra: 'c',
+            label: 'SN en función de CD',
+            tag: 'SN', tagClass: 'tag-sn',
+            hint: '¿Qué dedican los adolescentes? ¿Qué reduce el hábito? ¿Qué ofrecen las series?',
+            respuestas: [
+                'el entretenimiento juvenil', 'varias horas', 'series adictivas',
+                'el tiempo de lectura',
+                'narrativas complejas', 'narrativas complejas y reflexiones interesantes',
+                'reflexiones interesantes', 'la curiosidad intelectual',
+                'un equilibrio adecuado', 'las nuevas formas de entretenimiento'
+            ]
+        },
+        {
+            id: 'd', letra: 'd',
+            label: 'SAdj en función de predicativo',
+            tag: 'SAdj', tagClass: 'tag-sadj',
+            hint: 'Busca un verbo semicopulativo (resulta) + adjetivo con modificador. Recuerda: resultar NO es copulativo.',
+            respuestas: ['bastante preocupante']
+        },
+        {
+            id: 'e', letra: 'e',
+            label: 'SPrep en función de CCL',
+            tag: 'SPrep', tagClass: 'tag-sprep',
+            hint: 'Busca complementos que indiquen lugar: ¿dónde ven series? ¿dónde resulta preocupante?',
+            respuestas: [
+                'en sus dispositivos', 'en los centros educativos',
+                'sobre la sociedad actual'
+            ]
+        },
+        {
+            id: 'f', letra: 'f',
+            label: 'SAdv en función de CCT',
+            tag: 'SAdv', tagClass: 'tag-sadv',
+            hint: 'Busca adverbios de tiempo que modifiquen al verbo directamente.',
+            respuestas: ['actualmente', 'hoy']
+        }
+    ];
+
+    // Normalizar para comparación (accent-insensitive)
+    function norm(s) {
+        return s.toLowerCase().trim()
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .replace(/[.,;:!?¿¡""«»]/g, '')
+            .replace(/\s+/g, ' ');
+    }
+
+    // Construir preguntas con DOM API (sin innerHTML)
+    var container1 = document.getElementById('loc-preguntas');
+    locPreguntas.forEach(function(p) {
+        var div = document.createElement('div');
+        div.className = 'loc-pregunta';
+
+        var labelDiv = document.createElement('div');
+        labelDiv.className = 'loc-label';
+
+        var numSpan = document.createElement('span');
+        numSpan.className = 'pregunta-num';
+        numSpan.textContent = p.letra;
+        labelDiv.appendChild(numSpan);
+
+        var tagSpan = document.createElement('span');
+        tagSpan.className = 'loc-funcion-tag ' + p.tagClass;
+        tagSpan.textContent = p.tag;
+        labelDiv.appendChild(tagSpan);
+
+        var labelText = document.createTextNode(' ' + p.label);
+        labelDiv.appendChild(labelText);
+
+        div.appendChild(labelDiv);
+
+        var input = document.createElement('input');
+        input.className = 'loc-input';
+        input.id = 'loc-' + p.id;
+        input.type = 'text';
+        input.placeholder = 'Escribe el sintagma del texto...';
+        input.autocomplete = 'off';
+        div.appendChild(input);
+
+        var hintDiv = document.createElement('div');
+        hintDiv.className = 'loc-hint';
+        hintDiv.id = 'hint-' + p.id;
+        hintDiv.textContent = p.hint;
+        div.appendChild(hintDiv);
+
+        var corrDiv = document.createElement('div');
+        corrDiv.className = 'loc-correction';
+        corrDiv.id = 'corr-' + p.id;
+        div.appendChild(corrDiv);
+
+        container1.appendChild(div);
+    });
+
+    var locComprobado = false;
+
+    window.comprobarLocalizacion = function() {
+        if (locComprobado) return;
+        locComprobado = true;
+
+        var aciertos = 0;
+        locPreguntas.forEach(function(p) {
+            var input = document.getElementById('loc-' + p.id);
+            var corr = document.getElementById('corr-' + p.id);
+            var val = norm(input.value);
+
+            var ok = false;
+            for (var i = 0; i < p.respuestas.length; i++) {
+                if (val === norm(p.respuestas[i])) { ok = true; break; }
+            }
+
+            if (ok) {
+                input.classList.add('correct');
+                aciertos++;
+            } else {
+                input.classList.add('incorrect');
+                corr.textContent = 'Respuesta válida: ' + p.respuestas[0];
+                corr.classList.add('show');
+            }
+            input.disabled = true;
+        });
+
+        var fb = document.getElementById('feedback-loc');
+        fb.textContent = 'Has acertado ' + aciertos + ' de ' + locPreguntas.length + '.';
+        fb.className = aciertos >= 4 ? 'feedback show success' : 'feedback show error';
+        document.getElementById('btn-comprobar-loc').disabled = true;
+    };
+
+    window.mostrarPistas = function() {
+        locPreguntas.forEach(function(p) {
+            document.getElementById('hint-' + p.id).classList.add('show');
+        });
+    };
+
+    // ═══════════════════════════════════════════
+    //  EJERCICIO 2: ANÁLISIS (drag & drop)
+    // ═══════════════════════════════════════════
+
+    var sintagmas = [
+        {
+            texto: 'series adictivas',
+            frase: ['millones de adolescentes dedican varias horas cada tarde a ver ', 'series adictivas', ' en sus dispositivos'],
+            palabras: ['series', 'adictivas'],
+            etiquetasCorrectas: ['N', 'MOD'],
+            tipoSintagma: 'SN', tipoColor: 'sn',
+            funcionOracional: 'CD',
+            pista: 'El núcleo es un sustantivo. "Adictivas" lo modifica.',
+            etiquetasDisponibles: ['Det', 'N', 'MOD', 'E', 'T']
+        },
+        {
+            texto: 'las series de calidad',
+            frase: ['algunas voces defienden que ', 'las series de calidad', ' ofrecen narrativas complejas'],
+            palabras: ['las', 'series', 'de calidad'],
+            etiquetasCorrectas: ['Det', 'N', 'MOD'],
+            tipoSintagma: 'SN', tipoColor: 'sn',
+            funcionOracional: 'Sujeto',
+            pista: '"De calidad" es un SPrep que modifica al sustantivo.',
+            etiquetasDisponibles: ['Det', 'N', 'MOD', 'E', 'T']
+        },
+        {
+            texto: 'bastante preocupante',
+            frase: ['La situación resulta ', 'bastante preocupante', ' en los centros educativos'],
+            palabras: ['bastante', 'preocupante'],
+            etiquetasCorrectas: ['MOD', 'N'],
+            tipoSintagma: 'SAdj', tipoColor: 'sadj',
+            funcionOracional: 'Predicativo',
+            pista: 'El núcleo es un adjetivo. "Bastante" indica grado. "Resultar" es semicopulativo, no copulativo.',
+            etiquetasDisponibles: ['Det', 'N', 'MOD', 'E', 'T']
+        },
+        {
+            texto: 'muy rápidamente',
+            frase: ['las notas en los exámenes han bajado ', 'muy rápidamente', ' durante los últimos años'],
+            palabras: ['muy', 'rápidamente'],
+            etiquetasCorrectas: ['MOD', 'N'],
+            tipoSintagma: 'SAdv', tipoColor: 'sadv',
+            funcionOracional: 'CCM',
+            pista: 'El núcleo es un adverbio. "Muy" es un modificador de grado.',
+            etiquetasDisponibles: ['Det', 'N', 'MOD', 'E', 'T']
+        },
+        {
+            texto: 'en los centros educativos',
+            frase: ['La situación resulta bastante preocupante ', 'en los centros educativos', ''],
+            palabras: ['en', 'los', 'centros', 'educativos'],
+            etiquetasCorrectas: ['E', 'Det', 'N', 'MOD'],
+            tipoSintagma: 'SPrep', tipoColor: 'sprep',
+            funcionOracional: 'CCL',
+            pista: 'El enlace es la preposición. El término es el SN completo.',
+            etiquetasDisponibles: ['Det', 'N', 'MOD', 'E', 'T']
+        },
+        {
+            texto: 'durante los últimos años',
+            frase: ['las notas han bajado muy rápidamente ', 'durante los últimos años', ''],
+            palabras: ['durante', 'los', 'últimos', 'años'],
+            etiquetasCorrectas: ['E', 'Det', 'MOD', 'N'],
+            tipoSintagma: 'SPrep', tipoColor: 'sprep',
+            funcionOracional: 'CCT',
+            pista: '"Últimos" va delante del sustantivo pero es modificador. El núcleo es "años".',
+            etiquetasDisponibles: ['Det', 'N', 'MOD', 'E', 'T']
+        }
+    ];
+
+    var anaActual = 0;
+    var anaEstados = sintagmas.map(function(s) {
+        return { colocadas: new Array(s.palabras.length).fill(null), tipoSel: null, funcSel: null, comprobado: false, aciertos: 0 };
+    });
+
+    function renderAnalisis() {
+        var s = sintagmas[anaActual];
+        var estado = anaEstados[anaActual];
+
+        // Progreso
+        document.getElementById('progreso-analisis').textContent = (anaActual + 1) + ' / ' + sintagmas.length;
+        document.getElementById('progress-fill').style.width = ((anaActual + 1) / sintagmas.length * 100) + '%';
+        document.getElementById('btn-prev').disabled = anaActual === 0;
+        document.getElementById('btn-next').disabled = anaActual === sintagmas.length - 1;
+
+        var cont = document.getElementById('analisis-container');
+        // Limpiar con DOM API
+        while (cont.firstChild) cont.removeChild(cont.firstChild);
+
+        // Sintagma destacado
+        var displayDiv = document.createElement('div');
+        displayDiv.className = 'sintagma-display';
+        var textoSpan = document.createElement('div');
+        textoSpan.className = 'sintagma-texto';
+        textoSpan.textContent = s.texto;
+        textoSpan.style.color = 'var(--' + s.tipoColor + '-color)';
+        displayDiv.appendChild(textoSpan);
+        cont.appendChild(displayDiv);
+
+        // Frase de contexto
+        var fraseDiv = document.createElement('div');
+        fraseDiv.className = 'frase-contexto';
+        var antes = document.createTextNode(s.frase[0]);
+        fraseDiv.appendChild(antes);
+        var marcado = document.createElement('mark');
+        marcado.textContent = s.frase[1];
+        fraseDiv.appendChild(marcado);
+        var despues = document.createTextNode(s.frase[2]);
+        fraseDiv.appendChild(despues);
+        cont.appendChild(fraseDiv);
+
+        // Banco de etiquetas
+        var bancoDiv = document.createElement('div');
+        bancoDiv.className = 'banco-etiquetas';
+        bancoDiv.id = 'banco-ana';
+        s.etiquetasDisponibles.forEach(function(et, i) {
+            var etDiv = document.createElement('div');
+            etDiv.className = 'etiqueta';
+            etDiv.draggable = true;
+            etDiv.setAttribute('data-etiqueta', et);
+            etDiv.setAttribute('data-idx', String(i));
+            etDiv.textContent = et;
+            // Marcar como usada si ya está colocada
+            for (var j = 0; j < estado.colocadas.length; j++) {
+                if (estado.colocadas[j] && estado.colocadas[j].idx === i) {
+                    etDiv.classList.add('usada');
+                    break;
+                }
+            }
+            bancoDiv.appendChild(etDiv);
+        });
+        cont.appendChild(bancoDiv);
+
+        // Label nivel
+        var nivelLabel = document.createElement('div');
+        nivelLabel.className = 'nivel-label';
+        nivelLabel.textContent = 'Funciones internas';
+        cont.appendChild(nivelLabel);
+
+        // Zona de análisis
+        var zonaDiv = document.createElement('div');
+        zonaDiv.className = 'analisis-zona';
+        zonaDiv.id = 'zona-ana';
+        s.palabras.forEach(function(p, i) {
+            var elemDiv = document.createElement('div');
+            elemDiv.className = 'elem-analisis';
+
+            var palabraDiv = document.createElement('div');
+            palabraDiv.className = 'elem-palabra';
+            palabraDiv.textContent = p;
+            elemDiv.appendChild(palabraDiv);
+
+            var slotDiv = document.createElement('div');
+            slotDiv.className = 'elem-slot';
+            slotDiv.setAttribute('data-pos', String(i));
+
+            var col = estado.colocadas[i];
+            if (col) {
+                slotDiv.classList.add('filled');
+                slotDiv.textContent = col.etiqueta;
+                if (estado.comprobado) {
+                    slotDiv.classList.add(col.etiqueta === s.etiquetasCorrectas[i] ? 'correct' : 'incorrect');
+                }
+            } else {
+                slotDiv.textContent = '?';
+            }
+
+            elemDiv.appendChild(slotDiv);
+            zonaDiv.appendChild(elemDiv);
+        });
+        cont.appendChild(zonaDiv);
+
+        // Selector tipo
+        var tipos = ['SN', 'SAdj', 'SAdv', 'SPrep'];
+        var tipoRow = document.createElement('div');
+        tipoRow.className = 'selector-row';
+        var tipoLabel = document.createElement('label');
+        tipoLabel.textContent = 'Tipo:';
+        tipoRow.appendChild(tipoLabel);
+        tipos.forEach(function(t) {
+            var btn = document.createElement('button');
+            btn.className = 'selector-btn';
+            btn.setAttribute('data-tipo', t);
+            btn.textContent = t;
+            if (estado.tipoSel === t) btn.classList.add('selected');
+            if (estado.comprobado && estado.tipoSel === t) {
+                btn.classList.add(estado.tipoSel === s.tipoSintagma ? 'correct-btn' : 'incorrect-btn');
+            }
+            btn.addEventListener('click', function() { selTipo(t); });
+            tipoRow.appendChild(btn);
+        });
+        cont.appendChild(tipoRow);
+
+        // Selector función
+        var funciones = ['Sujeto', 'CD', 'Atributo', 'Predicativo', 'CCL', 'CCT', 'CCM'];
+        var funcRow = document.createElement('div');
+        funcRow.className = 'selector-row';
+        var funcLabel = document.createElement('label');
+        funcLabel.textContent = 'Función:';
+        funcRow.appendChild(funcLabel);
+        funciones.forEach(function(f) {
+            var btn = document.createElement('button');
+            btn.className = 'selector-btn';
+            btn.setAttribute('data-func', f);
+            btn.textContent = f;
+            if (estado.funcSel === f) btn.classList.add('selected');
+            if (estado.comprobado && estado.funcSel === f) {
+                btn.classList.add(estado.funcSel === s.funcionOracional ? 'correct-btn' : 'incorrect-btn');
+            }
+            btn.addEventListener('click', function() { selFunc(f); });
+            funcRow.appendChild(btn);
+        });
+        cont.appendChild(funcRow);
+
+        // Corrección si comprobado
+        if (estado.comprobado) {
+            var corrDiv = document.createElement('div');
+            var total = s.palabras.length + 2;
+            corrDiv.className = 'feedback show ' + (estado.aciertos === total ? 'success' : 'error');
+            corrDiv.textContent = estado.aciertos === total
+                ? 'Perfecto: ' + s.tipoSintagma + ' [' + s.etiquetasCorrectas.join(' + ') + '] \u2192 ' + s.funcionOracional
+                : 'Respuesta correcta: ' + s.tipoSintagma + ' [' + s.etiquetasCorrectas.join(' + ') + '] \u2192 ' + s.funcionOracional;
+            cont.appendChild(corrDiv);
+        }
+
+        // Reset feedback y pista generales
+        document.getElementById('feedback-ana').className = 'feedback';
+        document.getElementById('pista-ana-box').className = 'pista-box';
+        document.getElementById('btn-comprobar-ana').disabled = estado.comprobado;
+
+        if (!estado.comprobado) configurarDragDrop();
+    }
+
+    function configurarDragDrop() {
+        var etiquetas = document.querySelectorAll('#banco-ana .etiqueta:not(.usada)');
+        var slots = document.querySelectorAll('#zona-ana .elem-slot');
+
+        etiquetas.forEach(function(et) {
+            et.addEventListener('dragstart', function(e) {
+                e.dataTransfer.setData('text/etiqueta', et.getAttribute('data-etiqueta'));
+                e.dataTransfer.setData('text/idx', et.getAttribute('data-idx'));
+                et.classList.add('dragging');
+            });
+            et.addEventListener('dragend', function() { et.classList.remove('dragging'); });
+        });
+
+        slots.forEach(function(slot) {
+            slot.addEventListener('dragover', function(e) { e.preventDefault(); slot.classList.add('over'); });
+            slot.addEventListener('dragleave', function() { slot.classList.remove('over'); });
+            slot.addEventListener('drop', function(e) {
+                e.preventDefault();
+                slot.classList.remove('over');
+                var estado = anaEstados[anaActual];
+                if (estado.comprobado) return;
+
+                var etiqueta = e.dataTransfer.getData('text/etiqueta');
+                var idx = parseInt(e.dataTransfer.getData('text/idx'));
+                var pos = parseInt(slot.getAttribute('data-pos'));
+
+                // Liberar slot anterior
+                if (estado.colocadas[pos]) {
+                    var prevIdx = estado.colocadas[pos].idx;
+                    var prevEl = document.querySelector('#banco-ana .etiqueta[data-idx="' + prevIdx + '"]');
+                    if (prevEl) prevEl.classList.remove('usada');
+                }
+
+                estado.colocadas[pos] = { etiqueta: etiqueta, idx: idx };
+                slot.textContent = etiqueta;
+                slot.classList.add('filled');
+
+                var etEl = document.querySelector('#banco-ana .etiqueta[data-idx="' + idx + '"]');
+                if (etEl) etEl.classList.add('usada');
+            });
+
+            // Clic para devolver al banco
+            slot.addEventListener('click', function() {
+                var estado = anaEstados[anaActual];
+                if (estado.comprobado) return;
+                var pos = parseInt(slot.getAttribute('data-pos'));
+                if (estado.colocadas[pos]) {
+                    var prevIdx = estado.colocadas[pos].idx;
+                    var prevEl = document.querySelector('#banco-ana .etiqueta[data-idx="' + prevIdx + '"]');
+                    if (prevEl) prevEl.classList.remove('usada');
+                    estado.colocadas[pos] = null;
+                    slot.textContent = '?';
+                    slot.classList.remove('filled');
+                }
+            });
+        });
+    }
+
+    window.selTipo = function(t) {
+        var estado = anaEstados[anaActual];
+        if (estado.comprobado) return;
+        estado.tipoSel = t;
+        document.querySelectorAll('.selector-row [data-tipo]').forEach(function(b) {
+            b.classList.toggle('selected', b.getAttribute('data-tipo') === t);
+        });
+    };
+
+    window.selFunc = function(f) {
+        var estado = anaEstados[anaActual];
+        if (estado.comprobado) return;
+        estado.funcSel = f;
+        document.querySelectorAll('.selector-row [data-func]').forEach(function(b) {
+            b.classList.toggle('selected', b.getAttribute('data-func') === f);
+        });
+    };
+
+    window.navAnalisis = function(dir) {
+        var next = anaActual + dir;
+        if (next >= 0 && next < sintagmas.length) {
+            anaActual = next;
+            renderAnalisis();
+        }
+    };
+
+    window.comprobarAnalisis = function() {
+        var s = sintagmas[anaActual];
+        var estado = anaEstados[anaActual];
+        if (estado.comprobado) return;
+
+        // Verificar completitud
+        var incompleto = false;
+        for (var i = 0; i < estado.colocadas.length; i++) {
+            if (!estado.colocadas[i]) { incompleto = true; break; }
+        }
+        if (!estado.tipoSel || !estado.funcSel || incompleto) {
+            var fb = document.getElementById('feedback-ana');
+            fb.textContent = 'Completa todas las etiquetas, el tipo y la función antes de comprobar.';
+            fb.className = 'feedback show error';
+            return;
+        }
+
+        estado.comprobado = true;
+        estado.aciertos = 0;
+
+        for (var i = 0; i < s.etiquetasCorrectas.length; i++) {
+            if (estado.colocadas[i] && estado.colocadas[i].etiqueta === s.etiquetasCorrectas[i]) {
+                estado.aciertos++;
+            }
+        }
+        if (estado.tipoSel === s.tipoSintagma) estado.aciertos++;
+        if (estado.funcSel === s.funcionOracional) estado.aciertos++;
+
+        renderAnalisis();
+    };
+
+    window.mostrarPistaAnalisis = function() {
+        var s = sintagmas[anaActual];
+        var pista = document.getElementById('pista-ana-box');
+        pista.textContent = s.pista;
+        pista.classList.add('show');
+    };
+
+    // Inicializar
+    renderAnalisis();
+
+})();
+</script>
+
+</body>
+</html>

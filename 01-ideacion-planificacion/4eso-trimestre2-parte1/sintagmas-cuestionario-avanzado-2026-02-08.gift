@@ -1,0 +1,164 @@
+$CATEGORY: Lengua/Sintaxis/Sintagmas/Avanzado/Localización
+
+// 1 - CCL en oración compleja
+::Loc01 - CCL en oración compuesta::En "Los vecinos del quinto protestaron con pancartas <b>en la plaza del ayuntamiento</b> durante toda la tarde", ¿qué función desempeña <b>"en la plaza del ayuntamiento"</b>?{
+=CCL (complemento circunstancial de lugar)#Correcto. Indica dónde protestaron. La preposición "en" + lugar \= CCL.
+~%-25%CCT (complemento circunstancial de tiempo)#"En la plaza" indica lugar, no tiempo. El CCT es "durante toda la tarde".
+~%-25%Complemento del nombre#Un complemento del nombre modificaría a un sustantivo, no al verbo "protestaron".
+~%-25%CD (complemento directo)#El CD responde a "¿qué protestaron?", pero "protestar" es intransitivo aquí.
+}
+
+// 2 - CI con duplicación pronominal
+::Loc02 - CI con duplicación::En "El director les comunicó la decisión a los representantes de cada curso", ¿qué función desempeña <b>"les"</b>?{
+=CI (complemento indirecto)#Correcto. "Les" duplica al CI "a los representantes". Responde a "¿a quién comunicó?".
+~%-25%CD (complemento directo)#El CD es "la decisión" (lo que comunicó). "Les" indica el destinatario \= CI.
+~%-25%Sujeto#Los pronombres átonos nunca funcionan como sujeto. El sujeto es "El director".
+~%-25%CCM (complemento circunstancial de modo)#Los pronombres átonos no funcionan como CC. "Les" indica destinatario.
+}
+
+// 3 - Predicativo (NO atributo)
+::Loc03 - Predicativo con semicopulativo::En "Los jugadores acabaron completamente agotados tras el partido", ¿qué función desempeña <b>"completamente agotados"</b>?{
+=Predicativo#Correcto. "Acabar" es semicopulativo. El atributo solo aparece con ser, estar y parecer.
+~%-25%Atributo#El atributo solo se da con verbos copulativos (ser, estar, parecer). "Acabar" es semicopulativo → predicativo.
+~%-25%CCM (complemento circunstancial de modo)#No indica cómo acabaron, sino el estado en que acabaron \= predicativo del sujeto.
+~%-25%CD (complemento directo)#"Acabar" es intransitivo aquí. No lleva CD.
+}
+
+// 4 - Sujeto largo y complejo
+::Loc04 - Sujeto complejo::En "Las quejas de los usuarios sobre el servicio de atención telefónica obligaron al ayuntamiento a actuar", ¿qué función desempeña <b>"Las quejas de los usuarios sobre el servicio de atención telefónica"</b>?{
+=Sujeto#Correcto. Es el SN que concuerda con "obligaron" (3ª persona del plural).
+~%-25%CD (complemento directo)#El CD respondería a "¿qué obligaron?". Quien obliga son "las quejas" \= sujeto.
+~%-25%CCL (complemento circunstancial de lugar)#No indica lugar. Es quien realiza la acción de obligar.
+~%-25%CI (complemento indirecto)#El CI es "al ayuntamiento". "Las quejas" es quien obliga \= sujeto.
+}
+
+// 5 - CCT con "desde" (confundible con CCL)
+::Loc05 - CCT con preposición ambigua::En "Nadie había visto nada parecido en este pueblo desde la gran tormenta del año pasado", ¿qué función desempeña <b>"desde la gran tormenta del año pasado"</b>?{
+=CCT (complemento circunstancial de tiempo)#Correcto. "Desde" + evento temporal indica el punto de inicio en el tiempo.
+~%-25%CCL (complemento circunstancial de lugar)#"Desde" puede indicar lugar, pero aquí "la tormenta" es un evento temporal, no un lugar.
+~%-25%Complemento del nombre#No modifica a ningún sustantivo, sino al verbo "había visto".
+~%-25%CD (complemento directo)#El CD es "nada parecido". "Desde..." complementa al verbo con valor temporal.
+}
+
+// 6 - CD largo
+::Loc06 - CD extenso::En "Los investigadores demostraron la relación directa entre el consumo de azúcar y la obesidad infantil", ¿qué función desempeña <b>"la relación directa entre el consumo de azúcar y la obesidad infantil"</b>?{
+=CD (complemento directo)#Correcto. Responde a "¿qué demostraron?" y se puede sustituir por "lo"\: "lo demostraron".
+~%-25%Sujeto#El sujeto es "Los investigadores" (concuerda con "demostraron"). El CD es lo demostrado.
+~%-25%Atributo#No hay verbo copulativo. "Demostrar" es transitivo y lleva CD.
+~%-25%CI (complemento indirecto)#El CI indica destinatario ("a alguien"). Aquí se indica lo demostrado \= CD.
+}
+
+// 7 - Atributo real (verbo copulativo)
+::Loc07 - Atributo con copulativo::En "Aquellas excusas eran completamente absurdas e inaceptables para cualquier persona razonable", ¿qué función desempeña <b>"completamente absurdas e inaceptables"</b>?{
+=Atributo#Correcto. "Ser" es copulativo → el SAdj que le sigue es atributo.
+~%-25%Predicativo#El predicativo aparece con verbos NO copulativos. "Ser" es copulativo → atributo.
+~%-25%CD (complemento directo)#Los verbos copulativos no llevan CD. Llevan atributo.
+~%-25%CCM (complemento circunstancial de modo)#No indica modo, sino una cualidad del sujeto a través del verbo copulativo.
+}
+
+// 8 - Predicativo con "llegar" (confundible con CCM)
+::Loc08 - Predicativo vs CCM::En "Los corredores llegaron exhaustos a la meta tras cinco horas de carrera", ¿qué función desempeña <b>"exhaustos"</b>?{
+=Predicativo#Correcto. "Llegar" es semicopulativo aquí. "Exhaustos" indica el estado del sujeto al llegar.
+~%-25%Atributo#El atributo solo aparece con ser, estar, parecer. "Llegar" no es copulativo → predicativo.
+~%-25%CCM (complemento circunstancial de modo)#El CCM indica cómo (ej. "rápidamente"). "Exhaustos" es un adjetivo que indica estado del sujeto \= predicativo.
+~%-25%CD (complemento directo)#"Llegar" es intransitivo. No lleva CD.
+}
+
+// 9 - CI con "a + SN" (confundible con sujeto)
+::Loc09 - CI con inversión::En "A mi madre le preocupa enormemente la situación económica del país", ¿qué función desempeña <b>"A mi madre"</b>?{
+=CI (complemento indirecto)#Correcto. "A mi madre" es el CI, duplicado por "le". Responde a "¿a quién preocupa?".
+~%-25%Sujeto#El sujeto es "la situación económica del país" (lo que preocupa). "A mi madre" es a quien preocupa \= CI.
+~%-25%CD (complemento directo)#"Preocupar" lleva CI (a alguien le preocupa algo). El CD sería lo que preocupa.
+~%-25%CCL (complemento circunstancial de lugar)#"A mi madre" indica persona, no lugar. La preposición "a" marca aquí el CI.
+}
+
+// 10 - CCT adverbial en posición inicial
+::Loc10 - CCT adverbial::En "Antiguamente, las familias numerosas convivían en casas pequeñas sin ninguna comodidad moderna", ¿qué función desempeña <b>"Antiguamente"</b>?{
+=CCT (complemento circunstancial de tiempo)#Correcto. Es un adverbio de tiempo que sitúa la acción en el pasado.
+~%-25%CCM (complemento circunstancial de modo)#"Antiguamente" indica cuándo, no cómo. Sería CCM si indicara manera.
+~%-25%CCL (complemento circunstancial de lugar)#No indica lugar. Indica tiempo.
+~%-25%Sujeto#Un adverbio nunca puede funcionar como sujeto. El sujeto es "las familias numerosas".
+}
+
+
+$CATEGORY: Lengua/Sintaxis/Sintagmas/Avanzado/Análisis
+
+// 11 - SAdv estructura
+::Ana01 - SAdv estructura::¿Cuál es la estructura interna de <b>"demasiado lejos"</b> en "Vive demasiado lejos de aquí"?{
+=SAdv\: MOD(demasiado) + N(lejos)#Correcto. Núcleo \= adverbio "lejos", modificado por "demasiado".
+~%-25%SAdj\: MOD(demasiado) + N(lejos)#"Lejos" es adverbio, no adjetivo. El sintagma es adverbial.
+~%-25%SAdv\: Det(demasiado) + N(lejos)#"Demasiado" no es determinante aquí, sino modificador adverbial de grado.
+~%-25%SN\: Det(demasiado) + N(lejos)#"Lejos" no es sustantivo. Es adverbio → SAdv.
+}
+
+// 12 - SPrep con SN interno complejo
+::Ana02 - SPrep con SN complejo::¿Cuál es la estructura interna de <b>"con los mejores resultados académicos"</b>?{
+=SPrep\: E(con) + T(SN\: Det(los) + MOD(mejores) + N(resultados) + MOD(académicos))#Correcto. "Con" es enlace; el SN con adjetivo antepuesto y pospuesto es el término.
+~%-25%SPrep\: E(con) + T(SN\: Det(los) + Det(mejores) + N(resultados) + MOD(académicos))#"Mejores" no es determinante, sino adjetivo antepuesto \= MOD.
+~%-25%SN\: Det(con) + MOD(los mejores) + N(resultados) + MOD(académicos)#"Con" es preposición (enlace), no determinante. Esto es un SPrep.
+~%-25%SPrep\: E(con) + T(SN\: Det(los) + MOD(mejores) + MOD(resultados) + N(académicos))#El núcleo del SN es "resultados" (sustantivo), no "académicos" (adjetivo).
+}
+
+// 13 - SAdj atributo real (con "parecer")
+::Ana03 - SAdj atributo verdadero::¿Qué tipo de sintagma es <b>"bastante insegura"</b> y qué función tiene en "La alumna nueva parece bastante insegura en clase"?{
+=SAdj → Atributo#Correcto. "Parecer" es copulativo. El núcleo "insegura" es adjetivo → SAdj atributo.
+~%-25%SAdv → CCM#"Insegura" es adjetivo, no adverbio. El sintagma es adjetival.
+~%-25%SAdj → Predicativo#El predicativo aparece con verbos no copulativos. "Parecer" es copulativo → atributo.
+~%-25%SAdj → CD#Los verbos copulativos no llevan CD. Llevan atributo.
+}
+
+// 14 - SN con doble modificador
+::Ana04 - SN con doble MOD::¿Cuál es la estructura interna de <b>"aquellas viejas fotografías en blanco y negro"</b>?{
+=SN\: Det(aquellas) + MOD(viejas) + N(fotografías) + MOD(SPrep)#Correcto. Dos modificadores\: "viejas" (adj antepuesto) y "en blanco y negro" (SPrep).
+~%-25%SN\: Det(aquellas) + Det(viejas) + N(fotografías) + MOD(SPrep)#"Viejas" es adjetivo antepuesto (MOD), no determinante.
+~%-25%SN\: Det(aquellas) + MOD(viejas) + N(fotografías) + N(en blanco y negro)#Un SN solo tiene un núcleo. "En blanco y negro" es MOD (SPrep).
+~%-25%SPrep\: E(aquellas) + T(viejas fotografías en blanco y negro)#"Aquellas" es determinante, no preposición. El sintagma es nominal.
+}
+
+// 15 - SPrep CCT vs CCL
+::Ana05 - SPrep función CCT::¿Qué tipo de sintagma es <b>"durante las vacaciones de verano"</b> y qué función tiene en "Trabajó en una tienda durante las vacaciones de verano"?{
+=SPrep → CCT#Correcto. "Durante" + período de tiempo \= CCT. El CCL sería "en una tienda".
+~%-25%SPrep → CCL#"Durante" indica tiempo, no lugar. El CCL es "en una tienda".
+~%-25%SN → CCT#Empieza por preposición ("durante") → es SPrep, no SN.
+~%-25%SPrep → CD#Un SPrep con "durante" no funciona como CD. Indica circunstancia temporal.
+}
+
+// 16 - SAdv vs SAdj (ambigüedad de "rápido")
+::Ana06 - SAdv ambiguo::¿Cuál es la estructura interna de <b>"increíblemente rápido"</b> en "El corredor avanzaba increíblemente rápido por la pista"?{
+=SAdv\: MOD(increíblemente) + N(rápido)#Correcto. Aquí "rápido" funciona como adverbio (modifica al verbo "avanzaba") → SAdv.
+~%-25%SAdj\: MOD(increíblemente) + N(rápido)#Aunque "rápido" puede ser adjetivo, aquí modifica al verbo → funciona como adverbio.
+~%-25%SAdv\: Det(increíblemente) + N(rápido)#"Increíblemente" es adverbio modificador, no determinante.
+~%-25%SAdj\: Det(increíblemente) + N(rápido)#Ni "increíblemente" es determinante ni "rápido" funciona aquí como adjetivo.
+}
+
+// 17 - SN predicativo del CD
+::Ana07 - SN predicativo del CD::¿Qué tipo de sintagma es <b>"la mejor jugadora del equipo"</b> y qué función tiene en "Todos la consideran la mejor jugadora del equipo"?{
+=SN → Predicativo del CD#Correcto. "Considerar" no es copulativo. El SN atribuye una cualidad al CD ("la") → predicativo del CD.
+~%-25%SN → Atributo#El atributo solo aparece con ser, estar, parecer. "Considerar" es transitivo → predicativo.
+~%-25%SN → CD#El CD es el pronombre "la". "La mejor jugadora" complementa al CD, no es el CD.
+~%-25%SN → Sujeto#El sujeto es "Todos". "La mejor jugadora" se predica del CD.
+}
+
+// 18 - SPrep con adjetivo antepuesto en el término
+::Ana08 - SPrep con SN anidado::¿Cuál es la estructura interna de <b>"por las estrechas calles del casco antiguo"</b>?{
+=SPrep\: E(por) + T(SN\: Det(las) + MOD(estrechas) + N(calles) + MOD(SPrep))#Correcto. El término es un SN con adjetivo antepuesto y SPrep pospuesto como MOD.
+~%-25%SPrep\: E(por) + T(SN\: Det(las) + Det(estrechas) + N(calles) + MOD(SPrep))#"Estrechas" es adjetivo antepuesto \= MOD, no determinante.
+~%-25%SPrep\: E(por) + T(SN\: Det(las) + MOD(estrechas) + N(calles) + N(del casco antiguo))#"Del casco antiguo" es SPrep modificador, no un segundo núcleo.
+~%-25%SN\: MOD(por) + Det(las) + MOD(estrechas) + N(calles) + MOD(SPrep)#"Por" es preposición (enlace), no modificador. El sintagma empieza por preposición → SPrep.
+}
+
+// 19 - SAdj predicativo (con "mostrarse")
+::Ana09 - SAdj predicativo::¿Qué tipo de sintagma es <b>"visiblemente emocionados"</b> y qué función tiene en "Los ganadores se mostraron visiblemente emocionados ante las cámaras"?{
+=SAdj → Predicativo#Correcto. "Mostrarse" es semicopulativo. El atributo solo se da con ser, estar, parecer.
+~%-25%SAdj → Atributo#El atributo solo aparece con verbos copulativos. "Mostrarse" es semicopulativo → predicativo.
+~%-25%SAdv → CCM#"Emocionados" es adjetivo, no adverbio. El sintagma es adjetival.
+~%-25%SAdj → CD#"Mostrarse" no lleva CD aquí. El SAdj indica estado del sujeto \= predicativo.
+}
+
+// 20 - SN con múltiples complementos
+::Ana10 - SN estructura compleja::¿Cuál es la estructura interna de <b>"su extraordinaria capacidad de adaptación"</b>?{
+=SN\: Det(su) + MOD(extraordinaria) + N(capacidad) + MOD(SPrep\: E(de) + T(adaptación))#Correcto. Determinante posesivo + adjetivo antepuesto + núcleo + SPrep modificador.
+~%-25%SN\: Det(su) + Det(extraordinaria) + N(capacidad) + MOD(SPrep)#"Extraordinaria" es adjetivo, no determinante. Funciona como MOD.
+~%-25%SN\: Det(su) + MOD(extraordinaria) + N(capacidad) + N(de adaptación)#Un SN solo tiene un núcleo. "De adaptación" es SPrep modificador.
+~%-25%SN\: MOD(su) + MOD(extraordinaria) + N(capacidad) + MOD(SPrep)#"Su" es determinante posesivo, no modificador.
+}
