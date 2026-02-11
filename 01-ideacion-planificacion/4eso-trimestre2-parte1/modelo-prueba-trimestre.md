@@ -2,19 +2,19 @@
 
 **Lengua Castellana y Literatura**
 
-**Nombre:** ______________________________ **Fecha:** ______________
+**Nombre:** [..............................] **Fecha:** [............]
 
 ---
 
 ## Texto
 
-> La inteligencia artificial ha dejado de ser ciencia ficción para convertirse en una realidad cotidiana. **Esta tecnología**, capaz de aprender y tomar decisiones, ya forma parte de nuestras vidas: desde <u>los asistentes de voz</u> en **nuestros** teléfonos hasta los algoritmos que deciden qué contenido vemos en las redes sociales.
+> La escritura es una de las invenciones más trascendentales de la historia humana. **Este sistema** de comunicación surgió hace aproximadamente cinco mil años en Mesopotamia, donde los sumerios desarrollaron <u>los primeros signos cuneiformes</u> para registrar transacciones comerciales y controlar los recursos de **sus** templos. Antes de este avance, el conocimiento se transmitía exclusivamente <u>de forma oral</u>, lo que limitaba la capacidad de las civilizaciones para conservar información con precisión a lo largo del tiempo.
 >
-> **Sin embargo**, la expansión de **la IA** plantea serios interrogantes éticos. Existe el riesgo de que **∅** perpetúe los sesgos de **sus** creadores. Se ha demostrado que algunos algoritmos de selección de personal discriminan a candidatos por **su** género o **su** origen étnico, simplemente porque fueron entrenados con <u>datos históricos</u> que reflejaban **esas** discriminaciones.
+> En Egipto, un sistema diferente evolucionó de manera independiente. Los jeroglíficos combinaban signos fonéticos y pictogramas para representar tanto sonidos como ideas completas. **Esta escritura** sagrada decoraba las paredes de los templos y las tumbas de los faraones. Solo los escribas, tras largos años de formación en las escuelas de los templos, dominaban <u>su compleja gramática visual</u>. El resto de la población dependía completamente de estos especialistas para acceder a cualquier documento escrito.
 >
-> La automatización amenaza con destruir <u>millones de empleos tradicionales</u>. Según un informe del Foro Económico Mundial, el 25% de los trabajos actuales podrían desaparecer en la próxima década. Surgirán nuevas profesiones, pero no todos los trabajadores podrán **reciclarse** con la misma facilidad.
+> El gran avance se produjo **posteriormente** con la invención del alfabeto fenicio, que simplificó enormemente el proceso de aprendizaje de la lectura. Con apenas veintidós signos, cualquier persona podía aprender a leer en pocas semanas. Los griegos adoptaron **aquel** sistema y le añadieron las vocales, una innovación fundamental que permitió representar las lenguas europeas con total precisión. De este alfabeto griego derivaría más tarde el alfabeto latino, base de la escritura en la mayor parte de Europa.
 >
-> Resulta <u>imprescindible</u> regular la inteligencia artificial **hoy**, antes de que sea demasiado tarde. No podemos dejar que **este desarrollo** avance <u>sin control</u>, guiado únicamente por intereses económicos. Necesitamos leyes que **les** garanticen la transparencia a los ciudadanos, la protección del empleo y la eliminación de los sesgos. **Nuestro** futuro depende de **ello**.
+> **Hoy**, miles de años después, la escritura sigue transformándose. Los emoticonos, los mensajes instantáneos y las publicaciones en redes sociales representan la última evolución de un sistema que nació grabado en tablillas de arcilla. La humanidad ha recorrido un largo camino desde aquellos primeros trazos sumerios hasta las pantallas táctiles de nuestros dispositivos.
 
 ---
 
@@ -25,16 +25,15 @@
 Resume el texto en **45-65 palabras**. El resumen debe recoger la idea principal y las ideas secundarias más relevantes. Redáctalo con tus propias palabras.
 
 | Criterio | Valoración | Observaciones |
-|----------|------------|---------------|
 | Síntesis | | |
 | Objetividad | | |
 | Recursos lingüísticos | | |
 
 ---
 
-### 2. Localización de elementos (1,5 puntos)
+### 2. Localización de elementos (2 puntos)
 
-Localiza en el texto **un ejemplo** de cada elemento (0,25 puntos cada uno):
+Localiza en el texto **un ejemplo** de cada elemento (0,5 puntos cada uno):
 
 a) Un **SN en función de sujeto**:
 
@@ -42,11 +41,7 @@ b) Un **pronombre personal átono en función de CI**:
 
 c) Un **SN en función de CD**:
 
-d) Un **SAdj en función de atributo**:
-
-e) Un **SPrep en función de CCL**:
-
-f) Un **SAdv en función de CCT**:
+d) Un **SPrep en función de CCT**:
 
 ---
 
@@ -54,26 +49,21 @@ f) Un **SAdv en función de CCT**:
 
 Redacta un texto explicando la tipología textual del fragmento. Utiliza el siguiente apoyo lingüístico:
 
-*El texto propuesto es de tipología* **___** *porque su intención principal es* **___**. *En cuanto a los rasgos lingüísticos, predominan los verbos de* **___**, *como por ejemplo "***___***". El texto está escrito en* **___** *persona y los adjetivos son* **___**, *como "***___***". Además, aparecen conectores* **___** *como "***___***". Respecto a la estructura, el texto presenta* **___**. *Por todo ello, podemos afirmar que se trata de un texto* **___**.*
+El texto propuesto es de tipología ... porque su intención principal es ... En cuanto a los rasgos lingüísticos, predominan los verbos de ..., como por ejemplo "...". El texto está escrito en ... persona y los adjetivos son ..., como "...". Además, aparecen conectores ... como "...". Respecto a la estructura, el texto presenta ... Por todo ello, podemos afirmar que se trata de un texto ...
 
 ---
 
-### 4. Cohesión textual (2 puntos)
+### 4. Cohesión textual (1,5 puntos)
 
 En el texto aparecen **palabras destacadas en negrita**. Identifica qué tipo de mecanismo de cohesión representan y, en su caso, a qué se refieren (referente).
 
 | Expresión / Palabra | Tipo de mecanismo | Referente (si procede) |
-|---------------------|-------------------|------------------------|
-| Esta tecnología | | |
-| nuestros | | |
-| Sin embargo | | |
-| la IA | | |
+| Este sistema | | |
 | sus | | |
-| esas | | |
-| hoy | | |
-| este desarrollo | | |
-| les | | |
-| ello | | |
+| Esta escritura | | |
+| posteriormente | | |
+| aquel | | |
+| Hoy | | |
 
 ---
 
@@ -81,19 +71,15 @@ En el texto aparecen **palabras destacadas en negrita**. Identifica qué tipo de
 
 Analiza la **estructura interna** de los siguientes sintagmas (aparecen <u>subrayados</u> en el texto). Indica el tipo de sintagma y la función de cada elemento (Det, N, MOD, E, T).
 
-**a) los asistentes de voz**
+**a) los primeros signos cuneiformes**
 
 
 
-**b) datos históricos**
+**b) su compleja gramática visual**
 
 
 
-**c) millones de empleos tradicionales**
-
-
-
-**d) sin control**
+**c) de forma oral**
 
 
 
@@ -102,11 +88,10 @@ Analiza la **estructura interna** de los siguientes sintagmas (aparecen <u>subra
 ## Baremo
 
 | Pregunta | Contenido | Puntos |
-|----------|-----------|--------|
 | 1 | Resumen | 2,5 |
-| 2 | Localización de elementos | 1,5 |
+| 2 | Localización de elementos | 2 |
 | 3 | Tipología textual | 2 |
-| 4 | Cohesión | 2 |
+| 4 | Cohesión | 1,5 |
 | 5 | Análisis de sintagmas | 2 |
 | **TOTAL** | | **10** |
 
@@ -123,60 +108,51 @@ Analiza la **estructura interna** de los siguientes sintagmas (aparecen <u>subra
 **Rúbrica:**
 
 | Criterio | Puntos | Descripción |
-|----------|--------|-------------|
-| Síntesis | 1 | Recoge idea principal (regular la IA) + ideas secundarias (sesgos, empleo) |
+| Síntesis | 1 | Recoge idea principal (evolución de la escritura) + ideas secundarias (Mesopotamia, Egipto, alfabeto fenicio) |
 | Objetividad | 0,75 | Redacción propia, sin opiniones añadidas, sin copia literal |
 | Recursos lingüísticos | 0,75 | Coherencia, cohesión, corrección gramatical |
 
 **Modelo de respuesta:**
 
-> La inteligencia artificial ya es parte de nuestra vida cotidiana, pero plantea problemas éticos importantes. Puede perpetuar discriminaciones y amenaza con destruir millones de empleos. Por eso, el autor defiende que es urgente crear leyes que regulen estos sistemas para garantizar la transparencia y proteger a los trabajadores. (52 palabras)
+> La escritura surgió hace cinco mil años en Mesopotamia con los signos cuneiformes. En Egipto se desarrollaron los jeroglíficos de forma independiente. El gran avance fue el alfabeto fenicio, que simplificó la lectura y dio origen a los alfabetos occidentales. Hoy la escritura sigue evolucionando con los medios digitales. (50 palabras)
 
 **Penalizaciones:**
 - Exceso de extensión (>70 palabras): -0,25
 - Falta de extensión (<40 palabras): -0,25
 - Copia literal de frases: -0,5
-- Omisión de la tesis principal: -0,5
+- Omisión de la idea principal: -0,5
 
 ---
 
-## Pregunta 2: Localización de elementos (1,5 puntos)
+## Pregunta 2: Localización de elementos (2 puntos)
 
-**Criterios:** 0,25 puntos por elemento correcto.
+**Criterios:** 0,5 puntos por elemento correcto.
 
 **Respuestas:**
 
 a) **SN en función de sujeto:**
-- *La inteligencia artificial*
-- *Esta tecnología*
-- *la expansión de la IA*
-- *La automatización*
-- *el 25% de los trabajos actuales*
-- *Nuestro futuro*
+- *La escritura*
+- *Este sistema de comunicación*
+- *los sumerios*
+- *un sistema diferente*
+- *Los jeroglíficos*
+- *Los griegos*
+- *La humanidad*
 
 b) **Pronombre personal átono en función de CI:**
-- *les* (en "les garanticen la transparencia a los ciudadanos")
+- *le* (en "le añadieron las vocales")
 
 c) **SN en función de CD:**
-- *ciencia ficción*
-- *serios interrogantes éticos*
-- *los sesgos de sus creadores*
-- *millones de empleos tradicionales*
-- *nuevas profesiones*
-- *leyes*
-- *la transparencia*, *la protección*, *la eliminación*
+- *los primeros signos cuneiformes*
+- *transacciones comerciales*
+- *signos fonéticos y pictogramas*
+- *las vocales*
+- *las lenguas europeas*
 
-d) **SAdj en función de atributo:**
-- *imprescindible* (en "resulta imprescindible regular...")
-- *cotidiana* (en "convertirse en una realidad cotidiana")
-
-e) **SPrep en función de CCL:**
-- *en nuestros teléfonos*
-- *en las redes sociales*
-- *en la próxima década*
-
-f) **SAdv en función de CCT:**
-- *hoy* (en "las decisiones que tomemos hoy")
+d) **SPrep en función de CCT:**
+- *hace aproximadamente cinco mil años*
+- *en pocas semanas*
+- *miles de años después*
 
 ---
 
@@ -185,8 +161,7 @@ f) **SAdv en función de CCT:**
 **Criterios:**
 
 | Elemento | Puntos |
-|----------|--------|
-| Tipología correcta (ARGUMENTATIVO) | 0,5 |
+| Tipología correcta (EXPOSITIVO) | 0,5 |
 | Intención comunicativa correcta | 0,25 |
 | Rasgos verbales + ejemplo | 0,25 |
 | Persona gramatical + tipo de adjetivos + ejemplo | 0,25 |
@@ -196,38 +171,33 @@ f) **SAdv en función de CCT:**
 
 **Modelo de respuesta completa:**
 
-> El texto propuesto es de tipología **argumentativa** porque su intención principal es **defender** una idea.
+> El texto propuesto es de tipología **expositiva** porque su intención principal es **informar** sobre la evolución de la escritura.
 >
-> En cuanto a los rasgos lingüísticos, predominan los verbos de **opinión y obligación**, como por ejemplo "*resulta imprescindible*" o "*necesitamos*". El texto está escrito en **tercera** persona (con momentos de primera del plural: "nuestras vidas", "tomemos") y los adjetivos son **valorativos**, como "*serios*" o "*imprescindible*".
+> En cuanto a los rasgos lingüísticos, predominan los verbos de **estado y proceso**, como por ejemplo "*surgió*" o "*evolucionó*". El texto está escrito en **tercera** persona y los adjetivos son **especificativos**, como "*cuneiformes*" o "*sagrada*".
 >
-> Además, aparecen conectores **argumentativos** como "*Sin embargo*".
+> Además, aparecen conectores **organizadores y temporales** como "*Antes de este avance*" o "*posteriormente*".
 >
-> Respecto a la estructura, el texto presenta **una tesis clara** (la necesidad de regular la IA), **argumentos** que la apoyan (sesgos, pérdida de empleo) y una **conclusión** con llamada a la acción.
+> Respecto a la estructura, el texto presenta **una organización cronológica**: introducción (definición de la escritura), desarrollo (evolución desde Mesopotamia hasta Europa) y conclusión (situación actual).
 >
-> Por todo ello, podemos afirmar que se trata de un texto **argumentativo**.
+> Por todo ello, podemos afirmar que se trata de un texto **expositivo**.
 
-**Nota:** Si el alumno responde EXPOSITIVO-ARGUMENTATIVO y lo justifica bien, dar hasta 1,5 puntos.
+**Nota:** Si el alumno responde EXPOSITIVO-DIVULGATIVO y lo justifica bien, dar hasta 1,5 puntos.
 
 ---
 
-## Pregunta 4: Cohesión textual (2 puntos)
+## Pregunta 4: Cohesión textual (1,5 puntos)
 
-**Criterios:** 0,2 puntos por fila correcta (10 filas = 2 puntos).
+**Criterios:** 0,25 puntos por fila correcta (6 filas = 1,5 puntos).
 
 **Respuestas:**
 
 | Expresión / Palabra | Tipo de mecanismo | Referente (si procede) |
-|---------------------|-------------------|------------------------|
-| Esta tecnología | Sinonimia textual + deixis | la inteligencia artificial |
-| nuestros | Deixis de persona (posesivo) | — |
-| Sin embargo | Conector contraargumentativo | — |
-| la IA | Sinonimia (sigla) | la inteligencia artificial |
-| sus | Deixis de persona (posesivo) | la IA |
-| esas | Deixis espacial (demostrativo) | discriminan por género/origen |
-| hoy | Deixis temporal | — |
-| este desarrollo | Sinonimia textual + deixis | la inteligencia artificial |
-| les | Deixis de persona (pronombre CI) | los ciudadanos |
-| ello | Proforma léxica (pronombre) | todo lo anterior / las decisiones |
+| Este sistema | Sinonimia textual + deixis | la escritura |
+| sus | Deixis de persona (posesivo) | los sumerios |
+| Esta escritura | Sinonimia textual + deixis | los jeroglíficos |
+| posteriormente | Deixis temporal (adverbio) | — |
+| aquel | Deixis espacial (demostrativo) | el alfabeto fenicio |
+| Hoy | Deixis temporal | — |
 
 **Nota:** Aceptar variantes en la nomenclatura si son coherentes.
 
@@ -235,54 +205,43 @@ f) **SAdv en función de CCT:**
 
 ## Pregunta 5: Análisis de sintagmas (2 puntos)
 
-**Criterios:** 0,5 puntos por sintagma bien analizado.
+**Criterios:** ~0,67 puntos por sintagma bien analizado.
 
-**a) los asistentes de voz** → SN
+**a) los primeros signos cuneiformes** → SN
 
 ```
 SN
 ├── Det: los
-├── N: asistentes
-└── MOD (SPrep)
-    ├── E: de
-    └── T (SN): voz (N)
+├── MOD (adj): primeros
+├── N: signos
+└── MOD (adj): cuneiformes
 ```
 
-Forma lineal: Det (*los*) + N (*asistentes*) + MOD [SPrep: E (*de*) + T (*voz*)]
+Forma lineal: Det (*los*) + MOD (*primeros*) + N (*signos*) + MOD (*cuneiformes*)
 
-**b) datos históricos** → SN
-
-```
-SN
-├── N: datos
-└── MOD (adj): históricos
-```
-
-Forma lineal: N (*datos*) + MOD (*históricos*, adjetivo)
-
-**c) millones de empleos tradicionales** → SN
+**b) su compleja gramática visual** → SN
 
 ```
 SN
-├── N: millones
-└── MOD (SPrep)
-    ├── E: de
-    └── T (SN)
-        ├── N: empleos
-        └── MOD (adj): tradicionales
+├── Det: su
+├── MOD (adj): compleja
+├── N: gramática
+└── MOD (adj): visual
 ```
 
-Forma lineal: N (*millones*) + MOD [SPrep: E (*de*) + T (N *empleos* + MOD *tradicionales*)]
+Forma lineal: Det (*su*) + MOD (*compleja*) + N (*gramática*) + MOD (*visual*)
 
-**d) sin control** → SPrep
+**c) de forma oral** → SPrep
 
 ```
 SPrep
-├── E: sin
-└── T (SN): control (N)
+├── E: de
+└── T (SN)
+    ├── N: forma
+    └── MOD (adj): oral
 ```
 
-Forma lineal: E (*sin*) + T (*control*)
+Forma lineal: E (*de*) + T [N (*forma*) + MOD (*oral*)]
 
 **Nota:** Aceptar análisis en formato lineal, arbóreo o en tabla. Lo importante es que identifiquen correctamente los componentes.
 

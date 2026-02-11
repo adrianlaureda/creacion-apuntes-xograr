@@ -205,6 +205,17 @@ function processMarkdown(body, markdown) {
       continue;
     }
 
+    // Citas de bloque (> texto) — renderizar como párrafo indentado
+    if (line.startsWith('>')) {
+      let content = line.replace(/^>\s?/, '');
+      if (content.trim() === '') continue; // Línea vacía dentro del blockquote
+      const para = body.appendParagraph('');
+      para.setIndentStart(36);
+      para.setAlignment(DocumentApp.HorizontalAlignment.JUSTIFY);
+      applyInlineFormatting(para, content);
+      continue;
+    }
+
     // Línea vacía - ignorar para evitar espaciado extra
     if (line.trim() === '') {
       continue;
@@ -382,6 +393,9 @@ function applyInlineFormatting(element, text) {
   plainText = processPattern(plainText, /(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, formatRanges, 'italic', 1);
   plainText = processPattern(plainText, /(?<!_)_(?!_)(.+?)(?<!_)_(?!_)/g, formatRanges, 'italic', 1);
 
+  // Procesar subrayado <u>texto</u>
+  plainText = processPattern(plainText, /<u>(.+?)<\/u>/g, formatRanges, 'underline', 0);
+
   // Procesar código `texto`
   plainText = processPattern(plainText, /`(.+?)`/g, formatRanges, 'code', 1);
 
@@ -433,6 +447,9 @@ function applyInlineFormatting(element, text) {
         case 'code':
           textElement.setFontFamily(range.start, end, 'Consolas');
           textElement.setBackgroundColor(range.start, end, '#f0f0f0');
+          break;
+        case 'underline':
+          textElement.setUnderline(range.start, end, true);
           break;
         case 'link':
           textElement.setLinkUrl(range.start, end, range.url);
