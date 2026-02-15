@@ -14,6 +14,7 @@
 // Configuración por defecto
 const DEFAULT_FOLDER_ID = '1Wgh01PddVJObQkRJXI_o3jnzj7645urk'; // 02_Apuntes de 4ESO
 const DEFAULT_TEMPLATE_ID = '1j2DUu6TmPuV4nxX1o0ITEnQ4m_9OauWT7mgD0qgjKCY'; // Plantilla pruebas de examen
+const SCRIPT_VERSION = '2.1.0'; // Para verificar despliegue
 
 /**
  * Maneja peticiones POST (entrada principal)
@@ -106,7 +107,8 @@ function createFromTemplate(markdown, title, folderId, templateId) {
     documentId: doc.getId(),
     documentUrl: doc.getUrl(),
     title: title,
-    fromTemplate: true
+    fromTemplate: true,
+    version: SCRIPT_VERSION
   };
 }
 
@@ -146,7 +148,8 @@ function createFormattedDoc(markdown, title, folderId) {
     documentId: doc.getId(),
     documentUrl: doc.getUrl(),
     title: title,
-    fromTemplate: false
+    fromTemplate: false,
+    version: SCRIPT_VERSION
   };
 }
 
@@ -211,7 +214,7 @@ function processMarkdown(body, markdown) {
       if (content.trim() === '') continue; // Línea vacía dentro del blockquote
       const para = body.appendParagraph('');
       para.setIndentStart(36);
-      para.setAlignment(DocumentApp.HorizontalAlignment.JUSTIFY);
+      applyParagraphStyle(para);
       applyInlineFormatting(para, content);
       continue;
     }
@@ -260,6 +263,16 @@ function processMarkdown(body, markdown) {
 }
 
 /**
+ * Aplica estilo común a párrafos: justificado, espaciado 3/3, interlineado 1.20
+ */
+function applyParagraphStyle(element) {
+  element.setAlignment(DocumentApp.HorizontalAlignment.JUSTIFY);
+  element.setSpacingBefore(3);
+  element.setSpacingAfter(3);
+  element.setLineSpacing(1.20);
+}
+
+/**
  * Añade un encabezado con alineación justificada
  */
 function addHeading(body, text, level) {
@@ -274,7 +287,7 @@ function addHeading(body, text, level) {
   };
 
   para.setHeading(headingStyles[level] || DocumentApp.ParagraphHeading.HEADING1);
-  para.setAlignment(DocumentApp.HorizontalAlignment.JUSTIFY);
+  applyParagraphStyle(para);
   applyInlineFormatting(para, text);
 }
 
@@ -283,7 +296,7 @@ function addHeading(body, text, level) {
  */
 function addParagraph(body, text) {
   const para = body.appendParagraph('');
-  para.setAlignment(DocumentApp.HorizontalAlignment.JUSTIFY);
+  applyParagraphStyle(para);
   applyInlineFormatting(para, text);
 }
 
@@ -303,7 +316,7 @@ function addListItem(body, text, ordered, indent) {
     listItem.setNestingLevel(indent);
   }
 
-  listItem.setAlignment(DocumentApp.HorizontalAlignment.JUSTIFY);
+  applyParagraphStyle(listItem);
   applyInlineFormatting(listItem, text);
 }
 
@@ -317,7 +330,7 @@ function addCodeBlock(body, code) {
   para.setBackgroundColor('#f5f5f5');
   para.setIndentStart(20);
   para.setIndentEnd(20);
-  para.setAlignment(DocumentApp.HorizontalAlignment.JUSTIFY);
+  applyParagraphStyle(para);
 }
 
 /**
@@ -344,14 +357,14 @@ function addTable(body, tableLines) {
   for (let i = 0; i < numRows; i++) {
     const tableRow = table.appendTableRow();
     for (let j = 0; j < numCols; j++) {
-      const cell = tableRow.appendTableCell(rows[i][j] || '');
+      const cellText = rows[i][j] || '';
+      const cell = tableRow.appendTableCell('');
 
-      // Aplicar justificado al párrafo de la celda
+      // Procesar formato inline en la celda (negrita, subrayado, etc.)
       if (cell.getNumChildren() > 0) {
-        const cellPara = cell.getChild(0);
-        if (cellPara.getType() === DocumentApp.ElementType.PARAGRAPH) {
-          cellPara.asParagraph().setAlignment(DocumentApp.HorizontalAlignment.JUSTIFY);
-        }
+        const cellPara = cell.getChild(0).asParagraph();
+        cellPara.setAlignment(DocumentApp.HorizontalAlignment.JUSTIFY);
+        applyInlineFormatting(cellPara, cellText);
       }
 
       // Primera fila en negrita (cabecera)
@@ -363,78 +376,52 @@ function addTable(body, tableLines) {
 }
 
 /**
- * Aplica formato inline (negrita, cursiva, código, enlaces)
+ * Aplica formato inline en una sola pasada (negrita, cursiva, subrayado, codigo, enlaces)
+ * Regex combinada: el orden de alternativas importa (** antes de *, <u> antes de _)
  */
 function applyInlineFormatting(element, text) {
-  // Primero, reemplazamos los patrones y guardamos las posiciones
-  const segments = [];
-  let currentText = text;
-  let processedText = '';
+  var combinedRegex = /\*\*(.+?)\*\*|<u>(.+?)<\/u>|\*(.+?)\*|`(.+?)`|\[(.+?)\]\((.+?)\)/g;
 
-  // Expresiones regulares para los patrones
-  const patterns = [
-    { regex: /\*\*(.+?)\*\*/g, type: 'bold' },
-    { regex: /__(.+?)__/g, type: 'bold' },
-    { regex: /\*(.+?)\*/g, type: 'italic' },
-    { regex: /_(.+?)_/g, type: 'italic' },
-    { regex: /`(.+?)`/g, type: 'code' },
-    { regex: /\[(.+?)\]\((.+?)\)/g, type: 'link' }
-  ];
-
-  // Construir texto plano y guardar segmentos con formato
-  let plainText = text;
-  const formatRanges = [];
-
-  // Procesar negritas **texto**
-  plainText = processPattern(plainText, /\*\*(.+?)\*\*/g, formatRanges, 'bold', 2);
-  plainText = processPattern(plainText, /__(.+?)__/g, formatRanges, 'bold', 2);
-
-  // Procesar cursivas *texto*
-  plainText = processPattern(plainText, /(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, formatRanges, 'italic', 1);
-  plainText = processPattern(plainText, /(?<!_)_(?!_)(.+?)(?<!_)_(?!_)/g, formatRanges, 'italic', 1);
-
-  // Procesar subrayado <u>texto</u>
-  plainText = processPattern(plainText, /<u>(.+?)<\/u>/g, formatRanges, 'underline', 0);
-
-  // Procesar código `texto`
-  plainText = processPattern(plainText, /`(.+?)`/g, formatRanges, 'code', 1);
-
-  // Procesar enlaces [texto](url)
-  const linkRegex = /\[(.+?)\]\((.+?)\)/g;
-  let linkMatch;
-  let offset = 0;
-  const tempText = plainText;
-
-  while ((linkMatch = linkRegex.exec(text)) !== null) {
-    const fullMatch = linkMatch[0];
-    const linkText = linkMatch[1];
-    const url = linkMatch[2];
-
-    const startInPlain = plainText.indexOf(fullMatch);
-    if (startInPlain !== -1) {
-      plainText = plainText.replace(fullMatch, linkText);
-      formatRanges.push({
-        start: startInPlain,
-        end: startInPlain + linkText.length,
-        type: 'link',
-        url: url
-      });
+  var markers = [];
+  var m;
+  while ((m = combinedRegex.exec(text)) !== null) {
+    if (m[1] !== undefined) {
+      markers.push({ start: m.index, len: m[0].length, content: m[1], type: 'bold' });
+    } else if (m[2] !== undefined) {
+      markers.push({ start: m.index, len: m[0].length, content: m[2], type: 'underline' });
+    } else if (m[3] !== undefined) {
+      markers.push({ start: m.index, len: m[0].length, content: m[3], type: 'italic' });
+    } else if (m[4] !== undefined) {
+      markers.push({ start: m.index, len: m[0].length, content: m[4], type: 'code' });
+    } else if (m[5] !== undefined) {
+      markers.push({ start: m.index, len: m[0].length, content: m[5], type: 'link', url: m[6] });
     }
   }
 
-  // Establecer el texto
-  if (element.getType() === DocumentApp.ElementType.PARAGRAPH) {
-    element.setText(plainText);
-  } else if (element.getType() === DocumentApp.ElementType.LIST_ITEM) {
-    element.setText(plainText);
+  var plainText = '';
+  var formatRanges = [];
+  var lastEnd = 0;
+
+  for (var i = 0; i < markers.length; i++) {
+    var mk = markers[i];
+    plainText += text.substring(lastEnd, mk.start);
+    var plainStart = plainText.length;
+    plainText += mk.content;
+    formatRanges.push({ start: plainStart, end: plainText.length, type: mk.type, url: mk.url || null });
+    lastEnd = mk.start + mk.len;
   }
+  plainText += text.substring(lastEnd);
 
-  // Aplicar formatos
-  const textElement = element.editAsText();
+  element.setText(plainText);
 
-  for (const range of formatRanges) {
+  if (plainText.length === 0) return;
+  var textElement = element.editAsText();
+
+  for (var j = 0; j < formatRanges.length; j++) {
+    var range = formatRanges[j];
     if (range.start >= plainText.length) continue;
-    const end = Math.min(range.end - 1, plainText.length - 1);
+    var end = Math.min(range.end - 1, plainText.length - 1);
+    if (end < range.start) continue;
 
     try {
       switch (range.type) {
@@ -444,12 +431,12 @@ function applyInlineFormatting(element, text) {
         case 'italic':
           textElement.setItalic(range.start, end, true);
           break;
+        case 'underline':
+          textElement.setUnderline(range.start, end, true);
+          break;
         case 'code':
           textElement.setFontFamily(range.start, end, 'Consolas');
           textElement.setBackgroundColor(range.start, end, '#f0f0f0');
-          break;
-        case 'underline':
-          textElement.setUnderline(range.start, end, true);
           break;
         case 'link':
           textElement.setLinkUrl(range.start, end, range.url);
@@ -458,43 +445,9 @@ function applyInlineFormatting(element, text) {
           break;
       }
     } catch (e) {
-      // Ignorar errores de formato en rangos inválidos
+      // Ignorar errores de formato en rangos invalidos
     }
   }
-}
-
-/**
- * Procesa un patrón y actualiza el texto y los rangos de formato
- */
-function processPattern(text, regex, formatRanges, type, markerLength) {
-  let result = text;
-  let match;
-  let offset = 0;
-
-  // Crear nueva regex para cada ejecución
-  const newRegex = new RegExp(regex.source, regex.flags);
-
-  while ((match = newRegex.exec(text)) !== null) {
-    const fullMatch = match[0];
-    const content = match[1];
-    const startInOriginal = match.index;
-
-    // Calcular posición en el texto resultante
-    const startInResult = result.indexOf(fullMatch);
-    if (startInResult === -1) continue;
-
-    // Reemplazar en resultado
-    result = result.substring(0, startInResult) + content + result.substring(startInResult + fullMatch.length);
-
-    // Guardar rango de formato
-    formatRanges.push({
-      start: startInResult,
-      end: startInResult + content.length,
-      type: type
-    });
-  }
-
-  return result;
 }
 
 /**
