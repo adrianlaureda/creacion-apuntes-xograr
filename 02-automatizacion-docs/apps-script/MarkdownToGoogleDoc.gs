@@ -14,7 +14,7 @@
 // Configuración por defecto
 const DEFAULT_FOLDER_ID = '1Wgh01PddVJObQkRJXI_o3jnzj7645urk'; // 02_Apuntes de 4ESO
 const DEFAULT_TEMPLATE_ID = '1j2DUu6TmPuV4nxX1o0ITEnQ4m_9OauWT7mgD0qgjKCY'; // Plantilla pruebas de examen
-const SCRIPT_VERSION = '2.1.0'; // Para verificar despliegue
+const SCRIPT_VERSION = '2.1.1'; // Fix: guardia para celdas vacías en tablas
 
 /**
  * Maneja peticiones POST (entrada principal)
@@ -380,6 +380,8 @@ function addTable(body, tableLines) {
  * Regex combinada: el orden de alternativas importa (** antes de *, <u> antes de _)
  */
 function applyInlineFormatting(element, text) {
+  if (!text) return;
+
   var combinedRegex = /\*\*(.+?)\*\*|<u>(.+?)<\/u>|\*(.+?)\*|`(.+?)`|\[(.+?)\]\((.+?)\)/g;
 
   var markers = [];
