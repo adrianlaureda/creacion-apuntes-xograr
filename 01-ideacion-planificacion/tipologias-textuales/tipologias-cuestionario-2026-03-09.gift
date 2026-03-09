@@ -1,0 +1,121 @@
+$CATEGORY: Tipologías textuales 2º ESO
+
+// Pregunta 1: Identificar tipología narrativa (fútbol)
+::Tipología texto fútbol::Lee el texto\: "El sábado por la tarde, el equipo de Carlos salió al campo. Carlos marcó dos goles en la segunda parte y el árbitro pitó el final cuando su equipo ganaba tres a uno. Todos corrieron a abrazarse en el centro del campo." Este texto es...{
+=Narrativo#Correcto. Cuenta acciones de personajes en orden temporal (salió, marcó, pitó, corrieron).
+~%-25%Descriptivo#No muestra cómo es algo. Cuenta lo que ocurrió durante el partido.
+~%-25%Expositivo#No explica un tema de forma objetiva. Relata una historia con personajes.
+~%-25%Argumentativo#No hay ninguna opinión ni intento de convencer.
+}
+
+// Pregunta 2: Adjetivos en textos descriptivos
+::Adjetivos texto descriptivo::¿Qué tipo de adjetivos predominan en un texto <b>descriptivo</b>?{
+=Adjetivos calificativos que expresan cualidades (bonita, oscura, tranquila)#Correcto. Sirven para mostrar cómo es algo o alguien.
+~%-25%Adjetivos posesivos (mi, tu, su)#Esos indican a quién pertenece algo; no son propios de la descripción.
+~%-25%Adjetivos demostrativos (este, ese, aquel)#Esos señalan distancia o posición; no describen cualidades.
+~%-25%Adjetivos numerales (primero, dos, tercero)#Esos expresan cantidad u orden, no cualidades.
+}
+
+// Pregunta 3: Identificar tipología descriptiva (playa)
+::Tipología texto playa::Lee el texto\: "La playa era larga y solitaria. La arena tenía un color dorado claro y las olas llegaban suaves y tranquilas a la orilla. Al fondo, el cielo azul se mezclaba con el horizonte del mar." Este texto es...{
+=Descriptivo#Correcto. Muestra cómo es la playa con adjetivos calificativos y verbos de estado.
+~%-25%Narrativo#No cuenta acciones de personajes ni hay hechos en orden temporal.
+~%-25%Expositivo#No informa de forma objetiva sobre las playas en general.
+~%-25%Argumentativo#No defiende ninguna opinión sobre la playa.
+}
+
+// Pregunta 4: Verbos en textos descriptivos
+::Verbos texto descriptivo::¿Qué tipo de verbos predominan en un texto <b>descriptivo</b>?{
+=Verbos de estado (ser, estar, tener, parecer)#Correcto. Expresan cómo es algo en un momento dado, sin movimiento ni acción.
+~%-25%Verbos de acción (correr, saltar, gritar)#Esos son propios del texto narrativo.
+~%-25%Verbos de opinión (creer, opinar, considerar)#Esos aparecen en textos argumentativos.
+~%-25%Verbos en futuro (irá, vendrá, hará)#El descriptivo suele usar presente o imperfecto de estado.
+}
+
+// Pregunta 5: Identificar tipología expositiva (selva amazónica)
+::Tipología texto selva::Lee el texto\: "La selva amazónica es el bosque tropical más grande del mundo. Ocupa unos 5,5 millones de kilómetros cuadrados y se extiende por nueve países de América del Sur. Alberga más del 10% de todas las especies conocidas del planeta." Este texto es...{
+=Expositivo#Correcto. Informa con datos objetivos sobre la selva amazónica sin dar opiniones.
+~%-25%Argumentativo#No defiende ninguna opinión; solo aporta información objetiva.
+~%-25%Narrativo#No cuenta una historia con personajes ni acciones en orden temporal.
+~%-25%Descriptivo#Aunque tiene rasgos descriptivos, su intención principal es informar con datos.
+}
+
+// Pregunta 6: Conectores argumentativos
+::Conectores texto argumentativo::¿Qué palabras o expresiones son características del texto <b>argumentativo</b>?{
+="En mi opinión", "creo que", "por tanto", "sin embargo"#Correcto. Expresan la postura del autor y organizan los argumentos.
+~%-25%"Después", "entonces", "al día siguiente"#Esos son conectores temporales, propios del texto narrativo.
+~%-25%"Es decir", "por ejemplo", "en concreto"#Esos sirven para aclarar o ejemplificar; son más propios del expositivo.
+~%-25%"Alto", "oscuro", "tranquilo"#Esas son palabras descriptivas, no conectores.
+}
+
+// Pregunta 7: Identificar tipología argumentativa (videojuegos)
+::Tipología texto videojuegos::Lee el texto\: "Creo que los videojuegos no son tan malos como dicen los adultos. En primer lugar, muchos juegos mejoran la concentración y los reflejos. Además, los juegos en equipo fomentan la cooperación. Por eso, deberían usarse más en la educación." Este texto es...{
+=Argumentativo#Correcto. El autor da su opinión ("creo que") y la defiende con razones y conectores argumentativos.
+~%-25%Expositivo#No solo informa; da opinión y pretende convencer al lector.
+~%-25%Narrativo#No cuenta una historia ni hay personajes con acciones.
+~%-25%Descriptivo#No muestra cómo son los videojuegos físicamente.
+}
+
+// Pregunta 8: Diferencia narrativo / descriptivo
+::Diferencia narrativo descriptivo::¿Cuál es la diferencia clave entre un texto <b>narrativo</b> y uno <b>descriptivo</b>?{
+=El narrativo cuenta acciones en el tiempo; el descriptivo muestra cómo es algo en un momento#Correcto. Es la distinción fundamental entre ambos.
+~%-25%No hay diferencia: los dos cuentan historias#Son tipos distintos con intenciones diferentes.
+~%-25%El narrativo tiene adjetivos y el descriptivo verbos de acción#Es justo al revés: los adjetivos son propios del descriptivo.
+~%-25%El narrativo es siempre más largo que el descriptivo#La longitud no es lo que los diferencia.
+}
+
+// Pregunta 9: Identificar tipología narrativa (visita abuelos)
+::Tipología texto abuelos::Lee el texto\: "El domingo por la mañana, Ana y su hermano cogieron el autobús hacia el pueblo. Llegaron al mediodía, comieron con los abuelos y por la tarde dieron un paseo por el campo. Al anochecer, volvieron a casa cansados pero contentos." Este texto es...{
+=Narrativo#Correcto. Cuenta acciones de personajes en orden cronológico (cogieron, llegaron, comieron, dieron, volvieron).
+~%-25%Descriptivo#No muestra cómo es un lugar o persona; cuenta lo que ocurrió durante el día.
+~%-25%Expositivo#No explica ningún tema de forma objetiva.
+~%-25%Argumentativo#No hay ninguna opinión ni intención de convencer.
+}
+
+// Pregunta 10: Verbos en textos narrativos
+::Verbos texto narrativo tiempo::¿Cómo suelen aparecer los verbos en un texto <b>narrativo</b>?{
+=Verbos de acción en tiempo pasado (corrió, llegó, dijo, saltó)#Correcto. Las acciones de los personajes se narran habitualmente en pasado.
+~%-25%Verbos de estado en presente (es, está, tiene)#Esos son propios del texto descriptivo.
+~%-25%Verbos de opinión en primera persona (creo, opino)#Esos aparecen en textos argumentativos.
+~%-25%El texto narrativo no tiene verbos#Todo texto tiene verbos; en el narrativo son especialmente abundantes.
+}
+
+// Pregunta 11: Identificar tipología descriptiva (perro)
+::Tipología texto perro::Lee el texto\: "El perro de mi vecina es grande y negro. Tiene las orejas largas y caídas y la cola muy peluda. Sus ojos son de color miel y siempre parece estar sonriendo." Este texto es...{
+=Descriptivo#Correcto. Muestra cómo es el perro con adjetivos calificativos y verbos de estado (es, tiene, son, parece).
+~%-25%Narrativo#No cuenta lo que hace el perro; solo dice cómo es.
+~%-25%Expositivo#No informa de forma científica sobre los perros.
+~%-25%Argumentativo#No defiende ninguna opinión sobre el perro.
+}
+
+// Pregunta 12: Identificar tipología expositiva (dinosaurios)
+::Tipología texto dinosaurios::Lee el texto\: "Los dinosaurios fueron reptiles que dominaron la Tierra durante el Mesozoico, hace entre 230 y 66 millones de años. Existieron más de 700 géneros distintos. Su extinción se relaciona con el impacto de un meteorito y los cambios climáticos que produjo." Este texto es...{
+=Expositivo#Correcto. Explica información objetiva sobre los dinosaurios sin dar opiniones.
+~%-25%Narrativo#No cuenta una historia con personajes; aporta datos científicos.
+~%-25%Argumentativo#No defiende ninguna postura; solo informa.
+~%-25%Descriptivo#Aunque describe a los dinosaurios, su intención es informar con datos objetivos.
+}
+
+// Pregunta 13: Ejemplos de texto expositivo
+::Ejemplo texto expositivo::¿Cuál de estos es un ejemplo de texto <b>expositivo</b>?{
+=Un artículo de Wikipedia que explica cómo funcionan los volcanes#Correcto. Informa de forma objetiva sin dar opiniones.
+~%-25%Una novela de aventuras#Eso es un texto narrativo.
+~%-25%Un artículo de opinión en un periódico#Eso es un texto argumentativo.
+~%-25%Un poema que describe el mar en tormenta#Eso es principalmente descriptivo.
+}
+
+// Pregunta 14: Identificar tipología argumentativa (redes sociales)
+::Tipología texto redes::Lee el texto\: "En mi opinión, las redes sociales deberían estar prohibidas para menores de catorce años. Está demostrado que afectan negativamente a la autoestima de los adolescentes y reducen el tiempo de estudio. Por tanto, los padres y el Estado tienen la obligación de proteger a los jóvenes." Este texto es...{
+=Argumentativo#Correcto. El autor defiende su opinión ("en mi opinión") con razones y conectores argumentativos ("por tanto").
+~%-25%Expositivo#No solo informa; opina y pretende convencer al lector.
+~%-25%Narrativo#No cuenta una historia; defiende una postura sobre las redes sociales.
+~%-25%Descriptivo#No describe cómo son las redes sociales; las juzga y argumenta.
+}
+
+// Pregunta 15: Intención comunicativa del texto expositivo
+::Intención texto expositivo::¿Cuál es la intención principal de un texto <b>expositivo</b>?{
+=Informar sobre un tema de forma objetiva, sin dar opiniones#Correcto. Explica hechos, datos y conceptos de forma clara y neutral.
+~%-25%Convencer al lector de una idea#Esa es la intención del texto argumentativo.
+~%-25%Contar una historia con personajes#Esa es la intención del texto narrativo.
+~%-25%Mostrar cómo es un lugar o una persona#Esa es la intención del texto descriptivo.
+}
