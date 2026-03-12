@@ -1,0 +1,371 @@
+$CATEGORY: Tipologías textuales 2º ESO GE Adaptación
+
+// ─── TEXTO 1: Argumentativo (móviles en clase) ───────────────────────────────
+
+// Pregunta 1: Tipología
+::T1 Tipología móviles::Lee el texto\: <br><br>"Creo que los móviles deberían prohibirse en las aulas durante las horas de clase. Según un informe reciente, el 65% de los estudiantes reconoce que los usa para cosas que no tienen que ver con la materia. Además, la presencia del teléfono, aunque esté boca abajo, distrae la atención. En conclusión, guardar el móvil es una decisión inteligente que mejora el rendimiento de todos."<br><br>¿Qué tipo de texto es?{
+=Argumentativo#Correcto. El autor da su opinión ("creo que") y la defiende con argumentos; al final llega a una conclusión.
+~%-25%Narrativo#No cuenta una historia con personajes ni acciones en orden temporal.
+~%-25%Descriptivo#No muestra cómo es un lugar, objeto o persona.
+~%-25%Expositivo#No solo informa; opina y pretende convencer al lector.
+}
+
+// Pregunta 2: Intención comunicativa
+::T1 Intención móviles::Lee el texto\: <br><br>"Creo que los móviles deberían prohibirse en las aulas durante las horas de clase. Según un informe reciente, el 65% de los estudiantes reconoce que los usa para cosas que no tienen que ver con la materia. Además, la presencia del teléfono, aunque esté boca abajo, distrae la atención. En conclusión, guardar el móvil es una decisión inteligente que mejora el rendimiento de todos."<br><br>¿Cuál es la intención principal de este texto?{
+=Convencer al lector de que los móviles deberían prohibirse en clase#Correcto. El autor expone su opinión y aporta razones para que el lector la comparta.
+~%-25%Informar sobre el uso del móvil en las aulas sin dar ninguna opinión#Aunque hay datos, el texto da opiniones y pretende convencer: no es solo informativo.
+~%-25%Narrar lo que ocurre en un aula cuando hay móviles#No cuenta acciones de personajes en orden temporal.
+~%-25%Describir cómo es un aula típica con móviles#No muestra físicamente cómo es el aula.
+}
+
+// Pregunta 3: Verbos predominantes
+::T1 Verbos móviles::Lee el texto\: <br><br>"Creo que los móviles deberían prohibirse en las aulas durante las horas de clase. Según un informe reciente, el 65% de los estudiantes reconoce que los usa para cosas que no tienen que ver con la materia. Además, la presencia del teléfono, aunque esté boca abajo, distrae la atención. En conclusión, guardar el móvil es una decisión inteligente que mejora el rendimiento de todos."<br><br>¿Qué tipo de verbos predominan en este texto?{
+=Verbos de opinión y valoración (creo, deberían, mejora)#Correcto. Expresan la postura del autor y emiten juicios de valor.
+~%-25%Verbos de acción en pasado (corrió, llegó, dijo)#Esos son propios del texto narrativo.
+~%-25%Verbos de estado (es, está, tiene, parece)#Esos predominan en el texto descriptivo.
+~%-25%Verbos impersonales y científicos (se denomina, se clasifica)#Esos son propios del texto expositivo.
+}
+
+// Pregunta 4: Estructura
+::T1 Estructura móviles::Lee el texto\: <br><br>"Creo que los móviles deberían prohibirse en las aulas durante las horas de clase. Según un informe reciente, el 65% de los estudiantes reconoce que los usa para cosas que no tienen que ver con la materia. Además, la presencia del teléfono, aunque esté boca abajo, distrae la atención. En conclusión, guardar el móvil es una decisión inteligente que mejora el rendimiento de todos."<br><br>¿Cómo está organizado este texto?{
+=Tesis → argumentos → conclusión#Correcto. El autor presenta su opinión, la defiende con razones y cierra con "en conclusión".
+~%-25%Planteamiento → nudo → desenlace#Esa es la estructura del texto narrativo.
+~%-25%Descripción general → descripción de detalles#Esa es la estructura del texto descriptivo.
+~%-25%Definición → datos → ejemplos#Esa es la estructura del texto expositivo.
+}
+
+// Pregunta 5: Objetivo / subjetivo
+::T1 Objetivo subjetivo móviles::Lee el texto\: <br><br>"Creo que los móviles deberían prohibirse en las aulas durante las horas de clase. Según un informe reciente, el 65% de los estudiantes reconoce que los usa para cosas que no tienen que ver con la materia. Además, la presencia del teléfono, aunque esté boca abajo, distrae la atención. En conclusión, guardar el móvil es una decisión inteligente que mejora el rendimiento de todos."<br><br>¿Es este texto objetivo o subjetivo? ¿Por qué?{
+=Es <b>subjetivo</b>, porque el autor da su opinión con expresiones como "creo que" y valora con "una decisión inteligente"#Correcto. Esas expresiones personales y valorativas demuestran que el texto no es imparcial.
+~%-25%Es objetivo, porque usa un dato real ("65% de los estudiantes")#Aunque hay un dato, el texto en conjunto es subjetivo por las opiniones del autor.
+~%-25%Es objetivo, porque habla de un tema que existe en la realidad#El tema puede ser real sin que el texto sea objetivo; lo que importa es si el autor opina o no.
+~%-25%Es subjetivo, porque habla de móviles#El tema no determina la objetividad; sí lo hacen las expresiones de opinión y valoración.
+}
+
+
+// ─── TEXTO 2: Narrativo (Clara) ──────────────────────────────────────────────
+
+// Pregunta 6: Tipología
+::T2 Tipología Clara::Lee el texto\: <br><br>"Aquella noche, Clara no podía dormir. Se levantó de la cama sin hacer ruido, bajó a la cocina y abrió la nevera sin saber muy bien qué buscaba. Cogió un vaso de agua, se sentó en la silla junto a la ventana y miró la calle vacía durante un buen rato. Luego volvió a subir, se tumbó boca arriba y, sin darse cuenta, se quedó dormida."<br><br>¿Qué tipo de texto es?{
+=Narrativo#Correcto. Cuenta las acciones de Clara en orden temporal: se levantó, bajó, abrió, cogió, miró, volvió...
+~%-25%Descriptivo#No muestra cómo es Clara; cuenta lo que hizo esa noche paso a paso.
+~%-25%Expositivo#No explica un tema de forma objetiva con datos.
+~%-25%Argumentativo#No hay ninguna opinión ni intento de convencer.
+}
+
+// Pregunta 7: Intención comunicativa
+::T2 Intención Clara::Lee el texto\: <br><br>"Aquella noche, Clara no podía dormir. Se levantó de la cama sin hacer ruido, bajó a la cocina y abrió la nevera sin saber muy bien qué buscaba. Cogió un vaso de agua, se sentó en la silla junto a la ventana y miró la calle vacía durante un buen rato. Luego volvió a subir, se tumbó boca arriba y, sin darse cuenta, se quedó dormida."<br><br>¿Cuál es la intención principal de este texto?{
+=Contar lo que le pasó a Clara durante esa noche#Correcto. El narrador relata las acciones de la personaje en orden cronológico.
+~%-25%Describir cómo es Clara físicamente#No explica cómo es Clara; cuenta lo que hizo.
+~%-25%Convencer al lector de algo#No hay ninguna opinión ni argumentos.
+~%-25%Informar sobre el insomnio con datos objetivos#No aporta datos científicos; cuenta una experiencia particular.
+}
+
+// Pregunta 8: Verbos predominantes
+::T2 Verbos Clara::Lee el texto\: <br><br>"Aquella noche, Clara no podía dormir. Se levantó de la cama sin hacer ruido, bajó a la cocina y abrió la nevera sin saber muy bien qué buscaba. Cogió un vaso de agua, se sentó en la silla junto a la ventana y miró la calle vacía durante un buen rato. Luego volvió a subir, se tumbó boca arriba y, sin darse cuenta, se quedó dormida."<br><br>¿Qué tipo de verbos predominan en este texto?{
+=Verbos de acción en pasado (se levantó, bajó, abrió, cogió, miró, volvió)#Correcto. Expresan las acciones de Clara en orden temporal.
+~%-25%Verbos de estado en presente (es, está, tiene)#Esos predominan en el texto descriptivo.
+~%-25%Verbos de opinión (creo, considero, opino)#Esos son propios del texto argumentativo.
+~%-25%Verbos impersonales (se denomina, se encuentra)#Esos son propios del texto expositivo.
+}
+
+// Pregunta 9: Estructura
+::T2 Estructura Clara::Lee el texto\: <br><br>"Aquella noche, Clara no podía dormir. Se levantó de la cama sin hacer ruido, bajó a la cocina y abrió la nevera sin saber muy bien qué buscaba. Cogió un vaso de agua, se sentó en la silla junto a la ventana y miró la calle vacía durante un buen rato. Luego volvió a subir, se tumbó boca arriba y, sin darse cuenta, se quedó dormida."<br><br>¿Cómo está organizado este texto?{
+=Sigue un orden temporal\: las acciones se narran en el orden en que ocurrieron#Correcto. Los conectores "luego" y "sin darse cuenta" marcan la secuencia cronológica.
+~%-25%Sigue una estructura de tesis + argumentos + conclusión#Esa es la estructura del texto argumentativo.
+~%-25%Describe el espacio de manera estática, sin avanzar en el tiempo#Eso es propio del texto descriptivo.
+~%-25%Explica las causas y consecuencias de un fenómeno#Eso es propio del texto expositivo.
+}
+
+// Pregunta 10: Objetivo / subjetivo
+::T2 Objetivo subjetivo Clara::Lee el texto\: <br><br>"Aquella noche, Clara no podía dormir. Se levantó de la cama sin hacer ruido, bajó a la cocina y abrió la nevera sin saber muy bien qué buscaba. Cogió un vaso de agua, se sentó en la silla junto a la ventana y miró la calle vacía durante un buen rato. Luego volvió a subir, se tumbó boca arriba y, sin darse cuenta, se quedó dormida."<br><br>¿Es este texto objetivo o subjetivo? ¿Por qué?{
+=Es <b>objetivo</b>, porque el narrador cuenta las acciones de Clara sin valorarlas ni dar su opinión#Correcto. No aparecen expresiones de juicio personal; solo se narran hechos.
+~%-25%Es subjetivo, porque habla de los sentimientos de Clara#El texto describe acciones, no expresa los sentimientos de Clara ni las opiniones del narrador.
+~%-25%Es subjetivo, porque usa adjetivos como "vacía"#"Vacía" describe el estado real de la calle, no expresa una opinión personal del narrador.
+~%-25%Es objetivo, porque usa datos científicos sobre el insomnio#No hay datos científicos; la objetividad viene de que el narrador no opina sobre lo que cuenta.
+}
+
+
+// ─── TEXTO 3: Descriptivo (aula de tecnología) ───────────────────────────────
+
+// Pregunta 11: Tipología
+::T3 Tipología tecnología::Lee el texto\: <br><br>"El aula de tecnología era el lugar más desordenado del instituto. En las mesas rectangulares se acumulaban cables enredados, teclados viejos y herramientas sin clasificar. Las paredes estaban cubiertas de carteles técnicos plastificados y diagramas en blanco y negro. En un rincón, una impresora 3D de color naranja destacaba entre el resto del material gris y polvoriento. El suelo de goma negra amortiguaba el ruido de las sillas."<br><br>¿Qué tipo de texto es?{
+=Descriptivo#Correcto. Muestra cómo es el aula con muchos adjetivos calificativos y verbos de estado.
+~%-25%Narrativo#No cuenta acciones de personajes ni hechos en orden temporal.
+~%-25%Expositivo#No explica un tema de forma objetiva y científica con datos.
+~%-25%Argumentativo#No defiende ninguna opinión sobre el aula.
+}
+
+// Pregunta 12: Intención comunicativa
+::T3 Intención tecnología::Lee el texto\: <br><br>"El aula de tecnología era el lugar más desordenado del instituto. En las mesas rectangulares se acumulaban cables enredados, teclados viejos y herramientas sin clasificar. Las paredes estaban cubiertas de carteles técnicos plastificados y diagramas en blanco y negro. En un rincón, una impresora 3D de color naranja destacaba entre el resto del material gris y polvoriento. El suelo de goma negra amortiguaba el ruido de las sillas."<br><br>¿Cuál es la intención principal de este texto?{
+=Mostrar cómo es el aula de tecnología, describiendo sus características#Correcto. El texto no cuenta acciones ni argumenta; presenta el espacio con detalle.
+~%-25%Convencer al lector de que el aula es un lugar peligroso#No hay argumentos ni se pide al lector que haga o crea algo.
+~%-25%Narrar lo que ocurrió en el aula un día concreto#No hay acciones ni personajes; el texto es una fotografía estática del espacio.
+~%-25%Informar sobre el equipamiento técnico de los institutos en general#No aporta datos generales; describe un aula concreta.
+}
+
+// Pregunta 13: Verbos predominantes
+::T3 Verbos tecnología::Lee el texto\: <br><br>"El aula de tecnología era el lugar más desordenado del instituto. En las mesas rectangulares se acumulaban cables enredados, teclados viejos y herramientas sin clasificar. Las paredes estaban cubiertas de carteles técnicos plastificados y diagramas en blanco y negro. En un rincón, una impresora 3D de color naranja destacaba entre el resto del material gris y polvoriento. El suelo de goma negra amortiguaba el ruido de las sillas."<br><br>¿Qué tipo de verbos predominan en este texto?{
+=Verbos de estado en pasado (era, se acumulaban, estaban cubiertas, amortiguaba)#Correcto. Expresan cómo era el aula en ese momento, sin movimiento ni acción.
+~%-25%Verbos de acción en pasado (corrió, entró, gritó)#No hay acciones de personajes; el texto describe un espacio estático.
+~%-25%Verbos de opinión (creo, considero, opino)#No hay valoraciones personales directas del autor.
+~%-25%Verbos en futuro (será, tendrá, habrá)#El texto usa el pasado (imperfecto) para la descripción.
+}
+
+// Pregunta 14: Adjetivos predominantes
+::T3 Adjetivos tecnología::Lee el texto\: <br><br>"El aula de tecnología era el lugar más desordenado del instituto. En las mesas rectangulares se acumulaban cables enredados, teclados viejos y herramientas sin clasificar. Las paredes estaban cubiertas de carteles técnicos plastificados y diagramas en blanco y negro. En un rincón, una impresora 3D de color naranja destacaba entre el resto del material gris y polvoriento. El suelo de goma negra amortiguaba el ruido de las sillas."<br><br>¿Qué tipo de adjetivos predominan en este texto?{
+=Adjetivos calificativos que describen cualidades (rectangulares, enredados, viejos, naranja, gris, polvoriento, negra)#Correcto. Sirven para mostrar cómo son los objetos y el espacio del aula.
+~%-25%Adjetivos posesivos (mi, tu, su, nuestro)#No aparecen adjetivos posesivos en el texto.
+~%-25%Adjetivos demostrativos (este, ese, aquel)#No aparecen adjetivos demostrativos en el texto.
+~%-25%Adjetivos numerales (primero, dos, tercero)#Apenas hay numerales; los calificativos son los que predominan claramente.
+}
+
+// Pregunta 15: Objetivo / subjetivo
+::T3 Objetivo subjetivo tecnología::Lee el texto\: <br><br>"El aula de tecnología era el lugar más desordenado del instituto. En las mesas rectangulares se acumulaban cables enredados, teclados viejos y herramientas sin clasificar. Las paredes estaban cubiertas de carteles técnicos plastificados y diagramas en blanco y negro. En un rincón, una impresora 3D de color naranja destacaba entre el resto del material gris y polvoriento. El suelo de goma negra amortiguaba el ruido de las sillas."<br><br>¿Es este texto objetivo o subjetivo? ¿Por qué?{
+=Es <b>subjetivo</b>, porque el narrador valora el aula como "el lugar más desordenado", lo cual es un juicio personal#Correcto. Esa expresión superlativa refleja la opinión del autor, no un dato medible.
+~%-25%Es objetivo, porque describe objetos reales como cables y teclados#Los objetos pueden ser reales, pero calificarlos de "más desordenados" es una valoración personal.
+~%-25%Es objetivo, porque no usa "creo que" ni "en mi opinión"#La subjetividad no solo se expresa con esas fórmulas; también con superlativos valorativos.
+~%-25%Es subjetivo, porque usa muchos adjetivos#No todos los adjetivos hacen un texto subjetivo; "rectangulares" es objetivo, pero "más desordenado" no.
+}
+
+
+// ─── TEXTO 4: Descriptivo (sala de estudio, biblioteca) ──────────────────────
+
+// Pregunta 16: Tipología
+::T4 Tipología biblioteca::Lee el texto\: <br><br>"La sala de estudio de la biblioteca era pequeña y silenciosa. Las paredes estaban pintadas de un blanco mate algo desconchado. En el centro, cuatro mesas rectangulares de madera clara ocupaban casi todo el espacio. Las sillas, con patas metálicas y asientos azules, resultaban incómodas al cabo de un rato. Una ventana alta y estrecha dejaba entrar una luz grisácea que apenas alcanzaba el rincón del fondo."<br><br>¿Qué tipo de texto es?{
+=Descriptivo#Correcto. Muestra cómo es la sala con adjetivos calificativos y verbos de estado.
+~%-25%Narrativo#No cuenta acciones ni hechos con personajes en orden temporal.
+~%-25%Expositivo#No informa de forma objetiva y científica sobre las salas de estudio en general.
+~%-25%Argumentativo#No defiende ninguna opinión sobre la sala.
+}
+
+// Pregunta 17: Intención comunicativa
+::T4 Intención biblioteca::Lee el texto\: <br><br>"La sala de estudio de la biblioteca era pequeña y silenciosa. Las paredes estaban pintadas de un blanco mate algo desconchado. En el centro, cuatro mesas rectangulares de madera clara ocupaban casi todo el espacio. Las sillas, con patas metálicas y asientos azules, resultaban incómodas al cabo de un rato. Una ventana alta y estrecha dejaba entrar una luz grisácea que apenas alcanzaba el rincón del fondo."<br><br>¿Cuál es la intención principal de este texto?{
+=Mostrar cómo es la sala de estudio, describiendo su aspecto y sus características#Correcto. El texto no narra acciones ni argumenta; presenta el espacio con detalle visual.
+~%-25%Convencer al lector de que la sala es incómoda#Aunque "resultaban incómodas" es una valoración, la intención principal es describir el espacio, no argumentar.
+~%-25%Narrar lo que ocurre en la sala durante un día de estudio#No hay acciones ni personajes; el texto es una descripción estática.
+~%-25%Informar sobre las características ideales de una sala de estudio#No aporta datos generales ni explicaciones objetivas.
+}
+
+// Pregunta 18: Verbos predominantes
+::T4 Verbos biblioteca::Lee el texto\: <br><br>"La sala de estudio de la biblioteca era pequeña y silenciosa. Las paredes estaban pintadas de un blanco mate algo desconchado. En el centro, cuatro mesas rectangulares de madera clara ocupaban casi todo el espacio. Las sillas, con patas metálicas y asientos azules, resultaban incómodas al cabo de un rato. Una ventana alta y estrecha dejaba entrar una luz grisácea que apenas alcanzaba el rincón del fondo."<br><br>¿Qué tipo de verbos predominan en este texto?{
+=Verbos de estado en pasado (era, estaban pintadas, ocupaban, resultaban, dejaba)#Correcto. Expresan cómo era la sala en ese momento, sin movimiento ni acción.
+~%-25%Verbos de acción en pasado (entró, salió, habló, cogió)#No hay acciones de personajes; el texto muestra cómo era el espacio.
+~%-25%Verbos de opinión (creo, opino, considero)#No hay valoraciones personales directas del narrador.
+~%-25%Verbos en presente (es, está, tiene)#El texto usa el pasado (imperfecto) para la descripción.
+}
+
+// Pregunta 19: Adjetivos predominantes
+::T4 Adjetivos biblioteca::Lee el texto\: <br><br>"La sala de estudio de la biblioteca era pequeña y silenciosa. Las paredes estaban pintadas de un blanco mate algo desconchado. En el centro, cuatro mesas rectangulares de madera clara ocupaban casi todo el espacio. Las sillas, con patas metálicas y asientos azules, resultaban incómodas al cabo de un rato. Una ventana alta y estrecha dejaba entrar una luz grisácea que apenas alcanzaba el rincón del fondo."<br><br>¿Qué tipo de adjetivos predominan en este texto?{
+=Adjetivos calificativos que expresan cualidades (pequeña, silenciosa, rectangulares, metálicas, azules, alta, estrecha, grisácea)#Correcto. Sirven para mostrar cómo son los elementos de la sala.
+~%-25%Adjetivos posesivos (mi, tu, su, nuestro)#No aparecen adjetivos posesivos en el texto.
+~%-25%Adjetivos numerales (cuatro, primero, varios)#Hay alguno ("cuatro"), pero los calificativos son los que predominan claramente.
+~%-25%Adjetivos demostrativos (este, ese, aquel)#No aparecen adjetivos demostrativos en el texto.
+}
+
+// Pregunta 20: Objetivo / subjetivo
+::T4 Objetivo subjetivo biblioteca::Lee el texto\: <br><br>"La sala de estudio de la biblioteca era pequeña y silenciosa. Las paredes estaban pintadas de un blanco mate algo desconchado. En el centro, cuatro mesas rectangulares de madera clara ocupaban casi todo el espacio. Las sillas, con patas metálicas y asientos azules, resultaban incómodas al cabo de un rato. Una ventana alta y estrecha dejaba entrar una luz grisácea que apenas alcanzaba el rincón del fondo."<br><br>¿Es este texto objetivo o subjetivo? ¿Por qué?{
+=Es <b>subjetivo</b>, porque incluye la valoración "resultaban incómodas", que expresa la opinión del narrador#Correcto. Esa expresión refleja un juicio personal, no un dato medible.
+~%-25%Es objetivo, porque describe un lugar real#El lugar puede ser real, pero "resultaban incómodas" es una valoración, no un dato objetivo.
+~%-25%Es objetivo, porque no usa "creo que" ni "en mi opinión"#La subjetividad también aparece con verbos valorativos como "resultar incómodas".
+~%-25%Es subjetivo, porque habla de muebles y ventanas#Los objetos descritos no hacen el texto subjetivo; sí lo hacen las valoraciones sobre ellos.
+}
+
+
+// ─── TEXTO 1: Argumentativo (móviles) — preguntas adicionales ─────────────
+
+// Pregunta 21: Adjetivos
+::T1 Adjetivos móviles::Lee el texto\: <br><br>"Creo que los móviles deberían prohibirse en las aulas durante las horas de clase. Según un informe reciente, el 65% de los estudiantes reconoce que los usa para cosas que no tienen que ver con la materia. Además, la presencia del teléfono, aunque esté boca abajo, distrae la atención. En conclusión, guardar el móvil es una decisión inteligente que mejora el rendimiento de todos."<br><br>¿Qué tipo de adjetivos predominan en este texto?{
+=Adjetivos valorativos como "reciente" e "inteligente", que expresan el juicio del autor#Correcto. En el texto argumentativo los adjetivos califican valorativamente para apoyar la tesis del autor.
+~%-25%Abundantes adjetivos descriptivos de color, forma y textura#Esos son propios del texto descriptivo, no del argumentativo.
+~%-25%No aparece ningún adjetivo en el texto#Sí aparecen adjetivos\: "reciente" e "inteligente".
+~%-25%Adjetivos demostrativos como "este" o "aquel"#Esos indican distancia o posición; no son los que predominan en un texto argumentativo.
+}
+
+// Pregunta 22: Ejemplo de verbo
+::T1 EjVerbo móviles::Lee el texto\: <br><br>"Creo que los móviles deberían prohibirse en las aulas durante las horas de clase. Según un informe reciente, el 65% de los estudiantes reconoce que los usa para cosas que no tienen que ver con la materia. Además, la presencia del teléfono, aunque esté boca abajo, distrae la atención. En conclusión, guardar el móvil es una decisión inteligente que mejora el rendimiento de todos."<br><br>Escribe un verbo del texto.{
+=creo#Correcto
+=reconoce#Correcto
+=usa#Correcto
+=distrae#Correcto
+=está#Correcto
+=mejora#Correcto
+=guardar#Correcto
+=tienen#Correcto
+=deberían#Correcto
+}
+
+// Pregunta 23: Ejemplo de adjetivo
+::T1 EjAdjetivo móviles::Lee el texto\: <br><br>"Creo que los móviles deberían prohibirse en las aulas durante las horas de clase. Según un informe reciente, el 65% de los estudiantes reconoce que los usa para cosas que no tienen que ver con la materia. Además, la presencia del teléfono, aunque esté boca abajo, distrae la atención. En conclusión, guardar el móvil es una decisión inteligente que mejora el rendimiento de todos."<br><br>Escribe un adjetivo del texto.{
+=reciente#Correcto
+=inteligente#Correcto
+}
+
+// Pregunta 24: Tipo de expresiones
+::T1 TipoExpresiones móviles::Lee el texto\: <br><br>"Creo que los móviles deberían prohibirse en las aulas durante las horas de clase. Según un informe reciente, el 65% de los estudiantes reconoce que los usa para cosas que no tienen que ver con la materia. Además, la presencia del teléfono, aunque esté boca abajo, distrae la atención. En conclusión, guardar el móvil es una decisión inteligente que mejora el rendimiento de todos."<br><br>¿Qué expresiones son características de este tipo de texto?{
+="Creo que", "además", "en conclusión" — marcas de opinión y conectores argumentativos#Correcto. Son expresiones típicas del texto argumentativo\: muestran la postura del autor y organizan los argumentos.
+~%-25%"Se levantó", "bajó", "abrió" — verbos de acción en pasado#Esas son expresiones propias del texto narrativo.
+~%-25%"Era", "estaba cubierta", "resultaba" — verbos de estado en imperfecto#Esas son expresiones propias del texto descriptivo.
+~%-25%"Se denomina", "está formado por", "se clasifica en"#Esas son expresiones propias del texto expositivo.
+}
+
+// Pregunta 25: Ejemplo de cita
+::T1 EjCita móviles::Lee el texto\: <br><br>"Creo que los móviles deberían prohibirse en las aulas durante las horas de clase. Según un informe reciente, el 65% de los estudiantes reconoce que los usa para cosas que no tienen que ver con la materia. Además, la presencia del teléfono, aunque esté boca abajo, distrae la atención. En conclusión, guardar el móvil es una decisión inteligente que mejora el rendimiento de todos."<br><br>Copia una expresión del texto que demuestre que el autor da su opinión.{
+=*Creo que*#Correcto
+=*En conclusión*#Correcto
+=*decisión inteligente*#Correcto
+=*deberían prohibirse*#Correcto
+}
+
+
+// ─── TEXTO 2: Narrativo (Clara) — preguntas adicionales ──────────────────
+
+// Pregunta 26: Adjetivos
+::T2 Adjetivos Clara::Lee el texto\: <br><br>"Aquella noche, Clara no podía dormir. Se levantó de la cama sin hacer ruido, bajó a la cocina y abrió la nevera sin saber muy bien qué buscaba. Cogió un vaso de agua, se sentó en la silla junto a la ventana y miró la calle vacía durante un buen rato. Luego volvió a subir, se tumbó boca arriba y, sin darse cuenta, se quedó dormida."<br><br>¿Qué tipo de adjetivos aparecen en este texto?{
+=Muy pocos; el texto se centra en las acciones y el único calificativo destacado es "vacía"#Correcto. El texto narrativo prioriza los verbos de acción frente a los adjetivos; los adjetivos son escasos.
+~%-25%Abundantes adjetivos calificativos de color, forma y textura#Esos son propios del texto descriptivo, no del narrativo.
+~%-25%Adjetivos valorativos como "inteligente" o "reciente"#Esos son propios del texto argumentativo.
+~%-25%Adjetivos técnicos y especializados#Esos son propios del texto expositivo.
+}
+
+// Pregunta 27: Ejemplo de verbo
+::T2 EjVerbo Clara::Lee el texto\: <br><br>"Aquella noche, Clara no podía dormir. Se levantó de la cama sin hacer ruido, bajó a la cocina y abrió la nevera sin saber muy bien qué buscaba. Cogió un vaso de agua, se sentó en la silla junto a la ventana y miró la calle vacía durante un buen rato. Luego volvió a subir, se tumbó boca arriba y, sin darse cuenta, se quedó dormida."<br><br>Escribe un verbo de acción del texto.{
+=se levantó#Correcto
+=bajó#Correcto
+=abrió#Correcto
+=cogió#Correcto
+=se sentó#Correcto
+=miró#Correcto
+=volvió#Correcto
+=se tumbó#Correcto
+=buscaba#Correcto
+=se quedó#Correcto
+}
+
+// Pregunta 28: Ejemplo de adjetivo
+::T2 EjAdjetivo Clara::Lee el texto\: <br><br>"Aquella noche, Clara no podía dormir. Se levantó de la cama sin hacer ruido, bajó a la cocina y abrió la nevera sin saber muy bien qué buscaba. Cogió un vaso de agua, se sentó en la silla junto a la ventana y miró la calle vacía durante un buen rato. Luego volvió a subir, se tumbó boca arriba y, sin darse cuenta, se quedó dormida."<br><br>Este texto narrativo tiene muy pocos adjetivos. Escribe el adjetivo calificativo que encuentres.{
+=vacía#Correcto. Es el único adjetivo calificativo del texto; en el narrativo predominan los verbos, no los adjetivos.
+}
+
+// Pregunta 29: Tipo de expresiones
+::T2 TipoExpresiones Clara::Lee el texto\: <br><br>"Aquella noche, Clara no podía dormir. Se levantó de la cama sin hacer ruido, bajó a la cocina y abrió la nevera sin saber muy bien qué buscaba. Cogió un vaso de agua, se sentó en la silla junto a la ventana y miró la calle vacía durante un buen rato. Luego volvió a subir, se tumbó boca arriba y, sin darse cuenta, se quedó dormida."<br><br>¿Qué tipo de expresiones son características de este texto?{
+=Conectores temporales ("aquella noche", "luego") y verbos de acción en pasado (se levantó, bajó, cogió)#Correcto. Son marcas del texto narrativo\: organizan la secuencia de acciones en el tiempo.
+~%-25%Expresiones de opinión como "creo que" y conectores argumentativos como "en conclusión"#Esas son propias del texto argumentativo.
+~%-25%Adjetivos calificativos y verbos de estado (era, estaba, tenía)#Esas son expresiones propias del texto descriptivo.
+~%-25%Datos objetivos, cifras y construcciones impersonales#Esos son propios del texto expositivo.
+}
+
+// Pregunta 30: Ejemplo de cita
+::T2 EjCita Clara::Lee el texto\: <br><br>"Aquella noche, Clara no podía dormir. Se levantó de la cama sin hacer ruido, bajó a la cocina y abrió la nevera sin saber muy bien qué buscaba. Cogió un vaso de agua, se sentó en la silla junto a la ventana y miró la calle vacía durante un buen rato. Luego volvió a subir, se tumbó boca arriba y, sin darse cuenta, se quedó dormida."<br><br>Copia una parte del texto que muestre que las acciones ocurren en orden temporal.{
+=*Luego*#Correcto
+=*Aquella noche*#Correcto
+=*sin darse cuenta*#Correcto
+=*se levantó*#Correcto
+=*bajó a la cocina*#Correcto
+}
+
+
+// ─── TEXTO 3: Descriptivo (aula de tecnología) — preguntas adicionales ──────
+
+// Pregunta 31: Ejemplo de verbo
+::T3 EjVerbo tecnología::Lee el texto\: <br><br>"El aula de tecnología era el lugar más desordenado del instituto. En las mesas rectangulares se acumulaban cables enredados, teclados viejos y herramientas sin clasificar. Las paredes estaban cubiertas de carteles técnicos plastificados y diagramas en blanco y negro. En un rincón, una impresora 3D de color naranja destacaba entre el resto del material gris y polvoriento. El suelo de goma negra amortiguaba el ruido de las sillas."<br><br>Escribe un verbo de estado del texto.{
+=era#Correcto
+=acumulaban#Correcto
+=estaban#Correcto
+=destacaba#Correcto
+=amortiguaba#Correcto
+}
+
+// Pregunta 32: Ejemplo de adjetivo
+::T3 EjAdjetivo tecnología::Lee el texto\: <br><br>"El aula de tecnología era el lugar más desordenado del instituto. En las mesas rectangulares se acumulaban cables enredados, teclados viejos y herramientas sin clasificar. Las paredes estaban cubiertas de carteles técnicos plastificados y diagramas en blanco y negro. En un rincón, una impresora 3D de color naranja destacaba entre el resto del material gris y polvoriento. El suelo de goma negra amortiguaba el ruido de las sillas."<br><br>Escribe un adjetivo calificativo del texto.{
+=rectangulares#Correcto
+=enredados#Correcto
+=viejos#Correcto
+=técnicos#Correcto
+=plastificados#Correcto
+=naranja#Correcto
+=gris#Correcto
+=polvoriento#Correcto
+=negra#Correcto
+=desordenado#Correcto
+}
+
+// Pregunta 33: Estructura
+::T3 Estructura tecnología::Lee el texto\: <br><br>"El aula de tecnología era el lugar más desordenado del instituto. En las mesas rectangulares se acumulaban cables enredados, teclados viejos y herramientas sin clasificar. Las paredes estaban cubiertas de carteles técnicos plastificados y diagramas en blanco y negro. En un rincón, una impresora 3D de color naranja destacaba entre el resto del material gris y polvoriento. El suelo de goma negra amortiguaba el ruido de las sillas."<br><br>¿Cómo está organizado este texto?{
+=Descripción general del aula → descripción de los elementos concretos (mesas, paredes, impresora, suelo)#Correcto. El texto parte de una impresión global y luego recorre los detalles del espacio.
+~%-25%Tesis + argumentos + conclusión#Esa es la estructura del texto argumentativo.
+~%-25%Planteamiento + nudo + desenlace#Esa es la estructura del texto narrativo.
+~%-25%Definición + datos + ejemplos#Esa es la estructura del texto expositivo.
+}
+
+// Pregunta 34: Tipo de expresiones
+::T3 TipoExpresiones tecnología::Lee el texto\: <br><br>"El aula de tecnología era el lugar más desordenado del instituto. En las mesas rectangulares se acumulaban cables enredados, teclados viejos y herramientas sin clasificar. Las paredes estaban cubiertas de carteles técnicos plastificados y diagramas en blanco y negro. En un rincón, una impresora 3D de color naranja destacaba entre el resto del material gris y polvoriento. El suelo de goma negra amortiguaba el ruido de las sillas."<br><br>¿Qué tipo de expresiones predominan en este texto?{
+=Adjetivos calificativos junto a verbos de estado\: "cables enredados", "teclados viejos", "material gris y polvoriento"#Correcto. Son las marcas características del texto descriptivo.
+~%-25%Verbos de acción en pasado\: "se levantó", "corrió", "bajó"#Esas son expresiones propias del texto narrativo.
+~%-25%Expresiones de opinión\: "creo que", "en conclusión", "por tanto"#Esas son expresiones propias del texto argumentativo.
+~%-25%Datos objetivos, cifras y construcciones impersonales#Esos son propios del texto expositivo.
+}
+
+// Pregunta 35: Ejemplo de cita
+::T3 EjCita tecnología::Lee el texto\: <br><br>"El aula de tecnología era el lugar más desordenado del instituto. En las mesas rectangulares se acumulaban cables enredados, teclados viejos y herramientas sin clasificar. Las paredes estaban cubiertas de carteles técnicos plastificados y diagramas en blanco y negro. En un rincón, una impresora 3D de color naranja destacaba entre el resto del material gris y polvoriento. El suelo de goma negra amortiguaba el ruido de las sillas."<br><br>Copia un fragmento del texto que muestre que predominan los adjetivos calificativos.{
+=*cables enredados*#Correcto
+=*teclados viejos*#Correcto
+=*gris y polvoriento*#Correcto
+=*naranja*#Correcto
+=*negra*#Correcto
+=*rectangulares*#Correcto
+}
+
+
+// ─── TEXTO 4: Descriptivo (biblioteca) — preguntas adicionales ───────────────
+
+// Pregunta 36: Ejemplo de verbo
+::T4 EjVerbo biblioteca::Lee el texto\: <br><br>"La sala de estudio de la biblioteca era pequeña y silenciosa. Las paredes estaban pintadas de un blanco mate algo desconchado. En el centro, cuatro mesas rectangulares de madera clara ocupaban casi todo el espacio. Las sillas, con patas metálicas y asientos azules, resultaban incómodas al cabo de un rato. Una ventana alta y estrecha dejaba entrar una luz grisácea que apenas alcanzaba el rincón del fondo."<br><br>Escribe un verbo de estado del texto.{
+=era#Correcto
+=estaban#Correcto
+=ocupaban#Correcto
+=resultaban#Correcto
+=dejaba#Correcto
+=alcanzaba#Correcto
+}
+
+// Pregunta 37: Ejemplo de adjetivo
+::T4 EjAdjetivo biblioteca::Lee el texto\: <br><br>"La sala de estudio de la biblioteca era pequeña y silenciosa. Las paredes estaban pintadas de un blanco mate algo desconchado. En el centro, cuatro mesas rectangulares de madera clara ocupaban casi todo el espacio. Las sillas, con patas metálicas y asientos azules, resultaban incómodas al cabo de un rato. Una ventana alta y estrecha dejaba entrar una luz grisácea que apenas alcanzaba el rincón del fondo."<br><br>Escribe un adjetivo calificativo del texto.{
+=pequeña#Correcto
+=silenciosa#Correcto
+=rectangulares#Correcto
+=metálicas#Correcto
+=azules#Correcto
+=incómodas#Correcto
+=alta#Correcto
+=estrecha#Correcto
+=grisácea#Correcto
+=desconchado#Correcto
+=clara#Correcto
+}
+
+// Pregunta 38: Estructura
+::T4 Estructura biblioteca::Lee el texto\: <br><br>"La sala de estudio de la biblioteca era pequeña y silenciosa. Las paredes estaban pintadas de un blanco mate algo desconchado. En el centro, cuatro mesas rectangulares de madera clara ocupaban casi todo el espacio. Las sillas, con patas metálicas y asientos azules, resultaban incómodas al cabo de un rato. Una ventana alta y estrecha dejaba entrar una luz grisácea que apenas alcanzaba el rincón del fondo."<br><br>¿Cómo está organizado este texto?{
+=Descripción general de la sala → descripción de los detalles (paredes, mesas, sillas, ventana)#Correcto. El texto parte de una impresión global y luego describe elemento a elemento.
+~%-25%Tesis + argumentos + conclusión#Esa es la estructura del texto argumentativo.
+~%-25%Planteamiento + nudo + desenlace#Esa es la estructura del texto narrativo.
+~%-25%Causa → efecto → conclusión#Esa es propia de textos expositivos o argumentativos, no descriptivos.
+}
+
+// Pregunta 39: Tipo de expresiones
+::T4 TipoExpresiones biblioteca::Lee el texto\: <br><br>"La sala de estudio de la biblioteca era pequeña y silenciosa. Las paredes estaban pintadas de un blanco mate algo desconchado. En el centro, cuatro mesas rectangulares de madera clara ocupaban casi todo el espacio. Las sillas, con patas metálicas y asientos azules, resultaban incómodas al cabo de un rato. Una ventana alta y estrecha dejaba entrar una luz grisácea que apenas alcanzaba el rincón del fondo."<br><br>¿Qué tipo de expresiones predominan en este texto?{
+=Adjetivos calificativos y verbos de estado\: "pequeña y silenciosa", "mesas rectangulares", "luz grisácea"#Correcto. Son las marcas características del texto descriptivo.
+~%-25%Verbos de acción en pasado\: "llegó", "miró", "cogió"#Esas son expresiones propias del texto narrativo.
+~%-25%Expresiones de opinión\: "en mi opinión", "creo que", "por tanto"#Esas son expresiones propias del texto argumentativo.
+~%-25%Datos y tecnicismos\: "se compone de", "se clasifica", cifras#Esos son propios del texto expositivo.
+}
+
+// Pregunta 40: Ejemplo de cita
+::T4 EjCita biblioteca::Lee el texto\: <br><br>"La sala de estudio de la biblioteca era pequeña y silenciosa. Las paredes estaban pintadas de un blanco mate algo desconchado. En el centro, cuatro mesas rectangulares de madera clara ocupaban casi todo el espacio. Las sillas, con patas metálicas y asientos azules, resultaban incómodas al cabo de un rato. Una ventana alta y estrecha dejaba entrar una luz grisácea que apenas alcanzaba el rincón del fondo."<br><br>Copia un fragmento del texto que muestre que predominan los adjetivos calificativos.{
+=*pequeña y silenciosa*#Correcto
+=*mesas rectangulares*#Correcto
+=*patas metálicas*#Correcto
+=*asientos azules*#Correcto
+=*ventana alta y estrecha*#Correcto
+=*luz grisácea*#Correcto
+}
